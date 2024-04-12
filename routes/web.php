@@ -1,18 +1,18 @@
 <?php
 
+use App\Http\Controllers\auth\ResetPass;
+use App\Mail\register\welcome;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+//Route::get('fieldEmail',function (){
+//    return view('emailReset');
+//})->name('password.request');
+//Route::post('fieldEmail',[ResetPass::class,'sendResetLinkEmail'])->name('password.email');
+//
+//
+//Route::get('newPass',function (){
+//    return view('newPassword');
+//})->name('password.reset');
+//Route::post('newPass',[ResetPass::class,'reset'])->name('password.update');
 
-Route::get('/', function () {
-    return view('welcome');
-});

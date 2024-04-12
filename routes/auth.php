@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\auth\ResetPass;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,10 @@ Route::controller(AuthController::class)->group(function () {
 })->middleware('auth:api');
 
 });
+
+//reset
+Route::post('fieldEmail',[ResetPass::class,'sendResetLinkEmail'])->name('password.email');
+Route::get('newPass',function (){
+    return view('newPassword');
+})->name('password.reset');
+Route::post('newPass',[ResetPass::class,'reset'])->name('password.update');
