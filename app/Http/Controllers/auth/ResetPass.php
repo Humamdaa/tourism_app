@@ -19,10 +19,10 @@ class ResetPass extends Controller
 {
     public function sendResetLinkEmail(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|exists:users,email'
         ]);
+
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
         }
@@ -30,11 +30,6 @@ class ResetPass extends Controller
         $user = User::where('email', $request->email)->first();
 
         if ($user) {
-//      send code to email
-            $status = Password::sendResetLink(
-                $request->only('email')
-            );
-
             // Send the reset password notification
             $user->notify(new ResetPassword($user));
 
@@ -47,8 +42,10 @@ class ResetPass extends Controller
                 'message' => 'User not found'
             ], 404);
         }
-
     }
+
+
+
 
     public function reset(Request $request)
     {

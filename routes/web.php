@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\auth\ResetPass;
+use App\Http\Controllers\cities\CountryController;
 use App\Mail\register\welcome;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
