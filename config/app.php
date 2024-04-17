@@ -157,6 +157,7 @@ return [
 
     'providers' => ServiceProvider::defaultProviders()->merge([
         Laravel\Passport\PassportServiceProvider::class,
+       // Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Package Service Providers...
