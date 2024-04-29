@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\auth\ResetPass;
 //use App\Http\Controllers\cities\CountryController;
 use App\Http\Controllers\auth\GoogleAuthController;
@@ -19,3 +20,9 @@ use Illuminate\Support\Facades\Route;
 //google auth
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
 Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
+Route::get('',function(){
+    return 'hello';
+});
+
+//Route::get('/active/account/{user_id}', [AuthController::class, 'ActiveAccount'])->name('active.account');
+

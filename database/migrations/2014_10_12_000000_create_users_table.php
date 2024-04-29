@@ -19,6 +19,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('reset_code')->nullable();
+            $table->string('verification_code')->nullable();
+            $table->string('verification_code_expires_at')->nullable();
             $table->string('google_id')->nullable();
             $table->rememberToken()->nullable();
             $table->timestamps();
