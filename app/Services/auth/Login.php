@@ -14,15 +14,22 @@ class Login
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            $token = $user->createToken('MyApp')->accessToken;
 
-            $user->setRememberToken(Str::random(60));
+            if ($user ) {//&& property_exists($user, 'verified_account') && $user->verified_account === 1
+                if($user->verified_account === 1) {
 
-            return response()->json([
-                'token' => $token,
-//                'user' => $user,
-                'status' => 201
-            ], 201);
+                    $token = $user->createToken('MyApp')->accessToken;
+
+                    $user->setRememberToken(Str::random(60));
+
+                    return response()->json([
+                        'token' => $token,
+                        'message' => 'login successfully',
+                        'status' => 200
+                    ], 200);
+                }
+            }
+            return response()->json(['message' => 'you must verify account'],201);
         }
 
         return response()->json([

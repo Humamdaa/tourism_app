@@ -4,7 +4,7 @@ use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\auth\ResetPass;
 //use App\Http\Controllers\cities\CountryController;
 use App\Http\Controllers\auth\GoogleAuthController;
-use App\Mail\register\welcome;
+use App\Http\Controllers\stays\Hotels\HotelController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +26,5 @@ Route::get('',function(){
 
 //Route::get('/active/account/{user_id}', [AuthController::class, 'ActiveAccount'])->name('active.account');
 
+//hotel
+Route::get('hotels',[HotelController::class,'getHotelsByCityName']);

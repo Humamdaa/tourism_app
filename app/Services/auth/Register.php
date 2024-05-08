@@ -26,7 +26,7 @@ class Register
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->first()], 422);
+            return response()->json(['message' => $validator->errors()->first()], 422);
         }
 
         try {
@@ -35,7 +35,8 @@ class Register
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'phone' => $request->phone
+                'phone' => $request->phone,
+                'verified_account'=>false
             ];
             $user = User::create($userData);
 
@@ -43,14 +44,14 @@ class Register
             if ($user) {
                 SendVerificationEmailJob::dispatch($user)->delay(5);
 
-                return response()->json(['message' => 'User registered successfully. Verification code sent.'], 201);
+                return response()->json(['message' => 'User registered successfully. Verification code sent on email.'], 200);
             }
         } catch (\Exception $e) {
 
-            return response()->json(['error' => 'An error occurred while registering user.'], 500);
+            return response()->json(['message' => 'An error occurred while registering user.'], 500);
         }
 
-        return response()->json(['error' => 'Could not create user.'], 500);
+        return response()->json(['message' => 'Could not create user.'], 500);
     }
 
 }

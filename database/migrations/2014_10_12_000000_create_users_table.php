@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('reset_code')->nullable();
             $table->string('verification_code')->nullable();
             $table->string('verification_code_expires_at')->nullable();
+            $table->boolean('verified_account')->default(false);
+            $table->bigInteger('money')->default('1000');
             $table->string('google_id')->nullable();
             $table->rememberToken()->nullable();
             $table->timestamps();

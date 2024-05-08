@@ -3,9 +3,16 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\favorite\FavoriteHotels;
+use App\Models\hotels\Booking;
+use App\Models\hotels\BookRoomHotel;
+use App\Models\hotels\Hotel;
+use App\Models\hotels\hotel_comment;
+use App\Models\hotels\Room;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 //use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
@@ -14,6 +21,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
@@ -55,6 +63,34 @@ class User extends Authenticatable
     {
         $this->remember_token = Str::random(60);
         $this->save();
+    }
+
+    public function rooms()
+    {
+        return $this->belongsToMany(Room::class, 'book_room_hotel', 'id_user', 'id_room')
+            ->withPivot('start', 'end', 'id_hotel'); // If you need to access additional pivot columns
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(BookRoomHotel::class, 'id_user');
+    }
+
+//    public function favoriteHotels()
+//    {
+//        return $this->hasMany(FavoriteHotels::class, 'user_id');
+//    }
+
+    public function hotels()
+    {
+        return $this->belongsToMany(Hotel::class, 'favorite_hotels',
+            'user_id',
+            'hotel_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(hotel_comment::class);
     }
 
 }
