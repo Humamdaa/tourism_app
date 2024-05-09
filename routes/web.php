@@ -26,3 +26,4 @@ Route::get('',function(){
 
 //Route::get('/active/account/{user_id}', [AuthController::class, 'ActiveAccount'])->name('active.account');
 
+
