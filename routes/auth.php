@@ -37,6 +37,7 @@ Route::get('newPass', function () {
 })->name('password.reset');
 Route::post('newPass', [ResetPass::class, 'resetPa'])->name('password.update');
 
+
 //Route::post('newPass', [ResetPass::class, 'reset'])->name('password.update');
 
 //google login

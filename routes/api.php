@@ -8,3 +8,4 @@ include __DIR__.'/auth.php';
 include __DIR__.'/profile.php';
 
 
+include __DIR__ . '/stays/hotels.php';

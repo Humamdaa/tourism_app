@@ -3,7 +3,17 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Services\hotels\InsideHotelPage\HotelComments;
+use Database\Seeders\city\CitiesTableSeeder;
+use Database\Seeders\hotels\BookRoomHotelTableSeeder;
+use Database\Seeders\hotels\HotelCommentTableSeeder;
+use Database\Seeders\hotels\HotelTableSeeder;
+use Database\Seeders\hotels\RoomTableSeeder;
+use Database\Seeders\hotels\HotelServicesTableSeeder;
+use Database\Seeders\hotels\ServicesTableSeeder;
+use Database\Seeders\user\UserTableSeeder;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +22,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        // Disable foreign key checks
+        //DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        // Truncate both tables to remove existing data
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        DB::table('users')->delete();
+        DB::table('cities')->delete();
+        DB::table('hotels')->delete();
+        DB::table('rooms')->delete();
+        DB::table('book_room_hotel')->delete();
+        DB::table('services')->delete();
+        DB::table('hotel_services')->delete();
+        DB::table('hotel_comments')->delete();
+
+//        populate the tables with new data
+        $this->call([
+            UserTableSeeder::class,
+            CitiesTableSeeder::class,
+            HotelTableSeeder::class,
+            RoomTableSeeder::class,
+            BookRoomHotelTableSeeder::class,
+            ServicesTableSeeder::class,
+            HotelServicesTableSeeder::class,
+            HotelCommentTableSeeder::class,
+            // Add more seeders here if needed
+        ]);
     }
 }
