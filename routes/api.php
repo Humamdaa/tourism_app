@@ -7,3 +7,7 @@ use Illuminate\Support\Facades\Route;
 include __DIR__.'/auth.php';
 
 include __DIR__ . '/stays/hotels.php';
+
+include __DIR__ . '/city/city.php';
+
+

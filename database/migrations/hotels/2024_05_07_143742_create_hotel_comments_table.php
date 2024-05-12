@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('hotel_comments', function (Blueprint $table) {
             $table->id();
             $table->text('comment');
+            $table->integer('rate')->default(0);
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('hotel_id')->unsigned();
             $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

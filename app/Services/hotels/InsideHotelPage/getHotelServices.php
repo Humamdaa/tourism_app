@@ -5,7 +5,7 @@ namespace App\Services\hotels\InsideHotelPage;
 use App\Models\hotels\Hotel;
 use Illuminate\Http\Request;
 
-class getServices
+class getHotelServices
 {
 
     public function getServicesInHotel(Request $request)
@@ -16,8 +16,11 @@ class getServices
 
         if ($hotel) {
             $services = $hotel->services()->get();
-            return response()->json(['service' => $services], 200);
+            if($services) {
+                return ['service'=>$services];
+            }
+            return ['message'=>"not found services for $hotel->name"];
         }
-        return response()->json(['message' => 'hotel not found'], 404);
+        return ['message'=>'hotel not found'];
     }
 }

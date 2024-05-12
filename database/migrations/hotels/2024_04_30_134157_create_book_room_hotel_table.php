@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreign('id_room')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_hotel')->references('id')->on('hotels')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

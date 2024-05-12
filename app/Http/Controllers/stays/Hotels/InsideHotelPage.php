@@ -3,42 +3,57 @@
 namespace App\Http\Controllers\stays\Hotels;
 
 use App\Http\Controllers\Controller;
+use App\Models\hotels\BookRoomHotel;
 use App\Models\hotels\Hotel;
-use App\Services\hotels\InsideHotelPage\getServices;
-use App\Services\hotels\InsideHotelPage\HotelComments;
+use App\Services\hotels\InsideHotelPage\CanWriteComment;
+use App\Services\hotels\InsideHotelPage\getHotelPhotos;
+use App\Services\hotels\InsideHotelPage\getHotelServices;
+use App\Services\hotels\InsideHotelPage\getHotelComments;
 use Illuminate\Http\Request;
 
 class InsideHotelPage extends Controller
 {
     public function servicesInHotel(Request $request)
     {
-        $services = new getServices();
+        $services = new getHotelServices();
         return $services->getServicesInHotel($request);
     }
 
     public function commentsInHotel(Request $request)
     {
-        $com = new HotelComments();
-        return $com->getHotelComments($request);
+        $com = new getHotelComments();
+        return $com->getCommentsInHotel($request);
     }
 
-    public function photos()
+    public function photosInHotel(Request $request)
     {
+        $temp = new getHotelPhotos();
+        return $temp->getPhotosInHotel($request);
+    }
 
+    public function WriteComment(Request $request)
+    {
+        $can = new CanWriteComment();
+        return $can->UserCanWriteComment($request);
     }
 
     public function insideHotel(Request $request)
     {
+        $comment = $this->WriteComment($request);
+
 // Call the servicesInHotel function
         $servicesResult = $this->servicesInHotel($request);
 
         // Call the commentsInHotel function
         $commentsResult = $this->commentsInHotel($request);
 
-        // Return both results
-        return [
+        $photosResult = $this->photosInHotel($request);
+
+        return response()->json([
             $servicesResult,
-            $commentsResult
-        ];
+            $commentsResult,
+            $photosResult,
+            $comment
+        ], 200);
     }
 }
