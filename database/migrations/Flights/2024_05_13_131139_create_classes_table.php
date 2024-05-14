@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        Schema::create('classes', function (Blueprint $table) {
             $table->id();
-            $table->integer('person_num');
-            $table->bigInteger('number')->unsigned()->unique();
-            $table->unsignedbigInteger('hotel_id')->unsigned();
-            $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
-            $table->boolean('isBooking');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('classes');
     }
 };

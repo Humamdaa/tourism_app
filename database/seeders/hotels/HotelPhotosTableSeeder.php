@@ -13,6 +13,7 @@ class HotelPhotosTableSeeder extends Seeder
      */
     public function run(): void
     {
+        //hotel 1
         DB::table('hotel_photos')->insert([
             'id' => 1,
             'img' => 'newYork1.jpg',
@@ -94,6 +95,7 @@ class HotelPhotosTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
         DB::table('hotel_photos')->insert([
             'id' => 12,
             'img' => 'newYork3-3.jpg',
@@ -101,5 +103,37 @@ class HotelPhotosTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        //hotel 9 in Damascus
+        DB::table('hotel_photos')->insert([
+            'id' => 13,
+            'img' => 'damascus1.jpg',
+            'hotel_id' => 9,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('hotel_photos')->insert([
+            'id' => 14,
+            'img' => 'damascus1-1.jpg',
+            'hotel_id' => 9,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('hotel_photos')->insert([
+            'id' => 15,
+            'img' => 'damascus1-2.jpg',
+            'hotel_id' => 9,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('hotel_photos')->insert([
+            'id' => 16,
+            'img' => 'damascus1-3.jpg',
+            'hotel_id' => 9,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+
     }
 }

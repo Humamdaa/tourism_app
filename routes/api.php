@@ -12,4 +12,5 @@ include __DIR__ . '/stays/hotels.php';
 
 include __DIR__ . '/city/city.php';
 
+include __DIR__ . '/Flights/flights.php';
 
