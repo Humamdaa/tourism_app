@@ -42,7 +42,7 @@ class Register
 
             // If user created successfully, send notification
             if ($user) {
-              //  SendVerificationEmailJob::dispatch($user)->delay(5);//commentt
+              SendVerificationEmailJob::dispatch($user)->delay(5);//commentt
 
                 return response()->json(['message' => 'User registered successfully. Verification code sent on email.'], 200);
             }

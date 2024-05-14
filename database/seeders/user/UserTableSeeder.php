@@ -20,6 +20,7 @@ class UserTableSeeder extends Seeder
             'phone'=>'+963947938542',
             'email'=>'homamdaas11@gmail.com',
             'password' => Hash::make('!Password1'),
+            'verified_account'=> '1'
 
             ]);
 
@@ -29,6 +30,7 @@ class UserTableSeeder extends Seeder
             'phone'=>'+963947938543',
             'email'=>'for2003project@gmail.com',
             'password' => Hash::make('!Password1'),
+            'verified_account'=> '1'
 
         ]);
 

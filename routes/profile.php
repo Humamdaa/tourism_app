@@ -9,4 +9,6 @@ use App\Http\Controllers\auth\GoogleAuthController;
 use App\Http\Controllers\auth\ProfileController;
 
 //->middleware('auth:api')
-Route::post('profile/editName', [ProfileController::class, 'editName']);
+Route::post('profile/editName', [ProfileController::class, 'editName'])->middleware("auth:api");
+Route::delete('profile/deleteAccount', [ProfileController::class, 'deleteAccount'])->middleware("auth:api");
+
