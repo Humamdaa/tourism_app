@@ -3,10 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Services\hotels\InsideHotelPage\HotelComments;
+use App\Services\hotels\InsideHotelPage\getHotelComments;
 use Database\Seeders\city\CitiesTableSeeder;
 use Database\Seeders\hotels\BookRoomHotelTableSeeder;
 use Database\Seeders\hotels\HotelCommentTableSeeder;
+use Database\Seeders\hotels\HotelPhotosTableSeeder;
 use Database\Seeders\hotels\HotelTableSeeder;
 use Database\Seeders\hotels\RoomTableSeeder;
 use Database\Seeders\hotels\HotelServicesTableSeeder;
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
         DB::table('services')->delete();
         DB::table('hotel_services')->delete();
         DB::table('hotel_comments')->delete();
+        DB::table('hotel_photos')->delete();
 
 //        populate the tables with new data
         $this->call([
@@ -45,6 +47,8 @@ class DatabaseSeeder extends Seeder
             ServicesTableSeeder::class,
             HotelServicesTableSeeder::class,
             HotelCommentTableSeeder::class,
+            HotelPhotosTableSeeder::class,
+
             // Add more seeders here if needed
         ]);
     }

@@ -16,7 +16,7 @@ class Add_RemoveHotelFavorite extends Controller
         return $add->addHotelToFavorite($request);
 
     }
-    public function removeHotelToFav(Request $request){
+    public function removeHotelFromFav(Request $request){
         $remove = new removeHotelFromFavorite();
         return $remove->addHotelToFavorite($request);
     }

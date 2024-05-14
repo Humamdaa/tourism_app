@@ -5,6 +5,7 @@ namespace App\Http\Controllers\stays\Hotels;
 use App\Http\Controllers\Controller;
 use App\Models\city;
 use App\Models\hotels\Hotel;
+use App\Services\hotels\orderingHotelAccordingRequest;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use App\Services\hotels\RemoveBookedRooms;
@@ -25,10 +26,22 @@ class HotelController extends Controller
 //            'children'=>true
 //        ]);
 
-        $hotels = Hotel::query()
-            ->byCityName($request->cityName)
-            ->byPersonNum($request->persons)
-            ->get();
+        $temp = new orderingHotelAccordingRequest();
+
+        switch ($request->sort) {
+            case 'price':
+                $hotels = $temp->Price($request);
+                break;
+            case 'rate':
+                $hotels = $temp->rate($request);
+                break;
+            case 'popular':
+                $hotels = $temp->populare($request);
+                break;
+            default:
+                $hotels = $temp->normal($request);
+                break;
+        }
 //                return $hotels;
 
         $hotelsArray['hotels'] = $hotels->toArray();

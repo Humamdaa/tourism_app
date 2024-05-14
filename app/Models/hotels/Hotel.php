@@ -82,7 +82,7 @@ class Hotel extends Model
 
     public function availableRoomsForPersons($numPersons)
     {
-        return $this->rooms()->where('person_num', '>=', $numPersons)->where('isBooking', false)->get();
+        return $this->rooms()->where('person_num', '>=', $numPersons)->with('bookings')->get();
     }
 
 

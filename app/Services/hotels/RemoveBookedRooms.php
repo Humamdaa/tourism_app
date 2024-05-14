@@ -13,6 +13,8 @@ class RemoveBookedRooms
                         unset($hotel['rooms'][$roomKey]);
                     } elseif ($end >= $curBook['start'] && $end <= $curBook['end']) {
                         unset($hotel['rooms'][$roomKey]);
+                    } elseif ($start <= $curBook['start'] && $end >= $curBook['end']) {
+                        unset($hotel['rooms'][$roomKey]);
                     }
                 }
             }

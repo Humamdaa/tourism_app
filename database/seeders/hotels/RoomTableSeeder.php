@@ -113,6 +113,24 @@ class RoomTableSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
+        DB::table('rooms')->insert([
+            'id' => 14,
+            'person_num' => 2,
+            'number' => 8,
+            'hotel_id' => 5,
+            'isBooking' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
+        DB::table('rooms')->insert([
+            'id' => 15,
+            'person_num' => 3,
+            'number' => 9,
+            'hotel_id' => 5,
+            'isBooking' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

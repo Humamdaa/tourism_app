@@ -15,30 +15,33 @@ class UserTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
-            'id'=>1,
-            'name'=>'humam',
-            'phone'=>'+963947938542',
-            'email'=>'homamdaas11@gmail.com',
-            'password' => Hash::make('!Password1'),
-            'verified_account'=> '1'
-
-            ]);
-
-        DB::table('users')->insert([
-            'id'=>2,
-            'name'=>'homam',
-            'phone'=>'+963947938543',
-            'email'=>'for2003project@gmail.com',
+            'id' => 1,
+            'name' => 'humam',
+            'phone' => '+963947938542',
+            'email' => 'homamdaas11@gmail.com',
+            'verified_account' => 1,
             'password' => Hash::make('!Password1'),
             'verified_account'=> '1'
 
         ]);
 
         DB::table('users')->insert([
-            'id'=>3,
-            'name'=>'humamDaas',
-            'phone'=>'+963947938541',
-            'email'=>'homamdaas2003@gmail.com',
+            'id' => 2,
+            'name' => 'homam',
+            'phone' => '+963947938543',
+            'email' => 'for2003project@gmail.com',
+            'verified_account' => 1,
+            'password' => Hash::make('!Password1'),
+            'verified_account'=> '1'
+
+        ]);
+
+        DB::table('users')->insert([
+            'id' => 3,
+            'name' => 'humamDaas',
+            'phone' => '+963947938541',
+            'email' => 'homamdaas2003@gmail.com',
+            'verified_account' => 1,
             'password' => Hash::make('!Password1'),
 
         ]);

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('start');
             $table->date('end');
+            $table->integer("persons")->unsigned();
             $table->bigInteger('id_room')->unsigned();
             $table->bigInteger('id_hotel')->unsigned();
             $table->bigInteger('id_user')->unsigned();
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->foreign('id_room')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_hotel')->references('id')->on('hotels')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

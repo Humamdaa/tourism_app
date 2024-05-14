@@ -10,7 +10,7 @@ class hotel_comment extends Model
 {
     use HasFactory;
     protected $table = 'hotel_comments';
-protected $fillable = ['comment','user_id','hotel_id'];
+    protected $fillable = ['comment', 'rate', 'user_id', 'hotel_id'];
 
     public function hotel()
     {
