@@ -16,30 +16,31 @@ class Active extends Notification implements ShouldQueue
     use Queueable;
 
 
-    private $code ;
+    private $code;
     protected User $user;
+    private $delayInSeconds;
 
     public function __construct(User $user)
     {
         $this->user = $user;
         $this->generateCode();
     }
+
     protected function generateCode()
     {
         $numericPart = mt_rand(10000, 99999); // Generate a random 6-digit number
-//        $charPart = Str::random(4); // Generate a random 4-character string
-        $verificationCode = $numericPart ;//. $charPart
+        $verificationCode = $numericPart;
 
-        $expiration = now()->addMinute(30); // Expiry time: 30 minutes from now
+        $expiration = now()->minutes(30); // Expiry time: 30 minutes from now
 
         $this->user->verification_code = $verificationCode;
         $this->user->verification_code_expires_at = $expiration;
         $this->user->save();
 
         $this->code = $verificationCode;
-        NullifyVerificationCode::dispatch($this->user->id)->delay($expiration);
 
     }
+
     /**
      * Get the notification's delivery channels.
      *
@@ -59,8 +60,8 @@ class Active extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject('verify')
             ->line('thank you to register in our system')
-            ->line('your code is :'. $this->code)
-            ->line('your code is expired after 25 minutes')
+            ->line('your code is :' . $this->code)
+            ->line("your code is expired after 30 minutes ")
             ->line('see you ');
     }
 

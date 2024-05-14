@@ -4,14 +4,18 @@ namespace App\Services\auth\verify;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class verifyRegisterUser
 {
     public function verifyAccount(Request $request)
     {
         $user = User::where('email', $request->email)->first();
-        //request has expired
-        if ($user->verification_code_expires_at < now() && $user->verification_code_epires_at !== null) {
+
+        $currentTime = Carbon::now(); // Get the current time
+        $expiresAt = Carbon::parse($user->verification_code_expires_at); // Parse the expires_at time from database
+
+        if ($expiresAt->lessThan($currentTime) && $user->verification_code_expires_at !== null) {
             $user->delete();
             return response()->json(['message' => 'you take along time to verify your account']);
         }
@@ -23,6 +27,7 @@ class verifyRegisterUser
 
         //remove verification code after entering user to app
         $user->verification_code = null;
+        $user->verification_code_expires_at = null;
         $user->verified_account = true;
         // Generate remember token
         $user->createRememberToken();

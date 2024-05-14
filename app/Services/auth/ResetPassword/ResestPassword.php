@@ -55,7 +55,7 @@ class ResestPassword
 //         event(new PasswordReset($user));
 
         if ($status) {
-            return response()->json(['message' => 'Your password has been reset successfully.'], 201);
+            return response()->json(['message' => 'Your password has been reset successfully.'], 200);
         } else {
             return response()->json(['error' => 'Invalid email or reset code.'], 422);
         }

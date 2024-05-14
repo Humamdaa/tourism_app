@@ -35,8 +35,10 @@ class User extends Authenticatable
         'phone',
         'google_id',
         'remember_token',
+        'reset_code',
         'verification_code',
-        'verification_code_expires_at'
+        'verification_code_expires_at',
+        'verified_account'
     ];
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Services\auth\ResetPassword;
 
 use App\Models\User;
-use Illuminate\Auth\Notifications\ResetPassword;
+use App\Notifications\resetPass\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,8 +26,8 @@ class SendCode
             $user->notify(new ResetPassword($user));
 
             return response()->json([
-                'message' => 'Check your email',
-            ], 201);
+                'message' => 'Check your email to reset your password',
+            ], 200);
         } else {
             // If user not found
             return response()->json([

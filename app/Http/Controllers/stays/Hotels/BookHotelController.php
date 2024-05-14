@@ -50,6 +50,7 @@ class BookHotelController extends Controller
             $booked = BookRoomHotel::create([
                 'start' => $start,
                 'end' => $end,
+                'persons'=>$person,
                 'id_room' => $roomsArray[0]['id'],
                 'id_hotel' => $hotelId,
                 'id_user' => $user->id

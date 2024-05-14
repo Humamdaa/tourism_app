@@ -17,7 +17,7 @@ Route::middleware('throttle:60,1')->group(function () {
 });
 
 Route::controller(AuthController::class)->group(function () {
-    Route::get('logoutUser', 'logout')->middleware('auth:api');
+    Route::get('logoutUser', 'logout')->middleware('auth:api')->name('out');
     Route::get('trying', function () {
         return 'success login inside system';
     })->middleware('auth:api');
@@ -31,11 +31,11 @@ Route::get('unAuth', function () {
 })->name('UnAuth');
 
 //reset
-Route::post('fieldEmail', [ResetPass::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('newPass', function () {
-    return view('newPassword');
-})->name('password.reset');
-Route::post('newPass', [ResetPass::class, 'resetPa'])->name('password.update');
+ Route::post('fieldEmail', [ResetPass::class, 'sendResetLinkEmail'])->name('password.email');
+ Route::get('newPass', function () {
+     return view('newPassword');
+ })->name('password.reset');
+ Route::post('newPass', [ResetPass::class, 'resetPa'])->name('password.update');
 
 
 //Route::post('newPass', [ResetPass::class, 'reset'])->name('password.update');
