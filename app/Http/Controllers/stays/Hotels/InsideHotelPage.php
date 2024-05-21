@@ -10,6 +10,7 @@ use App\Services\hotels\InsideHotelPage\getHotelPhotos;
 use App\Services\hotels\InsideHotelPage\getHotelServices;
 use App\Services\hotels\InsideHotelPage\getHotelComments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class InsideHotelPage extends Controller
 {
@@ -39,6 +40,7 @@ class InsideHotelPage extends Controller
 
     public function insideHotel(Request $request)
     {
+
         $comment = $this->WriteComment($request);
 
 // Call the servicesInHotel function
@@ -50,10 +52,14 @@ class InsideHotelPage extends Controller
         $photosResult = $this->photosInHotel($request);
 
         return response()->json([
-            $servicesResult,
-            $commentsResult,
-            $photosResult,
-            $comment
+            'data' => [
+                $servicesResult,
+                $commentsResult,
+                $photosResult,
+                $comment,
+            ],
+            'status'=>200
+            //'session' => Session::get('lang')
         ], 200);
     }
 }

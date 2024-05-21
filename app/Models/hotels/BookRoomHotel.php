@@ -14,9 +14,12 @@ class BookRoomHotel extends Model
     protected $fillable = [
         'start',
         'end',
+        'persons',
         'id_room',
         'id_hotel',
-        'id_user'
+        'id_user',
+        'total',
+        'taken'
     ];
 
     public function user()
@@ -33,7 +36,6 @@ class BookRoomHotel extends Model
     {
         return $this->belongsTo(Room::class, 'id_room');
     }
-
 
 
 }

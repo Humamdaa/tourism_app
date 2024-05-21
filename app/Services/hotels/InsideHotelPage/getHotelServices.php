@@ -3,6 +3,7 @@
 namespace App\Services\hotels\InsideHotelPage;
 
 use App\Models\hotels\Hotel;
+use App\Services\translate\TranslateMessages;
 use Illuminate\Http\Request;
 
 class getHotelServices
@@ -10,6 +11,7 @@ class getHotelServices
 
     public function getServicesInHotel(Request $request)
     {
+        $tr = new TranslateMessages();
 
         $temp = new findHotel();
         $hotel = $temp->Hotel($request);
@@ -21,6 +23,6 @@ class getHotelServices
             }
             return ['message'=>"not found services for $hotel->name"];
         }
-        return ['message'=>'hotel not found'];
+        return ['message'=>$tr->translate('hotel not found')];
     }
 }

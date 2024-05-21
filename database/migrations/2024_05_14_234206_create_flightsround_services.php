@@ -16,8 +16,8 @@ return new class extends Migration
             $table->bigInteger('service_id')->unsigned();
             $table->bigInteger('flightRound_id')->unsigned();
 
-            $table->foreign('service_id')->references('id')->on('services');
-            $table->foreign('flightRound_id')->references('id')->on('flightsround');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+            $table->foreign('flightRound_id')->references('id')->on('flightsround')->onDelete('cascade');
 
             $table->timestamps();
         });

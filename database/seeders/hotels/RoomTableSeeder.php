@@ -189,7 +189,7 @@ class RoomTableSeeder extends Seeder
         DB::table('rooms')->insert([
             'id' => 21,
             'person_num' => 3,
-            'number' => 20,
+            'number' => 21,
             'hotel_id' => 7,
             'isBooking' => 0,
             'created_at' => now(),
@@ -283,9 +283,9 @@ class RoomTableSeeder extends Seeder
         ]);
 
         DB::table('rooms')->insert([
-            'id' => 29,
+            'id' => 30,
             'person_num' => 3,
-            'number' => 28,
+            'number' => 30,
             'hotel_id' => 10,
             'isBooking' => 0,
             'created_at' => now(),
@@ -296,18 +296,8 @@ class RoomTableSeeder extends Seeder
 
 /////hotel 11 in Damascus 4th city
         DB::table('rooms')->insert([
-            'id' => 30,
-            'person_num' => 1,
-            'number' => 30,
-            'hotel_id' => 11,
-            'isBooking' => 0,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        DB::table('rooms')->insert([
             'id' => 31,
-            'person_num' => 6,
+            'person_num' => 1,
             'number' => 31,
             'hotel_id' => 11,
             'isBooking' => 0,
@@ -317,8 +307,18 @@ class RoomTableSeeder extends Seeder
 
         DB::table('rooms')->insert([
             'id' => 32,
-            'person_num' => 3,
+            'person_num' => 6,
             'number' => 32,
+            'hotel_id' => 11,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 33,
+            'person_num' => 3,
+            'number' => 33,
             'hotel_id' => 11,
             'isBooking' => 0,
             'created_at' => now(),

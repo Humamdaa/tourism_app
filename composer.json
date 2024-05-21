@@ -6,6 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "amrshawky/laravel-currency": "^6.0",
+        "everapi/freecurrencyapi-php": "@dev",
         "firebase/php-jwt": "^6.10",
         "google/cloud": "^0.241.0",
         "guzzlehttp/guzzle": "^7.8",
@@ -14,8 +16,11 @@
         "laravel/sanctum": "^3.3",
         "laravel/socialite": "^5.13",
         "laravel/tinker": "^2.8",
+        "otherguy/php-currency-api": "^1.7",
         "propaganistas/laravel-disposable-email": "^2.3",
-        "propaganistas/laravel-phone": "^5.2"
+        "propaganistas/laravel-phone": "^5.2",
+        "rackbeat/php-currency-api": "@dev",
+        "stichoza/google-translate-php": "^5.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

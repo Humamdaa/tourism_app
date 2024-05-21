@@ -28,7 +28,7 @@ class Active extends Notification implements ShouldQueue
 
     protected function generateCode()
     {
-        $numericPart = mt_rand(10000, 99999); // Generate a random 6-digit number
+        $numericPart = mt_rand(100000, 999999); // Generate a random 6-digit number
         $verificationCode = $numericPart;
 
         $expiration = now()->minutes(30); // Expiry time: 30 minutes from now

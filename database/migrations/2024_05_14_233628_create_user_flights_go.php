@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('user_flights_go', function (Blueprint $table) {
             $table->id();
             $table->integer('passenger');
-
+            $table->boolean('taken')->default(0);
             $table->bigInteger('class_id')->unsigned();
             $table->bigInteger('flightGo_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
 
-            $table->foreign('class_id')->references('id')->on('classes');
-            $table->foreign('flightGo_id')->references('id')->on('flightsgo');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
+            $table->foreign('flightGo_id')->references('id')->on('flightsgo')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

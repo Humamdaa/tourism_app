@@ -3,6 +3,7 @@
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\auth\ResetPass;
 use App\Http\Controllers\verify\VerifyRegister;
+use App\Services\translate\TranslateMessages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\auth\GoogleAuthController;
@@ -27,15 +28,19 @@ Route::post('/verify/account', [verifyRegister::class, 'verifyRegister'])->name(
 
 //check middleware/Authenticate:
 Route::get('unAuth', function () {
-    return response()->json(['message' => 'unAuthorized, please login'], 401);
+    $tr = new TranslateMessages();
+    return response()->json([
+        'message' => $tr->translate('unAuthorized, please login'),
+        'status' => 404
+    ], 404);
 })->name('UnAuth');
 
 //reset
- Route::post('fieldEmail', [ResetPass::class, 'sendResetLinkEmail'])->name('password.email');
- Route::get('newPass', function () {
-     return view('newPassword');
- })->name('password.reset');
- Route::post('newPass', [ResetPass::class, 'resetPa'])->name('password.update');
+Route::post('fieldEmail', [ResetPass::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('newPass', function () {
+    return view('newPassword');
+})->name('password.reset');
+Route::post('newPass', [ResetPass::class, 'resetPa'])->name('password.update');
 
 
 //Route::post('newPass', [ResetPass::class, 'reset'])->name('password.update');

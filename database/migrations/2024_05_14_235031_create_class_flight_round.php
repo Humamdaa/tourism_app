@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_flightsround', function (Blueprint $table) {
+        Schema::create('class_flight_round', function (Blueprint $table) {
             $table->id();
-            $table->integer('passenger');
+            $table->bigInteger('capacity')->unsigned();
+            $table->double('price');
 
             $table->bigInteger('class_id')->unsigned();
             $table->bigInteger('flightRound_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
 
-            $table->foreign('class_id')->references('id')->on('classes');
-            $table->foreign('flightRound_id')->references('id')->on('flightsround');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
+            $table->foreign('flightRound_id')->references('id')->on('flightsround')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_flightsround');
+        Schema::dropIfExists('class_flight_round');
     }
 };

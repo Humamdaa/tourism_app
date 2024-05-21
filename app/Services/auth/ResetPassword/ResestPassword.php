@@ -3,6 +3,7 @@
 namespace App\Services\auth\ResetPassword;
 
 use App\Models\User;
+use App\Services\translate\TranslateMessages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
@@ -12,11 +13,13 @@ class ResestPassword
 {
     public function reset(Request $request)
     {
+        $tr = new TranslateMessages();
+
         $status = false;
 //        return $request;
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255|min:4',
-            'code' => 'required',
+            'code' => 'required|numeric|digits:6',
             'password' => [
                 'confirmed',
                 'required',
@@ -29,9 +32,13 @@ class ResestPassword
 
         if ($validator->fails()) {
             if ($validator->errors()->has('password')) {
-                return response()->json(['error' => 'Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.'], 422);
+                return response()->json([
+                    'message' => $tr->translate('Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.'),
+                    'status' => 404], 404);//422
             }
-            return response()->json(['error' => $validator->errors()], 422);
+            return response()->json([
+                'message' => $tr->translate($validator->errors()),
+                'status' => 404], 404);//422
         }
 
         $user = User::where('email', $request->email)->first();
@@ -55,9 +62,13 @@ class ResestPassword
 //         event(new PasswordReset($user));
 
         if ($status) {
-            return response()->json(['message' => 'Your password has been reset successfully.'], 200);
+            return response()->json([
+                'message' => $tr->translate('Your password has been reset successfully.'),
+                'status' => 200], 200);
         } else {
-            return response()->json(['error' => 'Invalid email or reset code.'], 422);
+            return response()->json([
+                'message' => $tr->translate('Invalid email or reset code.'),
+                'status' => 404], 404);//422
         }
     }
 

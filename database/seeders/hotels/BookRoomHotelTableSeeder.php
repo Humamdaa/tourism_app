@@ -21,6 +21,7 @@ class BookRoomHotelTableSeeder extends Seeder
             'start' => '2024-06-15',
             'end' => '2024-06-20',
             "persons" => 1,
+            "total" => 200,
             'id_room' => 2,
             'id_hotel' => 1,
             'id_user' => 1,
@@ -34,7 +35,7 @@ class BookRoomHotelTableSeeder extends Seeder
             'start' => '2024-06-10',
             'end' => '2024-06-14',
             "persons" => 1,
-
+            "total" => 10,
             'id_room' => 4,
             'id_hotel' => 2,
             'id_user' => 1,
@@ -47,7 +48,7 @@ class BookRoomHotelTableSeeder extends Seeder
             'start' => '2024-07-10',
             'end' => '2024-07-14',
             "persons" => 1,
-
+            "total" => 75,
             'id_room' => 5,
             'id_hotel' => 3,
             'id_user' => 1,
@@ -61,7 +62,7 @@ class BookRoomHotelTableSeeder extends Seeder
             'start' => '2024-05-15',
             'end' => '2024-05-20',
             "persons" => 1,
-
+            "total" => 150,
             'id_room' => 11,
             'id_hotel' => 4,
             'id_user' => 1,
@@ -74,7 +75,7 @@ class BookRoomHotelTableSeeder extends Seeder
             'start' => '2024-05-05',
             'end' => '2024-05-8',
             "persons" => 1,
-
+            "total" => 20,
             'id_room' => 13,
             'id_hotel' => 5,
             'id_user' => 1,
@@ -87,7 +88,7 @@ class BookRoomHotelTableSeeder extends Seeder
             'start' => '2024-03-01',
             'end' => '2024-03-10',
             "persons" => 1,
-
+            "total" => 20,
             'id_room' => 15,
             'id_hotel' => 5,
             'id_user' => 2,
@@ -99,8 +100,8 @@ class BookRoomHotelTableSeeder extends Seeder
             'id' => 7,
             'start' => '2024-04-01',
             'end' => '2024-04-10',
-            "persons" => 1,
-
+            "persons" => 2,
+            "total" => 40,
             'id_room' => 15,
             'id_hotel' => 5,
             'id_user' => 1,

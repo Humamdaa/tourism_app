@@ -16,13 +16,15 @@ class ResetPassword extends Notification
 
     private $code;
     protected User $user;
+
     public function __construct(User $user)
     {
         $this->user = $user;
         $this->generateCode();
     }
 
-    public function generateCode(){
+    public function generateCode()
+    {
         $this->code = rand(100000, 999999);
         $temp_code = $this->code;
 
@@ -52,10 +54,8 @@ class ResetPassword extends Notification
         return (new MailMessage)
             ->subject(Lang::get('Reset Password Notification'))
             ->line(Lang::get('You are receiving this email because we received a password reset request for your account.'))
-//            ->action(Lang::get('Reset Password'), $url)
             ->line(Lang::get('Your password reset code is: ') . $this->code) // Use $this->code to access the property
-            ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire')]))
-            ->line(Lang::get('If you did not request a password reset, no further action is required.'));
+            ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire')]));
 
     }
 

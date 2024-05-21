@@ -14,18 +14,18 @@ return new class extends Migration
             Schema::create('flightsgo', function (Blueprint $table) {
                 $table->id();
                 $table->date('date');
-                $table->time('takeoff');
-                $table->time('landing');
+                $table->string('takeoff');
+                $table->string('landing');
                 $table->string('duration');
-                $table->bigInteger('capacity');
+                $table->integer('capacity')->unsigned();
 
                 $table->bigInteger('office_id')->unsigned();
                 $table->bigInteger('from_city_id')->unsigned();
                 $table->bigInteger('to_city_id')->unsigned();
 
-                $table->foreign('office_id')->references('id')->on('offices');
-                $table->foreign('from_city_id')->references('id')->on('cities');
-                $table->foreign('to_city_id')->references('id')->on('cities');
+                $table->foreign('office_id')->references('id')->on('offices')->onDelete('cascade');
+                $table->foreign('from_city_id')->references('id')->on('cities')->onDelete('cascade');
+                $table->foreign('to_city_id')->references('id')->on('cities')->onDelete('cascade');
 
                 $table->timestamps();
             });

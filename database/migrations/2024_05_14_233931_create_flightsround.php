@@ -27,9 +27,10 @@ return new class extends Migration
             $table->bigInteger('from_city_id')->unsigned();
             $table->bigInteger('to_city_id')->unsigned();
 
-            $table->foreign('office_id')->references('id')->on('offices');
-            $table->foreign('from_city_id')->references('id')->on('cities');
-            $table->foreign('to_city_id')->references('id')->on('cities');
+            $table->foreign('office_id')->references('id')->on('offices')->onDelete('cascade');
+            $table->foreign('from_city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->foreign('to_city_id')->references('id')->on('cities')->onDelete('cascade');
+
         });
     }
 

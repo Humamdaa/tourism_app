@@ -18,8 +18,8 @@ return new class extends Migration {
             $table->bigInteger('class_id')->unsigned();
             $table->bigInteger('flightGo_id')->unsigned();
 
-            $table->foreign('class_id')->references('id')->on('classes');
-            $table->foreign('flightGo_id')->references('id')->on('flightsgo');
+            $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
+            $table->foreign('flightGo_id')->references('id')->on('flightsgo')->onDelete('cascade');
 
             $table->timestamps();
         });

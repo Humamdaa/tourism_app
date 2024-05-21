@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\hotels;
+namespace App\Models;
 
 use App\Models\Flights\FlightsGo\FlightGo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

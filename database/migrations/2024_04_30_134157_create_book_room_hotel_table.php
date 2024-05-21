@@ -16,6 +16,8 @@ return new class extends Migration
             $table->date('start');
             $table->date('end');
             $table->integer("persons")->unsigned();
+            $table->integer('total')->default(0);
+            $table->boolean('taken')->default(0);
             $table->bigInteger('id_room')->unsigned();
             $table->bigInteger('id_hotel')->unsigned();
             $table->bigInteger('id_user')->unsigned();
