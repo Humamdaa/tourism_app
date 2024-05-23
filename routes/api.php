@@ -15,10 +15,6 @@ include __DIR__ . '/city/city.php';
 
 include __DIR__ . '/Flights/flights.php';
 
-<<<<<<< HEAD
-
-=======
 include __DIR__ . '/languages/language.php';
 
 include __DIR__ . '/currency/currency.php';
->>>>>>> 7b623bb708e9c7f9a88d78a0ae34b6fd3a40dcb6

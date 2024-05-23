@@ -4,11 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\favorite\FavoriteHotels;
-<<<<<<< HEAD
 use App\Models\homes\Feature;
-=======
 use App\Models\Flights\FlightsGo\FlightGo;
->>>>>>> 7b623bb708e9c7f9a88d78a0ae34b6fd3a40dcb6
 use App\Models\hotels\Booking;
 use App\Models\hotels\BookRoomHotel;
 use App\Models\hotels\Hotel;
@@ -107,7 +104,6 @@ class User extends Authenticatable
         return $this->hasMany(hotel_comment::class);
     }
 
-<<<<<<< HEAD
     public function homes(){
         return $this->belongsToMany(
             Home::class,
@@ -117,11 +113,9 @@ class User extends Authenticatable
         );
     }
 
-=======
     public function flightsGo()
     {
         return $this->belongsToMany(FlightGo::class, 'user_flights_go', 'user_id', 'flightGo_id')
             ->withPivot('passenger');
     }
->>>>>>> 7b623bb708e9c7f9a88d78a0ae34b6fd3a40dcb6
 }
