@@ -60,7 +60,7 @@ class RoomTableSeeder extends Seeder
         DB::table('rooms')->insert([
             'id' => 5,
             'person_num' => 6,
-            'number'=>5,
+            'number' => 5,
             'hotel_id' => 3,
             'isBooking' => 1,
             'created_at' => now(),
@@ -72,7 +72,7 @@ class RoomTableSeeder extends Seeder
         DB::table('rooms')->insert([
             'id' => 10,
             'person_num' => 4,
-            'number' => 5,
+            'number' => 10,
             'hotel_id' => 4,
             'isBooking' => 0,
             'created_at' => now(),
@@ -83,7 +83,7 @@ class RoomTableSeeder extends Seeder
         DB::table('rooms')->insert([
             'id' => 11,
             'person_num' => 1,
-            'number' => 6,
+            'number' => 11,
             'hotel_id' => 4,
             'isBooking' => 1,
             'created_at' => now(),
@@ -91,22 +91,22 @@ class RoomTableSeeder extends Seeder
         ]);
 
 
-        //room in hotel 12 Hotel LB in city 2 LosAngeles
+        //room in hotel 5 Hotel LB in city 2 LosAngeles
         DB::table('rooms')->insert([
             'id' => 12,
             'person_num' => 3,
-            'number' => 7,
+            'number' => 12,
             'hotel_id' => 5,
             'isBooking' => 0,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        //room in hotel 13 Hotel LB in city 2 LosAngeles
+        //room in hotel 5 Hotel LB in city 2 LosAngeles
         DB::table('rooms')->insert([
             'id' => 13,
             'person_num' => 2,
-            'number' => 8,
+            'number' => 13,
             'hotel_id' => 5,
             'isBooking' => 1,
             'created_at' => now(),
@@ -116,7 +116,7 @@ class RoomTableSeeder extends Seeder
         DB::table('rooms')->insert([
             'id' => 14,
             'person_num' => 2,
-            'number' => 8,
+            'number' => 14,
             'hotel_id' => 5,
             'isBooking' => 1,
             'created_at' => now(),
@@ -126,11 +126,204 @@ class RoomTableSeeder extends Seeder
         DB::table('rooms')->insert([
             'id' => 15,
             'person_num' => 3,
-            'number' => 9,
+            'number' => 15,
             'hotel_id' => 5,
             'isBooking' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+
+        //hotel 6 in paris third city
+        DB::table('rooms')->insert([
+            'id' => 16,
+            'person_num' => 1,
+            'number' => 16,
+            'hotel_id' => 6,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 17,
+            'person_num' => 6,
+            'number' => 17,
+            'hotel_id' => 6,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 18,
+            'person_num' => 3,
+            'number' => 18,
+            'hotel_id' => 6,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        //////hotel 7 in paris third city
+        DB::table('rooms')->insert([
+            'id' => 19,
+            'person_num' => 1,
+            'number' => 19,
+            'hotel_id' => 7,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 20,
+            'person_num' => 5,
+            'number' => 20,
+            'hotel_id' => 7,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 21,
+            'person_num' => 3,
+            'number' => 21,
+            'hotel_id' => 7,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        //////hotel 8 in paris third city
+
+        DB::table('rooms')->insert([
+            'id' => 22,
+            'person_num' => 1,
+            'number' => 22,
+            'hotel_id' => 8,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 23,
+            'person_num' => 6,
+            'number' => 23,
+            'hotel_id' => 8,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 24,
+            'person_num' => 3,
+            'number' => 24,
+            'hotel_id' => 8,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+
+        /////hotel 9 in Damascus 4th city
+        DB::table('rooms')->insert([
+            'id' => 25,
+            'person_num' => 1,
+            'number' => 25,
+            'hotel_id' => 9,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 26,
+            'person_num' => 6,
+            'number' => 26,
+            'hotel_id' => 9,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 27,
+            'person_num' => 3,
+            'number' => 27,
+            'hotel_id' => 9,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+
+/////hotel 10 in Damascus 4th city
+        DB::table('rooms')->insert([
+            'id' => 28,
+            'person_num' => 1,
+            'number' => 28,
+            'hotel_id' => 10,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 29,
+            'person_num' => 6,
+            'number' => 29,
+            'hotel_id' => 10,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 30,
+            'person_num' => 3,
+            'number' => 30,
+            'hotel_id' => 10,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+
+
+/////hotel 11 in Damascus 4th city
+        DB::table('rooms')->insert([
+            'id' => 31,
+            'person_num' => 1,
+            'number' => 31,
+            'hotel_id' => 11,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 32,
+            'person_num' => 6,
+            'number' => 32,
+            'hotel_id' => 11,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('rooms')->insert([
+            'id' => 33,
+            'person_num' => 3,
+            'number' => 33,
+            'hotel_id' => 11,
+            'isBooking' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
     }
 }

@@ -13,6 +13,11 @@ class ServicesTableSeeder extends Seeder
      */
     public function run(): void
     {
+        ///////////////////////////////////////////////////////////////////////////////
+        /// there are seeder for flight go services
+        /// stats from id 30
+        /// and for flight round services starts from id 60
+        /// ///////////////////////////////////////////////////////////////////////////
         DB::table('services')->insert([
             'id' => 1,
             'name' => 'wifi',

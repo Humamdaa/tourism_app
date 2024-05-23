@@ -2,29 +2,26 @@
 
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\auth\ResetPass;
+
 //use App\Http\Controllers\cities\CountryController;
 use App\Http\Controllers\auth\GoogleAuthController;
 use App\Http\Controllers\stays\Hotels\HotelController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Stichoza\GoogleTranslate\GoogleTranslate;
+use GuzzleHttp\Client;
+use AmrShawky\LaravelCurrency\Facade\Currency;
 
-Route::get('fieldEmail',function (){
-    return view('emailReset');
- })->name('password.request');
- Route::post('fieldEmail',[ResetPass::class,'sendResetLinkEmail'])->name('password.email');
-Route::get('newPass',function (){
-    return view('newPassword');
-})->name('password.reset');
-Route::post('newPass',[ResetPass::class,'reset'])->name('password.update');
 
 //google auth
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
 Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
-Route::get('',function(){
+Route::get('', function () {
     return 'hello';
 });
 
-//Route::get('/active/account/{user_id}', [AuthController::class, 'ActiveAccount'])->name('active.account');
 
-//hotel
-Route::get('hotels',[HotelController::class,'getHotelsByCityName']);
+Route::get('cur',function (){
+    $client = new \CurrencyApi\CurrencyApi\CurrencyApiClient('YOUR-API-KEY');
+    var_dump($client->currencies());
+});

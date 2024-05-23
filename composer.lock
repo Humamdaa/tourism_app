@@ -4,8 +4,137 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07cc9847530eac4e5eb2ed2419ddea4f",
+    "content-hash": "82759ffc08ba462f520b8808f35428e6",
     "packages": [
+        {
+            "name": "amrshawky/currency",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amrshawky/currency.git",
+                "reference": "39f13b6783ef611fd13916d48abd31bca2ab1e54"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amrshawky/currency/zipball/39f13b6783ef611fd13916d48abd31bca2ab1e54",
+                "reference": "39f13b6783ef611fd13916d48abd31bca2ab1e54",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": ">=6.0",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AmrShawky\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amr Shawky",
+                    "homepage": "https://amrshawky.com"
+                }
+            ],
+            "description": "A PHP library for current and historical currency exchange rates & crypto exchange rates based on the free API provided by exchangerate.host",
+            "keywords": [
+                "crypto exchange rates",
+                "currency",
+                "currency converter",
+                "exchange rates",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/amrshawky/currency/issues",
+                "source": "https://github.com/amrshawky/currency/tree/1.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://ko-fi.com/amrshawky",
+                    "type": "ko_fi"
+                }
+            ],
+            "abandoned": true,
+            "time": "2021-05-13T23:41:33+00:00"
+        },
+        {
+            "name": "amrshawky/laravel-currency",
+            "version": "6.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amrshawky/laravel-currency.git",
+                "reference": "a6ab6c4f65b58b4a89e2f467e91cc139e59c4df7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amrshawky/laravel-currency/zipball/a6ab6c4f65b58b4a89e2f467e91cc139e59c4df7",
+                "reference": "a6ab6c4f65b58b4a89e2f467e91cc139e59c4df7",
+                "shasum": ""
+            },
+            "require": {
+                "amrshawky/currency": "^1.0",
+                "ext-json": "*",
+                "guzzlehttp/guzzle": ">=6.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=8.5.23"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AmrShawky\\LaravelCurrency\\CurrencyServiceProvider"
+                    ],
+                    "aliases": {
+                        "Currency": "AmrShawky\\LaravelCurrency\\Facade\\Currency"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AmrShawky\\LaravelCurrency\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amr Shawky",
+                    "homepage": "https://amrshawky.com"
+                }
+            ],
+            "description": "A Laravel package for current and historical currency exchange rates & crypto exchange rates based on the free API provided by exchangerate.host",
+            "keywords": [
+                "currency",
+                "currency converter",
+                "exchange rates",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/amrshawky/laravel-currency/issues",
+                "source": "https://github.com/amrshawky/laravel-currency/tree/6.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://ko-fi.com/amrshawky",
+                    "type": "ko_fi"
+                }
+            ],
+            "abandoned": true,
+            "time": "2023-02-17T18:40:31+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -567,6 +696,66 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
+        },
+        {
+            "name": "everapi/freecurrencyapi-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/everapihq/freecurrencyapi-php.git",
+                "reference": "61514ca4124b6c5e4de823a546fe08a3dd8c3c9e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/everapihq/freecurrencyapi-php/zipball/61514ca4124b6c5e4de823a546fe08a3dd8c3c9e",
+                "reference": "61514ca4124b6c5e4de823a546fe08a3dd8c3c9e",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.4",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "pestphp/pest": "^1.20",
+                "spatie/ray": "^1.28"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FreeCurrencyApi\\FreeCurrencyApi\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dominik Kukacka",
+                    "email": "office@everapi.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP wrapper for the freecurrencyapi.com API",
+            "homepage": "https://github.com/everapihq/freecurrencyapi-php",
+            "keywords": [
+                "api",
+                "currency api",
+                "exchange rates data",
+                "foreign exchange rates API",
+                "free currency api ",
+                "free currency conversion API",
+                "freecurrencyapi-php",
+                "freecurrencyapi.com",
+                "rates API"
+            ],
+            "support": {
+                "issues": "https://github.com/everapihq/freecurrencyapi-php/issues",
+                "source": "https://github.com/everapihq/freecurrencyapi-php/tree/master"
+            },
+            "time": "2023-05-26T09:26:01+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -4349,6 +4538,81 @@
             "time": "2023-11-13T09:31:12+00:00"
         },
         {
+            "name": "otherguy/php-currency-api",
+            "version": "1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/otherguy/php-currency-api.git",
+                "reference": "258c5d3b96249ce368641a5d6e1a96d6cc5d1915"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/otherguy/php-currency-api/zipball/258c5d3b96249ce368641a5d6e1a96d6cc5d1915",
+                "reference": "258c5d3b96249ce368641a5d6e1a96d6cc5d1915",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.2",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "nikic/php-parser": "^4.10",
+                "php-coveralls/php-coveralls": "^2.4",
+                "phpunit/php-code-coverage": "^9.2",
+                "phpunit/phpunit": "^9.4"
+            },
+            "suggest": {
+                "ext-curl": "Faster HTTP requests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Otherguy\\Currency\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Graf",
+                    "email": "alex@otherguy.io"
+                }
+            ],
+            "description": "A PHP API Wrapper to offer a unified programming interface for popular Currency Rate APIs.",
+            "keywords": [
+                "api-wrapper",
+                "composer-package",
+                "currency",
+                "currency conversion",
+                "currency rates",
+                "currency-api",
+                "currency-conversion",
+                "currency-converter",
+                "currency-converter-php",
+                "currency-exchange",
+                "currency-exchange-rates",
+                "currency-rate-apis",
+                "exchange rates",
+                "exchange-rate-api",
+                "exchange-rates",
+                "exchange-rates-api",
+                "fluent-interface",
+                "php-library",
+                "php-package",
+                "php73",
+                "php74",
+                "php8"
+            ],
+            "support": {
+                "issues": "https://github.com/otherguy/php-currency-api/issues",
+                "source": "https://github.com/otherguy/php-currency-api/tree/1.7"
+            },
+            "time": "2021-03-23T12:31:37+00:00"
+        },
+        {
             "name": "paragonie/constant_time_encoding",
             "version": "v2.6.3",
             "source": {
@@ -5341,6 +5605,64 @@
             "time": "2023-10-14T21:56:36+00:00"
         },
         {
+            "name": "rackbeat/php-currency-api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Rackbeat/php-currency-api.git",
+                "reference": "7b34e7f5e9cee1afbcc0339e3dadbb7d74f2a2d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Rackbeat/php-currency-api/zipball/7b34e7f5e9cee1afbcc0339e3dadbb7d74f2a2d5",
+                "reference": "7b34e7f5e9cee1afbcc0339e3dadbb7d74f2a2d5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rackbeat\\Currency\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lasse Rafn",
+                    "email": "lasserafn@gmail.com"
+                },
+                {
+                    "name": "Rackbeat",
+                    "email": "open-source@rackbeat.com"
+                }
+            ],
+            "description": "Wrapper for multiple currency rate APIs",
+            "keywords": [
+                "api",
+                "currency",
+                "currency conversion",
+                "currency rates",
+                "exchange rates",
+                "laravel",
+                "rates"
+            ],
+            "support": {
+                "issues": "https://github.com/Rackbeat/php-currency-api/issues",
+                "source": "https://github.com/Rackbeat/php-currency-api/tree/master"
+            },
+            "time": "2018-06-24T23:00:14+00:00"
+        },
+        {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
             "source": {
@@ -5626,6 +5948,86 @@
                 }
             ],
             "time": "2024-03-10T08:07:49+00:00"
+        },
+        {
+            "name": "stichoza/google-translate-php",
+            "version": "v5.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Stichoza/google-translate-php.git",
+                "reference": "0d3de083a4b286868c4456cc76448a439a5aae07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Stichoza/google-translate-php/zipball/0d3de083a4b286868c4456cc76448a439a5aae07",
+                "reference": "0d3de083a4b286868c4456cc76448a439a5aae07",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "guzzlehttp/guzzle": "^7.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5.10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stichoza\\GoogleTranslate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Levan Velijanashvili",
+                    "email": "me@stichoza.com"
+                }
+            ],
+            "description": "Free Google Translate API PHP Package",
+            "homepage": "https://github.com/Stichoza/google-translate-php",
+            "keywords": [
+                "google",
+                "php",
+                "translate",
+                "translating",
+                "translator"
+            ],
+            "support": {
+                "issues": "https://github.com/Stichoza/google-translate-php/issues",
+                "source": "https://github.com/Stichoza/google-translate-php/tree/v5.1.3"
+            },
+            "funding": [
+                {
+                    "url": "https://btc.com/bc1qc25j4x7yahghm8nnn6lypnw59nptylsw32nkfl",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.paypal.me/stichoza",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://ko-fi.com/stichoza",
+                    "type": "ko_fi"
+                },
+                {
+                    "url": "https://liberapay.com/stichoza",
+                    "type": "liberapay"
+                },
+                {
+                    "url": "https://opencollective.com/stichoza",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/stichoza",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2023-12-18T21:40:16+00:00"
         },
         {
             "name": "symfony/console",
@@ -10672,7 +11074,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "everapi/freecurrencyapi-php": 20,
+        "rackbeat/php-currency-api": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

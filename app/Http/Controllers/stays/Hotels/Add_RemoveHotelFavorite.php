@@ -4,20 +4,16 @@ namespace App\Http\Controllers\stays\Hotels;
 
 use App\Http\Controllers\Controller;
 use App\Services\hotels\addHotelToFavorite;
+use App\Services\hotels\changeFavorite;
 use App\Services\hotels\removeHotelFromFavorite;
 use Illuminate\Http\Request;
 
 class Add_RemoveHotelFavorite extends Controller
 {
-    public function addHotelToFav(Request $request)
+
+    public function changeFav(Request $request)
     {
-
-        $add = new addHotelToFavorite();
-        return $add->addHotelToFavorite($request);
-
-    }
-    public function removeHotelFromFav(Request $request){
-        $remove = new removeHotelFromFavorite();
-        return $remove->addHotelToFavorite($request);
+        $change = new changeFavorite();
+        return $change->change($request);
     }
 }

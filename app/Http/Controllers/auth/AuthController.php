@@ -38,8 +38,5 @@ class AuthController extends Controller
         $logoutService = new Logout();
         return $logoutService->logoutUser();
     }
-    public function updateName(){
-//        $UpNa = new UpdateName();
 
-    }
 }

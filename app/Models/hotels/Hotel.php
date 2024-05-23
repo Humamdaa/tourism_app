@@ -6,6 +6,7 @@ use App\Models\city;
 use App\Models\favorite\FavoriteHotels;
 use App\Models\Scopes\hotels\HotelsBookingStatus_PersonsScope;
 use App\Models\Scopes\hotels\HotelsCityScope;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

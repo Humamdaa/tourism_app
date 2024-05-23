@@ -6,26 +6,35 @@ use App\Http\Controllers\Controller;
 use App\Models\city;
 use App\Models\hotels\Hotel;
 use App\Services\hotels\orderingHotelAccordingRequest;
+use App\Services\hotels\showHotels\RemoveBookedRooms;
+use App\Services\hotels\showHotels\changePriceOfHotel;
+use App\Services\translate\TranslateMessages;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
-use App\Services\hotels\RemoveBookedRooms;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class HotelController extends Controller
 {
 
-    public function getHotelsByCityName(Request $request)
+    public function getHotels(Request $request)
     {
-//        return $request;
+        $tr = new TranslateMessages();
 
-//        $request = request()->merge([
-//            'cityName' => 'NewYork',
-//            'persons' => 1,
-//            'start' => '2028-08-14',
-//            'end' => '2028-09-14',
-//            'children'=>true
-//        ]);
+        $validator = Validator::make($request->all(), [
+            'cityName' => 'required|string|max:20',
+            'persons' => 'required|integer|min:1|max:8',
+            'start' => 'required|date|after_or_equal:today',
+            'end' => 'required|date|after:start',
+        ]);
 
+        // Handle validation failures
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => $validator->errors()->first(),
+                'status' => 404
+            ], 404); // You can use 422 if you prefer
+        }
         $temp = new orderingHotelAccordingRequest();
 
         switch ($request->sort) {
@@ -42,20 +51,27 @@ class HotelController extends Controller
                 $hotels = $temp->normal($request);
                 break;
         }
-//                return $hotels;
 
         $hotelsArray['hotels'] = $hotels->toArray();
 //        return $hotelsArray;
 
+        //fix booking
         $remove = new RemoveBookedRooms();
         $result = $remove->fixBooking($hotelsArray, $request['start'], $request['end']);
 
-        if (count($result) !== 0 && !empty($result)) {
-            return response()->json(['data' => $result], 200);
+        $var = new changePriceOfHotel();
+
+        if (!empty($result) && isset($result['hotels']) && !empty($result['hotels'])) {
+            $last = $var->changePrice($result['hotels']);
+            return response()->json([
+                'data' => $last,
+                'status' => 200], 200);
         }
+
         return response()->json([
-            'message' => "There are no available hotels in {$request['cityName']} enough for {$request['persons']} persons from {$request['start']} to {$request['end']}."
-        ]);
+            'message' => $tr->translate("There are no available hotels in {$request['cityName']} enough for {$request['persons']} persons from {$request['start']} to {$request['end']}."),
+            'status' => 404
+        ], 404);
 
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\hotels;
+namespace App\Services\hotels\showHotels;
 
 class RemoveBookedRooms
 {
@@ -24,6 +24,15 @@ class RemoveBookedRooms
                 unset($hots['hotels'][$hotelKey]);
             }
         }
+
+
+//            $hotels = array_map(function ($hots) {
+//                // Remove 'rooms' and 'bookings' keys from each hotel entry
+//                unset($hots['rooms']);
+//                unset($hots['bookings']);
+//                return $hots;
+//            }, $hots['hotels']);
+
         return $hots;
 
     }
