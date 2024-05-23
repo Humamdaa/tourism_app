@@ -9,7 +9,9 @@ include __DIR__.'/profile.php';
 
 
 include __DIR__ . '/stays/hotels.php';
+include __DIR__ . '/stays/homes.php';
 
 include __DIR__ . '/city/city.php';
+
 
 
