@@ -4,10 +4,13 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\favorite\FavoriteHotels;
+use App\Models\homes\Feature;
 use App\Models\Flights\FlightsGo\FlightGo;
 use App\Models\hotels\Booking;
 use App\Models\hotels\BookRoomHotel;
 use App\Models\hotels\Hotel;
+use App\Models\homes\Home;
+use App\Models\homes\BookHome;
 use App\Models\hotels\hotel_comment;
 use App\Models\hotels\Room;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -78,6 +81,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(BookRoomHotel::class, 'id_user');
     }
+    public function homeBookings()
+    {
+        return $this->hasMany(BookHome::class, 'user_id');
+    }
 
 
 //    public function favoriteHotels()
@@ -95,6 +102,15 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(hotel_comment::class);
+    }
+
+    public function homes(){
+        return $this->belongsToMany(
+            Home::class,
+            'book_home_user_pivot',
+            'home_id',
+            'user_id'
+        );
     }
 
     public function flightsGo()

@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Models\hotels\Hotel;
+use App\Models\homes\Home;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 
 class city extends Model
 {
@@ -21,4 +23,9 @@ protected $table = 'cities';
     {
         return $this->hasMany(Hotel::class);
     }
+    public function homes()
+    {
+        return $this->hasMany(Home::class);
+    }
+
 }

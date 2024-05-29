@@ -20,6 +20,8 @@ use Database\Seeders\hotels\HotelTableSeeder;
 use Database\Seeders\hotels\RoomTableSeeder;
 use Database\Seeders\hotels\HotelServicesTableSeeder;
 use Database\Seeders\hotels\ServicesTableSeeder;
+use Database\Seeders\homes\HomeTableSeeder;
+use Database\Seeders\homes\BookHomeTableSeeder;
 use Database\Seeders\user\UserTableSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -46,6 +48,9 @@ class DatabaseSeeder extends Seeder
         DB::table('hotel_comments')->delete();
         DB::table('hotel_photos')->delete();
 
+        //homes
+        DB::table('homes')->delete();
+        DB::table('book_home_user_pivot')->delete();
         DB::table('classes')->delete();
         DB::table('flightsgo')->delete();
         DB::table('class_flight_go')->delete();
@@ -65,6 +70,10 @@ class DatabaseSeeder extends Seeder
             HotelServicesTableSeeder::class,
             HotelCommentTableSeeder::class,
             HotelPhotosTableSeeder::class,
+            // home
+            HomeTableSeeder::class,
+            BookHomeTableSeeder::class,
+
 ////////////seeder flightsGo
             ClassesSeederTable::class,
             OfficeTableSeeder::class,
