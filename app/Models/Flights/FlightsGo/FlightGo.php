@@ -5,7 +5,9 @@ namespace App\Models\Flights\FlightsGo;
 use App\Models\city;
 use App\Models\Flights\Classes;
 use App\Models\Flights\Office;
+use App\Models\Scopes\flightsGo\ClassPriceScope;
 use App\Models\Scopes\flightsGo\FromToCityScope;
+use App\Models\Scopes\flightsGo\numStopInFlightGo;
 use App\Models\Scopes\flightsGo\typeClassScope;
 use App\Models\Service;
 use App\Models\User;
@@ -21,7 +23,7 @@ class FlightGo extends Model
 
     protected $fillable =
         [
-            'date', 'takeoff', 'landing', 'duration',
+            'date', 'takeoff', 'landing', 'duration', 'NumStops',
             'capacity', 'office_id', 'from_city_id', 'to_city_id'
         ];
 
@@ -42,6 +44,13 @@ class FlightGo extends Model
             ->withPivot('price', 'capacity');
     }
 
+    public function stops()
+    {
+        return $this->belongsToMany(stop::class, 'flights_go_stops',
+            'flightGo_id', 'stop_id');
+    }
+
+
     public function fromCity()
     {
         return $this->belongsTo(City::class, 'from_city_id');
@@ -52,6 +61,12 @@ class FlightGo extends Model
         return $this->belongsTo(City::class, 'to_city_id');
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_flights_go',
+            'flightGo_id', 'user_id')
+            ->withPivot('passenger');
+    }
     //scopes :
 
     //scope from to city with one month before and after almost
@@ -66,8 +81,15 @@ class FlightGo extends Model
         return TypeClassScope::specificClass($query, $class, $persons);
     }
 
-    public function scopeWtihClassPrice(){
-
+    //for type of class
+    public function scopeWithClassPrice($query, $type)
+    {
+        return ClassPriceScope::ClassPrice($query, $type);
     }
 
+    //for number of stops
+    public function scopeWithNumStops($query, $num)
+    {
+        return numStopInFlightGo::numStop($query, $num);
+    }
 }

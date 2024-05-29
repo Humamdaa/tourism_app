@@ -10,7 +10,9 @@ class CheckIfHotelIsFavorite
     public function checkFavorite(User $user, $hotels)
     {
 
+        //get hotels for user
         $favorites = $user->hotels()->get();
+        //get favorite hotel for user
         $fav = $favorites->toArray();
         $favHotelIds = array_column($fav, 'id');
         $res = [];

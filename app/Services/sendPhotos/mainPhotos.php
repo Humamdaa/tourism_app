@@ -5,7 +5,7 @@ namespace App\Services\sendPhotos;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
-class Photos
+class mainPhotos
 {
 
     //this function to take the main photos for hotels
@@ -24,7 +24,6 @@ class Photos
         //get first photo to show it if $all is 0 :
         // Get all files in the city directory
         $files = File::files($directoryPath);
-        $numberOfPhotos = count($files);
 
         //I must get the first photo to each hotel
         $firstPhoto = [];
@@ -37,7 +36,6 @@ class Photos
 
         foreach ($firstPhoto as $fP)
             $urls[] = url("hotels/$cityName/$fP");
-
 
         return $urls;
     }

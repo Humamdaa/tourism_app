@@ -18,5 +18,3 @@ include __DIR__ . '/languages/language.php';
 
 include __DIR__ . '/currency/currency.php';
 
-
-include __DIR__ . '/Flights/flights.php';

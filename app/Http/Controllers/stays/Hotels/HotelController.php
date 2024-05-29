@@ -10,6 +10,8 @@ use App\Services\hotels\orderingHotelAccordingRequest;
 use App\Services\hotels\showHotels\CheckIfHotelIsFavorite;
 use App\Services\hotels\showHotels\RemoveBookedRooms;
 use App\Services\hotels\showHotels\changePriceOfHotel;
+use App\Services\sendPhotos\mergeUrlMainPhoto;
+use App\Services\sendPhotos\mainPhotos;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
@@ -51,7 +53,7 @@ class HotelController extends Controller
                 $hotels = $temp->rate($request);
                 break;
             case 'popular':
-                $hotels = $temp->populare($request);
+                $hotels = $temp->popular($request);
                 break;
             default:
                 $hotels = $temp->normal($request);
@@ -69,10 +71,25 @@ class HotelController extends Controller
         $check = new CheckIfHotelIsFavorite();
         $result = $check->checkFavorite($user, $result);
 
+// Extract hotel IDs from the "hotels" array
+        $hotelIds = [];
+        foreach ($result['hotels'] as $hotel) {
+            $hotelIds[] = $hotel['id'];
+        }
+
         $var = new changePriceOfHotel();
 
+        $photos = new mainPhotos();
+        $phs = $photos->listPhotos($request->cityName, $hotelIds, 0);
+
         if (!empty($result) && isset($result['hotels']) && !empty($result['hotels'])) {
+            //change price
             $last = $var->changePrice($result['hotels']);
+
+            //merge photo for each hotel
+            $mer = new mergeUrlMainPhoto();
+            $last = $mer->merge($last['hotels'], $phs);
+
             return response()->json([
                 'data' => $last,
                 'status' => 200], 200);

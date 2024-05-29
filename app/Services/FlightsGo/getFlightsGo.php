@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Flights;
+namespace App\Services\FlightsGo;
 
 use App\Models\Flights\FlightsGo\FlightGo;
 use App\Services\translate\TranslateMessages;

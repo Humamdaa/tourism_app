@@ -126,7 +126,6 @@ class HotelTableSeeder extends Seeder
         ]);
 
         /////hotels in syria 4th city
-
         DB::table('hotels')->insert([
             'id' => 9,
             'name' => 'Four Seasons',

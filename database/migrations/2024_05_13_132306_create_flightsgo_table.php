@@ -19,7 +19,7 @@ return new class extends Migration
                 $table->time('duration');
                 //all capacity
                 $table->integer('capacity')->unsigned();
-                $table->integer('stops')->default(0);
+                $table->integer('NumStops')->default(0);
 
                 $table->bigInteger('office_id')->unsigned();
                 $table->bigInteger('from_city_id')->unsigned();

@@ -8,8 +8,10 @@ use Database\Seeders\city\CitiesTableSeeder;
 use Database\Seeders\Flights\Go\ClassesSeederTable;
 use Database\Seeders\Flights\Go\ClassFlightGoSeederTable;
 use Database\Seeders\Flights\Go\FlightGoServicesSeederTable;
+use Database\Seeders\Flights\Go\flightsGoStopsSeederTable;
 use Database\Seeders\Flights\Go\FlightsGoTableSeeder;
 use Database\Seeders\Flights\Go\ServicesSeederTable;
+use Database\Seeders\Flights\Go\stopsSeederTable;
 use Database\Seeders\Flights\OfficeTableSeeder;
 use Database\Seeders\hotels\BookRoomHotelTableSeeder;
 use Database\Seeders\hotels\HotelCommentTableSeeder;
@@ -43,10 +45,13 @@ class DatabaseSeeder extends Seeder
         DB::table('hotel_services')->delete();
         DB::table('hotel_comments')->delete();
         DB::table('hotel_photos')->delete();
+
         DB::table('classes')->delete();
         DB::table('flightsgo')->delete();
         DB::table('class_flight_go')->delete();
         DB::table('flights_go_services')->delete();
+        DB::table('flights_go_stops')->delete();
+        DB::table('stops')->delete();
 
 
 //        populate the tables with new data
@@ -67,6 +72,8 @@ class DatabaseSeeder extends Seeder
             ClassFlightGoSeederTable::class,
             ServicesSeederTable::class,
             FlightGoServicesSeederTable::class,
+            stopsSeederTable::class,
+            flightsGoStopsSeederTable::class,
             // Add more seeders here if needed
         ]);
     }

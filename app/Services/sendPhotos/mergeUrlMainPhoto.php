@@ -2,7 +2,7 @@
 
 namespace App\Services\sendPhotos;
 
-class mergeUrlPhoto
+class mergeUrlMainPhoto
 {
     //take array and the urls
     public function merge($hotels, $phs)

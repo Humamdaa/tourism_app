@@ -104,6 +104,7 @@ class HotelPhotosTableSeeder extends Seeder
             'updated_at' => now()
         ]);
 
+
         //hotel 9 in Damascus
         DB::table('hotel_photos')->insert([
             'id' => 13,
@@ -133,6 +134,68 @@ class HotelPhotosTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+
+        //hotel 4 first hotel in LosAngeles city 2
+        DB::table('hotel_photos')->insert([
+            'id' => 17,
+            'img' => 'losangeles4.jpg',
+            'hotel_id' => 4,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('hotel_photos')->insert([
+            'id' => 18,
+            'img' => 'losangeles4-1.jpg',
+            'hotel_id' => 4,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('hotel_photos')->insert([
+            'id' => 19,
+            'img' => 'losangeles4-2.jpg',
+            'hotel_id' => 4,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('hotel_photos')->insert([
+            'id' => 20,
+            'img' => 'losangeles4-3.jpg',
+            'hotel_id' => 4,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //hotel 4 first hotel in LosAngeles
+        DB::table('hotel_photos')->insert([
+            'id' => 21,
+            'img' => 'losangeles5.jpg',
+            'hotel_id' => 5,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('hotel_photos')->insert([
+            'id' => 22,
+            'img' => 'losangeles5-1.jpg',
+            'hotel_id' => 5,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('hotel_photos')->insert([
+            'id' => 23,
+            'img' => 'losangeles5-2.jpg',
+            'hotel_id' => 5,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('hotel_photos')->insert([
+            'id' => 24,
+            'img' => 'losangeles5-3.jpg',
+            'hotel_id' => 5,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
 
 
     }

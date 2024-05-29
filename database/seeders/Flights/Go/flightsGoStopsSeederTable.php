@@ -13,41 +13,41 @@ class flightsGoStopsSeederTable extends Seeder
      */
     public function run(): void
     {
-        DB::table('flights_stops')->insert([
+        DB::table('flights_go_stops')->insert([
             'stop_id' => 1,
-            'flight_id' => 1
+            'flightGo_id' => 1
         ]);
-        DB::table('flights_stops')->insert([
+        DB::table('flights_go_stops')->insert([
             'stop_id' => 2,
-            'flight_id' => 1
+            'flightGo_id' => 1
         ]);
-        DB::table('flights_stops')->insert([
+        DB::table('flights_go_stops')->insert([
             'stop_id' => 3,
-            'flight_id' => 2
+            'flightGo_id' => 2
         ]);
-        DB::table('flights_stops')->insert([
+        DB::table('flights_go_stops')->insert([
             'stop_id' => 4,
-            'flight_id' => 2
+            'flightGo_id' => 2
         ]);
-        DB::table('flights_stops')->insert([
+        DB::table('flights_go_stops')->insert([
             'stop_id' => 5,
-            'flight_id' => 2
+            'flightGo_id' => 2
         ]);
-        DB::table('flights_stops')->insert([
+        DB::table('flights_go_stops')->insert([
             'stop_id' => 6,
-            'flight_id' => 3
+            'flightGo_id' => 3
         ]);
-        DB::table('flights_stops')->insert([
+        DB::table('flights_go_stops')->insert([
             'stop_id' => 7,
-            'flight_id' => 4
+            'flightGo_id' => 4
         ]);
-        DB::table('flights_stops')->insert([
+        DB::table('flights_go_stops')->insert([
             'stop_id' => 8,
-            'flight_id' => 5
+            'flightGo_id' => 5
         ]);
-        DB::table('flights_stops')->insert([
+        DB::table('flights_go_stops')->insert([
             'stop_id' => 9,
-            'flight_id' => 6
+            'flightGo_id' => 6
         ]);
     }
 }

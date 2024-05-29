@@ -16,7 +16,7 @@ class ClassFlightGoSeederTable extends Seeder
         //classes for the first flight
         DB::table('class_flight_go')->insert([
             'id' => 1,
-            'capacity' => 95,
+            'capacity' => 85,
             'price' => 150,
             'class_id' => 1,
             'flightGo_id' => 1,
@@ -25,7 +25,7 @@ class ClassFlightGoSeederTable extends Seeder
         ]);
         DB::table('class_flight_go')->insert([
             'id' => 2,
-            'capacity' => 15,
+            'capacity' => 10,
             'price' => 175,
             'class_id' => 2,
             'flightGo_id' => 1,
@@ -34,8 +34,8 @@ class ClassFlightGoSeederTable extends Seeder
         ]);
         DB::table('class_flight_go')->insert([
             'id' => 3,
-            'capacity' => 75,
-            'price' => 95,
+            'capacity' => 200,
+            'price' => 5,
             'class_id' => 1,
             'flightGo_id' => 1,
             'created_at' => now(),
@@ -45,7 +45,7 @@ class ClassFlightGoSeederTable extends Seeder
         //classes for second flight
         DB::table('class_flight_go')->insert([
             'id' => 4,
-            'capacity' => 7,
+            'capacity' => 70,
             'price' => 130,
             'class_id' => 1,
             'flightGo_id' => 2,
@@ -54,8 +54,8 @@ class ClassFlightGoSeederTable extends Seeder
         ]);
         DB::table('class_flight_go')->insert([
             'id' => 5,
-            'capacity' => 10,
-            'price' => 95,
+            'capacity' => 20,
+            'price' => 185,
             'class_id' => 2,
             'flightGo_id' => 2,
             'created_at' => now(),
@@ -63,8 +63,8 @@ class ClassFlightGoSeederTable extends Seeder
         ]);
         DB::table('class_flight_go')->insert([
             'id' => 6,
-            'capacity' => 83,
-            'price' => 95,
+            'capacity' => 10,
+            'price' => 205,
             'class_id' => 3,
             'flightGo_id' => 2,
             'created_at' => now(),
@@ -74,7 +74,7 @@ class ClassFlightGoSeederTable extends Seeder
         //classes for third flight
         DB::table('class_flight_go')->insert([
             'id' => 7,
-            'capacity' => 15,
+            'capacity' => 60,
             'price' => 220,
             'class_id' => 1,
             'flightGo_id' => 3,
@@ -84,7 +84,7 @@ class ClassFlightGoSeederTable extends Seeder
         DB::table('class_flight_go')->insert([
             'id' => 8,
             'capacity' => 20,
-            'price' => 190,
+            'price' => 240,
             'class_id' => 2,
             'flightGo_id' => 3,
             'created_at' => now(),
@@ -92,12 +92,73 @@ class ClassFlightGoSeederTable extends Seeder
         ]);
         DB::table('class_flight_go')->insert([
             'id' => 9,
-            'capacity' => 65,
-            'price' => 150,
+            'capacity' => 20,
+            'price' => 270,
             'class_id' => 3,
             'flightGo_id' => 3,
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        //classes for seventh flight
+        DB::table('class_flight_go')->insert([
+            'id' => 10,
+            'capacity' => 60,
+            'price' => 220,
+            'class_id' => 1,
+            'flightGo_id' => 7,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('class_flight_go')->insert([
+            'id' => 11,
+            'capacity' => 20,
+            'price' => 240,
+            'class_id' => 2,
+            'flightGo_id' => 7,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('class_flight_go')->insert([
+            'id' => 12,
+            'capacity' => 20,
+            'price' => 270,
+            'class_id' => 3,
+            'flightGo_id' => 7,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+
+        //classes for eighth flight
+        DB::table('class_flight_go')->insert([
+            'id' => 13,
+            'capacity' => 80,
+            'price' => 100,
+            'class_id' => 1,
+            'flightGo_id' => 8,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('class_flight_go')->insert([
+            'id' => 14,
+            'capacity' => 10,
+            'price' => 115,
+            'class_id' => 2,
+            'flightGo_id' => 8,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('class_flight_go')->insert([
+            'id' => 15,
+            'capacity' => 10,
+            'price' => 150,
+            'class_id' => 3,
+            'flightGo_id' => 8,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+
     }
 }

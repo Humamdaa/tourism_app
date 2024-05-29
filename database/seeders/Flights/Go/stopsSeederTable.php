@@ -24,20 +24,32 @@ class stopsSeederTable extends Seeder
         ]);
 
         DB::table('stops')->insert([
-            'id' => 4,
+            'id' => 3,
             'name' => 'cc'
         ]);
         DB::table('stops')->insert([
-            'id' => 5,
+            'id' => 4,
             'name' => 'cc'
         ]);
 
         DB::table('stops')->insert([
-            'id' => 6,
+            'id' => 5,
             'name' => 'dd'
         ]);
         DB::table('stops')->insert([
+            'id' => 6,
+            'name' => 'ee'
+        ]);
+        DB::table('stops')->insert([
             'id' => 7,
+            'name' => 'ff'
+        ]);
+        DB::table('stops')->insert([
+            'id' => 8,
+            'name' => 'gg'
+        ]);
+        DB::table('stops')->insert([
+            'id' => 9,
             'name' => 'ee'
         ]);
     }
