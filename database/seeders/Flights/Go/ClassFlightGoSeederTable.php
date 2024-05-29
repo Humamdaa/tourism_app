@@ -16,7 +16,7 @@ class ClassFlightGoSeederTable extends Seeder
         //classes for the first flight
         DB::table('class_flight_go')->insert([
             'id' => 1,
-            'capacity' => 10,
+            'capacity' => 95,
             'price' => 150,
             'class_id' => 1,
             'flightGo_id' => 1,
@@ -26,7 +26,7 @@ class ClassFlightGoSeederTable extends Seeder
         DB::table('class_flight_go')->insert([
             'id' => 2,
             'capacity' => 15,
-            'price' => 120,
+            'price' => 175,
             'class_id' => 2,
             'flightGo_id' => 1,
             'created_at' => now(),

@@ -17,7 +17,8 @@ class classFlightGo extends Model
 
     public function flightsGo()
     {
-        return $this->belongsToMany(FlightGo::class, 'class_flight_go', 'class_id', 'flightGo_id')
+        return $this->belongsToMany(FlightGo::class, 'class_flight_go',
+            'class_id', 'flightGo_id')
             ->withPivot('price','capacity');
     }
 

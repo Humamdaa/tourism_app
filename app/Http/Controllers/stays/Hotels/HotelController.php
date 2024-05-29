@@ -5,7 +5,9 @@ namespace App\Http\Controllers\stays\Hotels;
 use App\Http\Controllers\Controller;
 use App\Models\city;
 use App\Models\hotels\Hotel;
+use App\Models\User;
 use App\Services\hotels\orderingHotelAccordingRequest;
+use App\Services\hotels\showHotels\CheckIfHotelIsFavorite;
 use App\Services\hotels\showHotels\RemoveBookedRooms;
 use App\Services\hotels\showHotels\changePriceOfHotel;
 use App\Services\translate\TranslateMessages;
@@ -19,6 +21,9 @@ class HotelController extends Controller
 
     public function getHotels(Request $request)
     {
+        $user = new User;
+        $user = $request->user();
+
         $tr = new TranslateMessages();
 
         $validator = Validator::make($request->all(), [
@@ -31,10 +36,11 @@ class HotelController extends Controller
         // Handle validation failures
         if ($validator->fails()) {
             return response()->json([
-                'message' => $validator->errors()->first(),
+                'message' => $tr->translate($validator->errors()->first()),
                 'status' => 404
             ], 404); // You can use 422 if you prefer
         }
+
         $temp = new orderingHotelAccordingRequest();
 
         switch ($request->sort) {
@@ -58,6 +64,10 @@ class HotelController extends Controller
         //fix booking
         $remove = new RemoveBookedRooms();
         $result = $remove->fixBooking($hotelsArray, $request['start'], $request['end']);
+
+        //check if favorite
+        $check = new CheckIfHotelIsFavorite();
+        $result = $check->checkFavorite($user, $result);
 
         $var = new changePriceOfHotel();
 

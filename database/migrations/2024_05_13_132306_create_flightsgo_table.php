@@ -14,10 +14,12 @@ return new class extends Migration
             Schema::create('flightsgo', function (Blueprint $table) {
                 $table->id();
                 $table->date('date');
-                $table->string('takeoff');
-                $table->string('landing');
-                $table->string('duration');
+                $table->time('takeoff');
+                $table->time('landing');
+                $table->time('duration');
+                //all capacity
                 $table->integer('capacity')->unsigned();
+                $table->integer('stops')->default(0);
 
                 $table->bigInteger('office_id')->unsigned();
                 $table->bigInteger('from_city_id')->unsigned();

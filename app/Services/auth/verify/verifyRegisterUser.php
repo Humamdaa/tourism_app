@@ -11,6 +11,9 @@ class verifyRegisterUser
 {
     public function verifyAccount(Request $request)
     {
+        /////////////////////////////////////////////////////
+        /// check if verified or not
+        ////////////////////////////////////////////////
         $tr = new TranslateMessages();
 
         $user = User::where('email', $request->email)->first();

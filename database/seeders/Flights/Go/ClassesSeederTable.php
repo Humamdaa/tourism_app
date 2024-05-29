@@ -14,22 +14,22 @@ class ClassesSeederTable extends Seeder
     public function run(): void
     {
         DB::table('classes')->insert([
-            'id'=>1,
-            'name'=>'Economy',
-            'created_at'=>now(),
-            'updated_at'=>now(),
+            'id' => 1,
+            'name' => 'Economy',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         DB::table('classes')->insert([
-            'id'=>2,
-            'name'=>'Business',
-            'created_at'=>now(),
-            'updated_at'=>now(),
+            'id' => 2,
+            'name' => 'Business',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         DB::table('classes')->insert([
-            'id'=>3,
-            'name'=>'First class',
-            'created_at'=>now(),
-            'updated_at'=>now(),
+            'id' => 3,
+            'name' => 'First class',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }

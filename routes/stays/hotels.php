@@ -11,7 +11,7 @@ use App\Http\Controllers\stays\Hotels\MyHotelBookController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('hotels',[HotelController::class,'getHotels']);
+Route::get('hotels',[HotelController::class,'getHotels'])->middleware('auth:api');
 
 Route::get('addRemoveHotelToFav',[Add_RemoveHotelFavorite::class,'changeFav'])->middleware('auth:api');
 Route::get('FavoriteHotels',[FavoriteHotels::class,'getFavHotels'])->middleware('auth:api');
