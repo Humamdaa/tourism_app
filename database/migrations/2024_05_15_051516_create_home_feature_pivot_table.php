@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('book_home_user_pivot', function (Blueprint $table) {
+        Schema::create('home_feature_pivot', function (Blueprint $table) {
             $table->id();
-            $table->date('start');
-            $table->date('end');
-            $table->integer("persons")->unsigned();
             $table->foreignId("home_id")->constrained("id")->on("homes")->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId("user_id")->constrained("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("feature_id")->constrained("id")->on("features")->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('book_home_user_pivot');
+        Schema::dropIfExists('home_feature_pivot');
     }
 };

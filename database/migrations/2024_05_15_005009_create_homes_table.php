@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedInteger("person_num");
             $table->unsignedInteger("rooms");
             $table->unsignedInteger("baths");
+            $table->foreignId("user_owner_id")->constrained('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('city_id')->constrained("cities")->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

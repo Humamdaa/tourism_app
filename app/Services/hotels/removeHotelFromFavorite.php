@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class removeHotelFromFavorite
 {
-    public function addHotelToFavorite(User $user,$hotelId)
+    public function removeHotelFromeFavorite(User $user,$hotelId)
     {
         $tr = new TranslateMessages();
 

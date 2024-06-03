@@ -87,16 +87,19 @@ class User extends Authenticatable
     }
 
 
-//    public function favoriteHotels()
-//    {
-//        return $this->hasMany(FavoriteHotels::class, 'user_id');
-//    }
+    //    public function favoriteHotels()
+    //    {
+    //        return $this->hasMany(FavoriteHotels::class, 'user_id');
+    //    }
 
     public function hotels()
     {
-        return $this->belongsToMany(Hotel::class, 'favorite_hotels',
+        return $this->belongsToMany(
+            Hotel::class,
+            'favorite_hotels',
             'user_id',
-            'hotel_id');
+            'hotel_id'
+        );
     }
 
     public function comments()
@@ -104,13 +107,14 @@ class User extends Authenticatable
         return $this->hasMany(hotel_comment::class);
     }
 
+
+    public function favHomes()
+    {
+        return $this->belongsToMany(Home::class, 'favorite_homes', 'user_id', 'home_id');
+    }
+
     public function homes(){
-        return $this->belongsToMany(
-            Home::class,
-            'book_home_user_pivot',
-            'home_id',
-            'user_id'
-        );
+        return $this->hasMany(Home::class,'user_owner_id');
     }
 
     public function flightsGo()
