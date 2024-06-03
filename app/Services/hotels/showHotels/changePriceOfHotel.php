@@ -20,7 +20,7 @@ class changePriceOfHotel
             $result [$i] = $a;
             $i++;
         }
-        return $result;
+        return ['hotels'=>$result];
     }
 
     public function changePriceInBooking($arr)
@@ -40,6 +40,6 @@ class changePriceOfHotel
             $result [$i] = $a;
             $i++;
         }
-        return $result;
+        return ['hotels'=>$result];
     }
 }

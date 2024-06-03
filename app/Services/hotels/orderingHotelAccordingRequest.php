@@ -4,6 +4,7 @@ namespace App\Services\hotels;
 
 use App\Models\hotels\Hotel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class orderingHotelAccordingRequest
 {
@@ -32,22 +33,24 @@ class orderingHotelAccordingRequest
         $hotels = Hotel::query()
             ->byCityName($request->cityName)
             ->byPersonNum($request->persons)
-            ->orderBy('rate', 'decs')
+            ->orderBy('rate', 'desc')//asc, desc
             ->get();
         return $hotels;
 
     }
 
-    public function populare(Request $request)
+    public function popular(Request $request)
     {
         $hotels = Hotel::query()
             ->byCityName($request->cityName)
             ->byPersonNum($request->persons)
-            ->withCount(['rooms' => function ($query) {
-                $query->whereHas('bookings');
+            ->withCount(['rooms as bookings_count' => function ($query) {
+                $query->select(DB::raw('count(book_room_hotel.id)'))
+                    ->join('book_room_hotel', 'rooms.id', '=', 'book_room_hotel.id_room');
             }])
-            ->orderBy('rooms_count', 'desc')
+            ->orderBy('bookings_count', 'desc')//asc, desc
             ->get();
+
 
         return $hotels;
     }

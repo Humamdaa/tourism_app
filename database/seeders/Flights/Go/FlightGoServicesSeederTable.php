@@ -83,5 +83,53 @@ class FlightGoServicesSeederTable extends Seeder
             'updated_at' => now()
         ]);
 
+        //services for seventh flight Go
+        DB::table('flights_go_services')->insert([
+            'id' => 10,
+            'service_id' => 37,
+            'flightGo_id' => 7,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('flights_go_services')->insert([
+            'id' => 11,
+            'service_id' => 36,
+            'flightGo_id' => 7,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('flights_go_services')->insert([
+            'id' => 12,
+            'service_id' => 35,
+            'flightGo_id' => 7,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //services for eighth flight Go
+        DB::table('flights_go_services')->insert([
+            'id' => 13,
+            'service_id' => 34,
+            'flightGo_id' => 8,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('flights_go_services')->insert([
+            'id' => 14,
+            'service_id' => 33,
+            'flightGo_id' => 8,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('flights_go_services')->insert([
+            'id' => 15,
+            'service_id' => 32,
+            'flightGo_id' => 8,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
     }
+
+
 }

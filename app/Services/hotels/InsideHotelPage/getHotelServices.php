@@ -18,11 +18,11 @@ class getHotelServices
 
         if ($hotel) {
             $services = $hotel->services()->get();
-            if($services) {
-                return ['service'=>$services];
+            if ($services) {
+                return ['service' => $services];
             }
-            return ['message'=>"not found services for $hotel->name"];
+            return ['message' => "not found services for $hotel->name"];
         }
-        return ['message'=>$tr->translate('hotel not found')];
+        return ['message' => $tr->translate('hotel not found')];
     }
 }

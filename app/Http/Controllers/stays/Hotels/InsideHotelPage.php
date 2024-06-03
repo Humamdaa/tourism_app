@@ -28,6 +28,7 @@ class InsideHotelPage extends Controller
 
     public function photosInHotel(Request $request)
     {
+
         $temp = new getHotelPhotos();
         return $temp->getPhotosInHotel($request);
     }
