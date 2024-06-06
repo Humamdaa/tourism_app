@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\homes\showHomes;
+namespace App\Services\homes;
 
 use App\Models\favorite\FavoriteHomes;
 use App\Services\translate\TranslateMessages;

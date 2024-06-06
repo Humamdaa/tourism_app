@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Services\homes\showHomes\changePriceOfHome;
 use App\Services\homes\orderingHomeAccordingRequest;
 use App\Services\homes\showHomes\RemoveBookedHomes;
+use App\Services\sendPhotos\mainPhotos;
+use App\Services\sendPhotos\mergeUrlMainPhoto;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Carbon;
@@ -62,10 +64,22 @@ class HomeController extends Controller
         $remove = new RemoveBookedHomes();
         $result = $remove->fixBooking($homesArray, $request['start'], $end);
 
+        $homeIds = [];
+        foreach ($result['homes'] as $home) {
+            $homeIds[] = $home['id'];
+        }
+
         $var = new changePriceOfHome();
 
+        $photos = new mainPhotos();
+        $phs = $photos->listPhotos($request->cityName, $homeIds, 0,"homes");
+
         if (!empty($result) && isset($result['homes']) && !empty($result['homes'])) {
+            //chengePriceCurrency
             $last = $var->changePrice($result);
+            //merge photo for each hotel
+            $mer = new mergeUrlMainPhoto();
+            $last = $mer->merge($last['homes'], $phs);
             return response()->json(["data" => $last, "status" => 200], 200);
         }
 

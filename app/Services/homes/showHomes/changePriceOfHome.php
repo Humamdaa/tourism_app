@@ -21,7 +21,7 @@ class changePriceOfHome
             $result [$i] = $a;
             $i++;
         }
-        return $result;
+        return ['homes'=>$result];
     }
 
     public function changePriceInBooking($arr)

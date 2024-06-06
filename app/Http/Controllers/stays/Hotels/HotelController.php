@@ -80,7 +80,7 @@ class HotelController extends Controller
         $var = new changePriceOfHotel();
 
         $photos = new mainPhotos();
-        $phs = $photos->listPhotos($request->cityName, $hotelIds, 0);
+        $phs = $photos->listPhotos($request->cityName, $hotelIds, 0,"hotels");
 
         if (!empty($result) && isset($result['hotels']) && !empty($result['hotels'])) {
             //change price
@@ -94,7 +94,7 @@ class HotelController extends Controller
                 'data' => $last,
                 'status' => 200], 200);
         }
-        
+
         return response()->json([
             'message' => $tr->translate("There are no available hotels in {$request['cityName']} enough for {$request['persons']} persons from {$request['start']} to {$request['end']}."),
             'status' => 404

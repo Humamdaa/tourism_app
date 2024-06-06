@@ -4,6 +4,7 @@ namespace App\Notifications\activeAccount;
 
 use App\Jobs\verify\NullifyVerificationCode;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -30,15 +31,13 @@ class Active extends Notification implements ShouldQueue
     {
         $numericPart = mt_rand(100000, 999999); // Generate a random 6-digit number
         $verificationCode = $numericPart;
-
-        $expiration = now()->minutes(30); // Expiry time: 30 minutes from now
+        $expiration = carbon::now()->addMinutes(30); // Expiry time: 30 minutes from now
 
         $this->user->verification_code = $verificationCode;
         $this->user->verification_code_expires_at = $expiration;
         $this->user->save();
 
         $this->code = $verificationCode;
-
     }
 
     /**

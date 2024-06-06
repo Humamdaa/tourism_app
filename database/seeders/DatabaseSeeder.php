@@ -47,26 +47,16 @@ class DatabaseSeeder extends Seeder
         DB::table('hotel_services')->delete();
         DB::table('hotel_comments')->delete();
         DB::table('hotel_photos')->delete();
-<<<<<<< HEAD
-        //homes
-        DB::table('homes')->delete();
-        DB::table('book_home_user_pivot')->delete();
-
-=======
 
         //homes
         DB::table('homes')->delete();
         DB::table('book_home_user_pivot')->delete();
->>>>>>> 245a13a735e3fb2dd7892b63e5483651da4eccc5
         DB::table('classes')->delete();
         DB::table('flightsgo')->delete();
         DB::table('class_flight_go')->delete();
         DB::table('flights_go_services')->delete();
-<<<<<<< HEAD
-=======
         DB::table('flights_go_stops')->delete();
         DB::table('stops')->delete();
->>>>>>> 245a13a735e3fb2dd7892b63e5483651da4eccc5
 
 
 //        populate the tables with new data
@@ -83,10 +73,7 @@ class DatabaseSeeder extends Seeder
             // home
             HomeTableSeeder::class,
             BookHomeTableSeeder::class,
-<<<<<<< HEAD
-=======
 
->>>>>>> 245a13a735e3fb2dd7892b63e5483651da4eccc5
 ////////////seeder flightsGo
             ClassesSeederTable::class,
             OfficeTableSeeder::class,

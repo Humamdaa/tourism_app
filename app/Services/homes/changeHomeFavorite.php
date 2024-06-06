@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Services\homes\showHomes;
+namespace App\Services\homes;
 use App\Models\favorite\FavoriteHomes;
 use Illuminate\Http\Request;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Support\Facades\Validator;
-use App\Services\homes\showHomes\addHomeToFavorite;
+use App\Services\homes\addHomeToFavorite;
 use App\Services\homes\removeHomeFromFavorite;
+
 class changeHomeFavorite
 {
     public function change(Request $request)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\stays\Homes;
 
 use App\Http\Controllers\Controller;
+use App\Models\homes\BookHome;
 use App\Services\homes\insideHomePage\findHome;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class BookHomeController extends Controller
         $tr = new TranslateMessages();
 
         $user = $request->user();
-        $homeId = $request->hotel_id;
+        $homeId = $request->home_id;
 
         $validator = Validator::make($request->all(), [
             'start' => 'required|date',
@@ -28,9 +29,8 @@ class BookHomeController extends Controller
         $start = Carbon::createFromFormat('Y-m-d', $request->start);
         $months = $request->months;
         $end = $start->copy()->addDays(30 * $months);
-
         $temp = new findHome();
-        $home = $temp->findHome($request->home_id);
+        $home = $temp->home($request);
         $total = $months * $home->monthly_rent;
         //check if his money is enough
         if (($total > $user->money)) {
@@ -42,5 +42,50 @@ class BookHomeController extends Controller
                 'message' => $tr->translate($message)
             ]);
         }
+
+        $existingBookings = BookHome::where('booking_status', 'accepted')
+            ->where(function ($query) use ($start, $end) {
+                $query->where(function ($subQuery) use ($start, $end) {
+                    $subQuery->where('start', '<=', $start)
+                        ->where('end', '>=', $start);
+                })->orWhere(function ($subQuery) use ($start, $end) {
+                    $subQuery->where('start', '<=', $end)
+                        ->where('end', '>=', $end);
+                });
+            })
+            ->where('home_id', $homeId)
+            ->exists();
+
+        if ($existingBookings) {
+            // يوجد تداخل مع حجز مقبول
+            return response()->json([
+                'message' => 'هناك تداخل مع حجز مقبول في هذه الفترة.'
+            ]);
+        }
+
+        // حفظ الحجز الجديد في قاعدة البيانات
+        // ...
+
+        if ($home) {
+            $booking = bookHome::create([
+                'booking_status' => "pending",
+                'start' => $start,
+                'end' => $end,
+                'total' => $total,
+                'home_id' => $homeId,
+                'user_id' => $user->id
+            ]);
+
+
+            //reduce user money
+            // $user->money -= ($person * $hotel->price);
+            // $user->save();
+
+            if ($booking) {
+                return response()->json(['message' => $tr->translate('You have been successfully added to the list of pending reservations. The property owner is responsible for approving or rejecting your reservation, so contact him via his number if you encounter any problems or have some questions to discuss.
+                The reservation value will be deducted, exclusively if the property owner agrees.')], 200);
+            }
+        }
+        return response()->json(['message' => 'your booking is failed , try again later '], 422);
     }
 }
