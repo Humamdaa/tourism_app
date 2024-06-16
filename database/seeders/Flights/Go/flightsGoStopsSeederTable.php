@@ -49,5 +49,36 @@ class flightsGoStopsSeederTable extends Seeder
             'stop_id' => 9,
             'flightGo_id' => 6
         ]);
+
+        DB::table('flights_go_stops')->insert([
+            'stop_id' => 1,
+            'flightGo_id' => 23
+        ]);
+
+
+        DB::table('flights_go_stops')->insert([
+            'stop_id' => 8,
+            'flightGo_id' => 24
+        ]);
+        DB::table('flights_go_stops')->insert([
+            'stop_id' => 7,
+            'flightGo_id' => 24
+        ]);
+
+
+        DB::table('flights_go_stops')->insert([
+            'stop_id' => 3,
+            'flightGo_id' => 25
+        ]);
+
+        DB::table('flights_go_stops')->insert([
+            'stop_id' => 4,
+            'flightGo_id' => 25
+        ]);
+
+        DB::table('flights_go_stops')->insert([
+            'stop_id' => 5,
+            'flightGo_id' => 25
+        ]);
     }
 }

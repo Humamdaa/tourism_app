@@ -324,5 +324,67 @@ class FlightsGoTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        ////////////////////////////////////////////////////////////////
+        /// the test about them
+        ///
+        //from 1 to 4
+        DB::table('flightsgo')->insert([
+            'id' => 22,
+            'date' => '2024-9-19',
+            'takeoff' => '11:30',
+            'landing' => '14:00',
+            'duration' => '2:30',
+            'capacity' => 100,
+            'office_id' => 1,
+            'from_city_id' => 1,
+            'to_city_id' => 4,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('flightsgo')->insert([
+            'id' => 23,
+            'date' => '2024-9-21',
+            'takeoff' => '14:30',
+            'landing' => '16:55',
+            'duration' => '2:25',
+            'capacity' => 100,
+            'NumStops' => 1,
+            'office_id' => 1,
+            'from_city_id' => 1,
+            'to_city_id' => 4,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('flightsgo')->insert([
+            'id' => 24,
+            'date' => '2024-9-22',
+            'takeoff' => '18:10',
+            'landing' => '20:30',
+            'duration' => '2:40',
+            'capacity' => 100,
+            'NumStops' => 2,
+            'office_id' => 1,
+            'from_city_id' => 1,
+            'to_city_id' => 4,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('flightsgo')->insert([
+            'id' => 25,
+            'date' => '2024-9-25',
+            'takeoff' => '23:00',
+            'landing' => '02:15',
+            'duration' => '3:15',
+            'capacity' => 100,
+            'NumStops' => 3,
+            'office_id' => 1,
+            'from_city_id' => 1,
+            'to_city_id' => 4,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
+
 }

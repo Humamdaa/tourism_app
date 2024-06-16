@@ -12,8 +12,9 @@ class ClassPriceScope implements Scope
     public static function ClassPrice($query,$type)
     {
         return $query->join('class_flight_go', 'flightsgo.id', '=', 'class_flight_go.flightGo_id')
+            ->select('flightsgo.*') // Ensure we select only the flight columns to avoid conflicts
             ->orderBy('class_flight_go.price', $type)
-            ->select('flightsgo.*'); // Ensure we select only the flight columns to avoid conflicts
+            ->distinct();
     }
     public function apply(Builder $builder, Model $model): void
     {

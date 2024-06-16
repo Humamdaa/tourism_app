@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\FlightGo;
 
 use App\Http\Controllers\Controller;
-use App\Services\FlightsGo\getFlightsGo;
+use App\Services\Flight\FlightsGo\getFlightsGo;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -56,8 +56,8 @@ class flightsGo extends Controller
             'status' => 404
         ], 404);
 
-
 //        $flights = new getFlightsGo();
 //        return $flights->flightsGo($request);
+
     }
 }

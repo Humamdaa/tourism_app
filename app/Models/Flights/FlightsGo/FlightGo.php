@@ -67,6 +67,7 @@ class FlightGo extends Model
             'flightGo_id', 'user_id')
             ->withPivot('passenger');
     }
+
     //scopes :
 
     //scope from to city with one month before and after almost
@@ -92,4 +93,13 @@ class FlightGo extends Model
     {
         return numStopInFlightGo::numStop($query, $num);
     }
+
+    //earlier flights late
+    public function scopeFlightsPeriod($query,$period){
+        if($period == 'early') {
+            return $query->orderBy('takeoff', 'desc');
+        }
+        return $query->orderBy('takeoff','asc');
+    }
+
 }

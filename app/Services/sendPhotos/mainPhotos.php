@@ -2,6 +2,7 @@
 
 namespace App\Services\sendPhotos;
 
+use App\Services\translate\TranslateMessages;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,11 +15,14 @@ class mainPhotos
     // $all : is boolean value to know If I must send all or just one
     public function listPhotos($cityName, $Ids, $all)
     {
+        $tr = new TranslateMessages();
         $directoryPath = public_path("hotels/$cityName");
 
         // Check if the directory exists
         if (!File::exists($directoryPath)) {
-            return response()->json(['message' => 'City directory not found.'], 404);
+            return response()->json([
+                'message' => $tr->translate('City directory not found.'),
+                'status'=>404], 404);
         }
 
         //get first photo to show it if $all is 0 :
