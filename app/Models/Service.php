@@ -3,10 +3,9 @@
 namespace App\Models;
 
 use App\Models\Flights\FlightsGo\FlightGo;
-use App\Models\hotels\Hotel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use app\Models\hotels\Hotel;
 class Service extends Model
 {
     use HasFactory;

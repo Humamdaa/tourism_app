@@ -13,10 +13,11 @@ class mainPhotos
 
     //$Ids : id the item/s  , $cityName ,
     // $all : is boolean value to know If I must send all or just one
-    public function listPhotos($cityName, $Ids, $all)
+    public function listPhotos($cityName, $Ids, $all,$ser)
     {
         $tr = new TranslateMessages();
         $directoryPath = public_path("hotels/$cityName");
+        $directoryPath = public_path("$ser/$cityName");
 
         // Check if the directory exists
         if (!File::exists($directoryPath)) {
@@ -39,7 +40,7 @@ class mainPhotos
         $urls = [];
 
         foreach ($firstPhoto as $fP)
-            $urls[] = url("hotels/$cityName/$fP");
+            $urls[] = url("$ser/$cityName/$fP");
 
         return $urls;
     }

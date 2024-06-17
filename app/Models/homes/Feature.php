@@ -5,8 +5,6 @@ namespace App\Models\homes;
 use App\Models\homes\Home;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use app\Models\User;
-
 
 class Feature extends Model
 {

@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('book_home_user_pivot', function (Blueprint $table) {
             $table->id();
+            $table->enum('booking_status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->date('start');
             $table->date('end');
-            $table->integer("persons")->unsigned();
+            $table->integer('total')->default(0);
             $table->foreignId("home_id")->constrained("id")->on("homes")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId("user_id")->constrained("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

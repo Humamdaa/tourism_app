@@ -80,7 +80,7 @@ class HotelController extends Controller
         $var = new changePriceOfHotel();
 
         $photos = new mainPhotos();
-        $phs = $photos->listPhotos($request->cityName, $hotelIds, 0);
+        $phs = $photos->listPhotos($request->cityName, $hotelIds, 0,"hotels");
 
         if (!empty($result) && isset($result['hotels']) && !empty($result['hotels'])) {
             //change price

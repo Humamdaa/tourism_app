@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId("home_id")->constrained("id")->on("homes")->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId("feature_id")->constrained("id")->on("features")->cascadeOnDelete()->cascadeOnUpdate();
-
             $table->timestamps();
         });
     }

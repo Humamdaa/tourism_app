@@ -11,17 +11,18 @@ class verifyRegisterUser
 {
     public function verifyAccount(Request $request)
     {
-        /////////////////////////////////////////////////////
+        /////////////////////////////////////////////////
         /// check if verified or not
         ////////////////////////////////////////////////
         $tr = new TranslateMessages();
 
         $user = User::where('email', $request->email)->first();
 
+        if($user){
         $currentTime = Carbon::now(); // Get the current time
         $expiresAt = Carbon::parse($user->verification_code_expires_at); // Parse the expires_at time from database
-
-        if ($expiresAt->greaterThan($currentTime) && $user->verification_code_expires_at !== null) {
+       //     return "$expiresAt"." $currentTime";
+        if ($expiresAt->lessThan($currentTime) && $user->verification_code_expires_at !== null) {
             $user->delete();
             return response()->json([
                 'message' => $tr->translate('you take along time to verify your account'),
@@ -49,4 +50,11 @@ class verifyRegisterUser
             'status' => 200,
         ], 200);
     }
+    else {
+        return response()->json([
+            'message'=>$tr->translate('please register again , this user not found , or maybe your verfication code was expired')
+        ]);
+    }
+}
+
 }

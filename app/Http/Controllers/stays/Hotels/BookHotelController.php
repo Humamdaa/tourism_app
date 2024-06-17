@@ -73,16 +73,18 @@ class BookHotelController extends Controller
         // Convert array to collection
         $roomsCollection = collect($roomsArray);
 
-// Sort the collection by 'person_num' in ascending order
+        // Sort the collection by 'person_num' in ascending order
         $sortedRoomsCollection = $roomsCollection->sortBy('person_num');
 
-// Re-index the collection numerically
+        // Re-index the collection numerically
         $sortedRoomsCollection = $sortedRoomsCollection->values();
 
-// Convert back to array
+        // Convert back to array
         $sortedRoomsArray = $sortedRoomsCollection->toArray();
 //        return $sortedRoomsArray;
 //        return $roomsArray;
+
+        //        return $roomsArray;
 
         if ($roomsArray) {
             $booked = BookRoomHotel::create([
@@ -91,6 +93,7 @@ class BookHotelController extends Controller
                 'persons' => $person,
                 'id_room' => $sortedRoomsArray[0]['id'],
                 'total'=> $total,
+                'id_room' => $roomsArray[0]['id'],
                 'id_hotel' => $hotelId,
                 'id_user' => $user->id
             ]);
@@ -111,5 +114,6 @@ class BookHotelController extends Controller
             'money' => $user->money
         ], 422);
 
+        return response()->json(['message' => 'your booking is failed'], 422);
     }
 }

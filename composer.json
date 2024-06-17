@@ -22,6 +22,8 @@
         "rackbeat/php-currency-api": "@dev",
         "stevebauman/location": "^7.3",
         "stichoza/google-translate-php": "^5.1"
+        "stichoza/google-translate-php": "*",
+        "stripe/stripe-php": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -36,7 +38,8 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "StripeStripe\\": "path/to/stripe/lib/folder"
         }
     },
     "autoload-dev": {
