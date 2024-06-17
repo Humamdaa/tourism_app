@@ -34,7 +34,7 @@ class getFlightsGo
             $query->WithNumStops($request->NumStop);
         }
         if($request->filled('period')){
-            $query->FlightsPeriod($query,$request->period);
+            $query->FlightsPeriod($request->period);
         }
 
 
@@ -42,8 +42,10 @@ class getFlightsGo
         // Use the defined scope to query the flights
 
         $flights = $query->get();
+
         $temp = new insertCityInFlight();
         $flights = $temp->putInFirstFlight($flights);
+
         return $flights;
     }
 }

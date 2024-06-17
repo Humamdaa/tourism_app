@@ -96,8 +96,9 @@ class FlightGo extends Model
 
     //earlier flights late
     public function scopeFlightsPeriod($query,$period){
+        echo $period;
         if($period == 'early') {
-            return $query->orderBy('takeoff', 'desc');
+                return $query->orderBy('takeoff', 'desc');
         }
         return $query->orderBy('takeoff','asc');
     }
