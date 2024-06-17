@@ -44,6 +44,7 @@ class flightsGo extends Controller
         $fl = new getFlightsGo();
         $flights = $fl->flightsGo($request);
 
+
         if ($flights->isNotEmpty() && $flights != '[]') {
             return response()->json([
                 'data' => $flights,

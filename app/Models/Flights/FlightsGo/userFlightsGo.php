@@ -11,6 +11,6 @@ class userFlightsGo extends Model
 
     protected $table = 'user_flights_go';
     protected $fillable =
-        ['passenger', 'user_id', 'flightGo_id', 'class_id'];
+        ['passenger', 'user_id', 'flightGo_id', 'class_id','seat_number'];
 
 }

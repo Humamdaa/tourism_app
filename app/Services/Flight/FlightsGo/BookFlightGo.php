@@ -1,53 +1,68 @@
 <?php
 
-namespace App\Services\FlightsGo;
+namespace App\Services\Flight\FlightsGo;
 
 use App\Models\Flights\Classes;
+use App\Models\Flights\FlightsGo\classFlightGo;
 use App\Models\Flights\FlightsGo\userFlightsGo;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class BookFlightGo
 {
 
     public function book(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'person' => 'required|integer|min:1|max:8',
-            'class_id' => 'required|integer|exists:classes,id',
-            'flightGo_id' => 'required|integer|exists:flightsgo,id'
-        ]);
-
         $tr = new TranslateMessages();
-
-        if ($validator->fails()) {
-            return response()->json([
-                'message' => $tr->translate($validator->messages()),
-                'status' => 404
-            ], 404);
-        }
         //take user
         $user = $request->user();
 
+
         if ($user) {
             $user_id = $user->id;
-            $class_id = Classes::where('name', $request->class)->value('id');
-            $flightGo_id = $request->flight_go_id;
+            $class_id = $request->class_id;
+            $classTaken = classFlightGo::where('class_id', $class_id)->first();
+            $flightGo_id = $request->flightGo_id;
             $passenger = $request->person;
         } else {
-            return response()->json(['message' => $tr->translate('not found user')]);
+            return response()->json([
+                'message' => $tr->translate('not found user')
+            ]);
+        }
+//        return $classTaken;
+
+        //check if user has enough money
+        if ($passenger * $classTaken->price > $user->money) {
+            $total = $passenger * $classTaken;
+            return response()->json([
+                'message' => $tr->translate("you do not have enough money, you money is $user->money
+                and the cost is $total"),
+                'status' => 404
+            ], 404);
         }
 
+        //check if the number of passenger is less than of capacity in flight from this class
+        if ($passenger > $classTaken->capacity) {
+            return response()->json([
+                'message' => $tr->translate("the ")
+            ]);
+        }
         userFlightsGo::create([
             'passenger' => $passenger,
             'class_id' => $class_id,
             'flightGo_id' => $flightGo_id,
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'seat_number' => 'NULL'
         ]);
 
+        $user->money -= $passenger * $classTaken->price;
+        $user->save();
+
+        $classTaken->capacity -= $passenger;
+        $classTaken->save();
+
         return response()->json([
-            'message' => $tr->translate('the booking is done'),
+            'message' => $tr->translate('the booking is done successfully'),
             'status' => 200
         ], 200);
 

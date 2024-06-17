@@ -13,12 +13,12 @@ class typeClassScope implements Scope
     {
         return $query->whereHas('classes', function ($query) use ($class,$persons) {
             $query->where('name', $class)
-                ->where('class_flight_go.capacity', '>', $persons);
+                ->where('class_flight_go.capacity', '>=', $persons);
 
         })
             ->with(['services', 'office', 'classes' => function ($query) use ($class,$persons) {
                 $query->where('name', $class)
-                    ->wherePivot('capacity', '>', $persons);
+                    ->wherePivot('capacity', '>=', $persons);
             }]);
     }
 

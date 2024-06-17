@@ -206,6 +206,35 @@ class ClassFlightGoSeederTable extends Seeder
             'capacity' => 10,
             'price' => 125,
             'class_id' => 2,
+            'flightGo_id' => 23,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('class_flight_go')->insert([
+//            'id' => 15,
+            'capacity' => 10,
+            'price' => 150,
+            'class_id' => 3,
+            'flightGo_id' => 23,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+
+        DB::table('class_flight_go')->insert([
+//            'id' => 13,
+            'capacity' => 80,
+            'price' => 110,
+            'class_id' => 1,
+            'flightGo_id' => 24,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('class_flight_go')->insert([
+//            'id' => 14,
+            'capacity' => 10,
+            'price' => 125,
+            'class_id' => 2,
             'flightGo_id' => 24,
             'created_at' => now(),
             'updated_at' => now()
@@ -219,6 +248,7 @@ class ClassFlightGoSeederTable extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
 
 
         DB::table('class_flight_go')->insert([

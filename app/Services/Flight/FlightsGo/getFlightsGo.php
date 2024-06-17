@@ -3,6 +3,7 @@
 namespace App\Services\Flight\FlightsGo;
 
 use App\Models\Flights\FlightsGo\FlightGo;
+use App\Services\Flight\flightPriceConversion;
 use App\Services\Flight\insertCityInFlight;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Http\Request;
@@ -46,6 +47,8 @@ class getFlightsGo
         $temp = new insertCityInFlight();
         $flights = $temp->putInFirstFlight($flights);
 
+        $changePrice = new flightPriceConversion();
+        $changePrice->change($flights);
         return $flights;
     }
 }
