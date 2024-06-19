@@ -6,7 +6,7 @@ namespace App\Models;
 use App\Models\favorite\FavoriteHotels;
 use App\Models\homes\Feature;
 use App\Models\Flights\FlightsGo\FlightGo;
-use App\Models\hotels\Booking;
+//use App\Models\hotels\Booking;
 use App\Models\hotels\BookRoomHotel;
 use App\Models\hotels\Hotel;
 use App\Models\homes\Home;
@@ -119,7 +119,8 @@ class User extends Authenticatable
 
     public function flightsGo()
     {
-        return $this->belongsToMany(FlightGo::class, 'user_flights_go', 'user_id', 'flightGo_id')
+        return $this->belongsToMany(FlightGo::class, 'user_flights_go',
+            'user_id', 'flightGo_id')
             ->withPivot('passenger');
     }
 }

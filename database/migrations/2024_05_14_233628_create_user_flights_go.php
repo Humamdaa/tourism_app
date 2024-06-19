@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_flights_go', function (Blueprint $table) {
             $table->id();
             $table->integer('passenger');
-            $table->string('seat_number')->unique()->nullabe();
+//            $table->string('seat_number')->unique()->nullabe();
             $table->boolean('taken')->default(0);
             $table->bigInteger('class_id')->unsigned();
             $table->bigInteger('flightGo_id')->unsigned();

@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 use App\Services\auth\Logout;
-use FirebaseJWTJWT;
-use FirebaseJWTKey;
 
 
 class ProfileController extends Controller
@@ -58,5 +56,13 @@ class ProfileController extends Controller
                 'message' => $tr->translate('Failed to delete account'),
                 'status' => 404], 404);
         }
+    }
+
+    public function user(Request $request)
+    {
+        $user = $request->user();
+        return response()->json([
+            'data' => $user,
+            'status' => 200], 200);
     }
 }
