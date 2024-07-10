@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\favorite\FavoriteHotels;
+use App\Models\Flights\FlightsRound\FlightRound;
 use App\Models\homes\Feature;
 use App\Models\Flights\FlightsGo\FlightGo;
 //use App\Models\hotels\Booking;
@@ -121,6 +122,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(FlightGo::class, 'user_flights_go',
             'user_id', 'flightGo_id')
+            ->withPivot('passenger');
+    }
+
+    public function flightsRound()
+    {
+        return $this->belongsToMany(FlightRound::class, 'user_flights_round',
+            'user_id', 'flightRound_id')
             ->withPivot('passenger');
     }
 }

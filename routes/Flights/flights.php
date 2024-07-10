@@ -6,6 +6,7 @@ use App\Http\Controllers\FlightGo\BookFlightGoController;
 use App\Http\Controllers\FlightGo\cancelBookController;
 use App\Http\Controllers\FlightGo\flightsGo;
 use App\Http\Controllers\FlightGo\myFlightGoBookedController;
+use App\Http\Controllers\FlightRound\flightRoundController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +22,8 @@ Route::delete('delFlightGo',[cancelBookController::class,'cancelFlightGo'])
 Route::get('myFlightGoBooked',[myFlightGoBookedController::class,'myFlightGo'])
     ->middleware('auth:api');
 
+
+
 // round flight
+Route::get('flightsRound',[flightRoundController::class,'FlightRound']);
 

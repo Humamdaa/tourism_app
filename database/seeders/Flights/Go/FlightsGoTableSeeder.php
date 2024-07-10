@@ -15,7 +15,7 @@ class FlightsGoTableSeeder extends Seeder
     {
         DB::table('flightsgo')->insert([
             'id' => 1,
-            'date' => '2024-5-20',
+            'date' => '2025-5-20',
             'takeoff' => '03:30',
             'landing' => '05:45',
             'duration' => '2:15',
@@ -31,7 +31,7 @@ class FlightsGoTableSeeder extends Seeder
         //from Damascus to NewYork from 4 to 1
         DB::table('flightsgo')->insert([
             'id' => 2,
-            'date' => '2024-6-1',
+            'date' => '2025-6-1',
             'takeoff' => '07:00',
             'landing' => '10:05',
             'duration' => '03:05',
@@ -47,7 +47,7 @@ class FlightsGoTableSeeder extends Seeder
         //from 2 to 4
         DB::table('flightsgo')->insert([
             'id' => 3,
-            'date' => '2024-7-2',
+            'date' => '2025-7-2',
             'takeoff' => '10:30',
             'landing' => '14:45',
             'duration' => '4:15',
@@ -63,7 +63,7 @@ class FlightsGoTableSeeder extends Seeder
         //from 4 to 2
         DB::table('flightsgo')->insert([
             'id' => 4,
-            'date' => '2024-8-20',
+            'date' => '2025-8-20',
             'takeoff' => '12:30',
             'landing' => '02:45',
             'duration' => '02:15',
@@ -79,7 +79,7 @@ class FlightsGoTableSeeder extends Seeder
         // from 4 to 3
         DB::table('flightsgo')->insert([
             'id' => 5,
-            'date' => '2024-6-20',
+            'date' => '2025-6-20',
             'takeoff' => '16:30',
             'landing' => '19:30',
             'duration' => '03:00',
@@ -95,7 +95,7 @@ class FlightsGoTableSeeder extends Seeder
         // from 4 to 3
         DB::table('flightsgo')->insert([
             'id' => 6,
-            'date' => '2024-7-25',
+            'date' => '2025-7-25',
             'takeoff' => '20:30',
             'landing' => '23:45',
             'duration' => '03:15',
@@ -111,7 +111,7 @@ class FlightsGoTableSeeder extends Seeder
         //from Damascus to NewYork  4 to 1
         DB::table('flightsgo')->insert([
             'id' => 7,
-            'date' => '2024-6-5',
+            'date' => '2025-6-5',
             'takeoff' => '07:00',
             'landing' => '10:05',
             'duration' => '03:05',
@@ -125,7 +125,7 @@ class FlightsGoTableSeeder extends Seeder
         //from Damascus to NewYork 4 to 1
         DB::table('flightsgo')->insert([
             'id' => 8,
-            'date' => '2024-6-15',
+            'date' => '2025-6-15',
             'takeoff' => '13:30',
             'landing' => '16:30',
             'duration' => '03:00',
@@ -139,7 +139,7 @@ class FlightsGoTableSeeder extends Seeder
         //from Damascus to NewYork 4 to 1
         DB::table('flightsgo')->insert([
             'id' => 9,
-            'date' => '2024-6-30',
+            'date' => '2025-6-30',
             'takeoff' => '19:40',
             'landing' => '22:25',
             'duration' => '02:45',
@@ -154,7 +154,7 @@ class FlightsGoTableSeeder extends Seeder
         //from NewYork to Damascus 1 to 4
         DB::table('flightsgo')->insert([
             'id' => 10,
-            'date' => '2024-6-25',
+            'date' => '2025-6-25',
             'takeoff' => '13:30',
             'landing' => '15:30',
             'duration' => '2:00',
@@ -168,7 +168,7 @@ class FlightsGoTableSeeder extends Seeder
         //from NewYork to Damascus 1 to 4
         DB::table('flightsgo')->insert([
             'id' => 11,
-            'date' => '2024-6-30',
+            'date' => '2025-6-30',
             'takeoff' => '06:30',
             'landing' => '08:45',
             'duration' => '2:15',
@@ -182,7 +182,7 @@ class FlightsGoTableSeeder extends Seeder
         //from 2 to 4
         DB::table('flightsgo')->insert([
             'id' => 12,
-            'date' => '2024-7-2',
+            'date' => '2025-7-2',
             'takeoff' => '13:30',
             'landing' => '17:30',
             'duration' => '4:00',
@@ -196,7 +196,7 @@ class FlightsGoTableSeeder extends Seeder
         // from 2 to 4
         DB::table('flightsgo')->insert([
             'id' => 13,
-            'date' => '2024-7-10',
+            'date' => '2025-7-10',
             'takeoff' => '16:30',
             'landing' => '21:35',
             'duration' => '4:05',
@@ -212,7 +212,7 @@ class FlightsGoTableSeeder extends Seeder
         //from NewYork to Damascus 1 to 2
         DB::table('flightsgo')->insert([
             'id' => 14,
-            'date' => '2024-6-25',
+            'date' => '2025-6-25',
             'takeoff' => '13:30',
             'landing' => '15:30',
             'duration' => '2:00',
@@ -226,7 +226,7 @@ class FlightsGoTableSeeder extends Seeder
         //from NewYork to Damascus 1 to 2
         DB::table('flightsgo')->insert([
             'id' => 15,
-            'date' => '2024-6-25',
+            'date' => '2025-6-25',
             'takeoff' => '13:30',
             'landing' => '15:30',
             'duration' => '2:00',
@@ -241,7 +241,7 @@ class FlightsGoTableSeeder extends Seeder
         //from NewYork to Damascus 2 to 1
         DB::table('flightsgo')->insert([
             'id' => 16,
-            'date' => '2024-7-20',
+            'date' => '2025-7-20',
             'takeoff' => '13:30',
             'landing' => '15:30',
             'duration' => '2:00',
@@ -255,7 +255,7 @@ class FlightsGoTableSeeder extends Seeder
         //from NewYork to Damascus 2 to 1
         DB::table('flightsgo')->insert([
             'id' => 17,
-            'date' => '2024-7-25',
+            'date' => '2025-7-25',
             'takeoff' => '09:10',
             'landing' => '11:30',
             'duration' => '2:20',
@@ -270,7 +270,7 @@ class FlightsGoTableSeeder extends Seeder
         //from NewYork to Damascus 1 to 3
         DB::table('flightsgo')->insert([
             'id' => 18,
-            'date' => '2024-8-01',
+            'date' => '2025-8-01',
             'takeoff' => '06:30',
             'landing' => '08:20',
             'duration' => '1:50',
@@ -284,7 +284,7 @@ class FlightsGoTableSeeder extends Seeder
         //from NewYork to Damascus 1 to 3
         DB::table('flightsgo')->insert([
             'id' => 19,
-            'date' => '2024-8-31',
+            'date' => '2025-8-31',
             'takeoff' => '14:10',
             'landing' => '16:25',
             'duration' => '2:15',
@@ -299,7 +299,7 @@ class FlightsGoTableSeeder extends Seeder
         //from NewYork to Damascus 3 to 1
         DB::table('flightsgo')->insert([
             'id' => 20,
-            'date' => '2024-8-01',
+            'date' => '2025-8-01',
             'takeoff' => '10:30',
             'landing' => '11:20',
             'duration' => '1:50',
@@ -313,7 +313,7 @@ class FlightsGoTableSeeder extends Seeder
         //from NewYork to Damascus 3 to 1
         DB::table('flightsgo')->insert([
             'id' => 21,
-            'date' => '2024-8-31',
+            'date' => '2025-8-31',
             'takeoff' => '14:10',
             'landing' => '16:25',
             'duration' => '2:15',
@@ -328,10 +328,10 @@ class FlightsGoTableSeeder extends Seeder
         ////////////////////////////////////////////////////////////////
         /// the test about them
         ///
-        //from 1 to 4
+        //from 1 to 4 (NewYork to Damascus)
         DB::table('flightsgo')->insert([
             'id' => 22,
-            'date' => '2024-9-19',
+            'date' => '2025-9-19',
             'takeoff' => '11:30',
             'landing' => '14:00',
             'duration' => '2:30',
@@ -345,7 +345,7 @@ class FlightsGoTableSeeder extends Seeder
 
         DB::table('flightsgo')->insert([
             'id' => 23,
-            'date' => '2024-9-21',
+            'date' => '2025-9-21',
             'takeoff' => '14:30',
             'landing' => '16:55',
             'duration' => '2:25',
@@ -359,7 +359,7 @@ class FlightsGoTableSeeder extends Seeder
         ]);
         DB::table('flightsgo')->insert([
             'id' => 24,
-            'date' => '2024-9-22',
+            'date' => '2025-9-22',
             'takeoff' => '18:10',
             'landing' => '20:30',
             'duration' => '2:40',
@@ -373,7 +373,7 @@ class FlightsGoTableSeeder extends Seeder
         ]);
         DB::table('flightsgo')->insert([
             'id' => 25,
-            'date' => '2024-9-25',
+            'date' => '2025-9-25',
             'takeoff' => '23:00',
             'landing' => '02:15',
             'duration' => '3:15',

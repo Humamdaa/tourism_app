@@ -28,10 +28,12 @@ class flightsGo extends Controller
             'to_city' => 'required|string|max:20',
             'persons' => 'required|integer|min:1|max:8',
             'date' => 'required|date|after_or_equal:today',
+//            for filtering
             'class' => 'string|nullable|in:First class,Business,Economy',
             'sortPrice' => 'in:asc,desc|nullable',
-            'NumStop' => 'nullable|integer|min:0'
-        ],$messages);
+            'NumStop' => 'nullable|integer|min:0|max:3',
+            'period' => 'in:early,late'
+        ], $messages);
         // Handle validation failures
         if ($validator->fails()) {
             return response()->json([
@@ -46,9 +48,10 @@ class flightsGo extends Controller
 
 
         if ($flights->isNotEmpty() && $flights != '[]') {
+//            return $flights;
             return response()->json([
                 'data' => $flights,
-                'count'=>count($flights),
+                'count' => count($flights),
                 'status' => 200
             ], 200);
         }
@@ -57,8 +60,6 @@ class flightsGo extends Controller
             'status' => 404
         ], 404);
 
-//        $flights = new getFlightsGo();
-//        return $flights->flightsGo($request);
 
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\Flights\Go;
+namespace Database\Seeders\Flights;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;

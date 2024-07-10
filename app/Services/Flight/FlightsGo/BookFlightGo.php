@@ -44,8 +44,9 @@ class BookFlightGo
         //check if the number of passenger is less than of capacity in flight from this class
         if ($passenger > $classTaken->capacity) {
             return response()->json([
-                'message' => $tr->translate("your passenger number is bigger than from capacity ")
-            ]);
+                'message' => $tr->translate("your passenger number is bigger than from capacity "),
+                'status'=>404
+            ],404);
         }
 
         userFlightsGo::create([
@@ -58,6 +59,7 @@ class BookFlightGo
 
         $user->money -= $passenger * $classTaken->price;
         $user->save();
+
         $classTaken->capacity -= $passenger;
         $classTaken->save();
 

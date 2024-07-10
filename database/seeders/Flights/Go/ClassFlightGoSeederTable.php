@@ -34,8 +34,8 @@ class ClassFlightGoSeederTable extends Seeder
         ]);
         DB::table('class_flight_go')->insert([
             'id' => 3,
-            'capacity' => 200,
-            'price' => 5,
+            'capacity' => 5,
+            'price' => 200,
             'class_id' => 1,
             'flightGo_id' => 1,
             'created_at' => now(),

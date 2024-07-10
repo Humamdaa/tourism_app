@@ -14,7 +14,8 @@ class cancelBookController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'class_id' => 'required',
-            'flightGo_id' => 'required'
+            'flightGo_id' => 'required',
+            'passenger'=>'required'
         ]);
 
         $tr = new TranslateMessages();

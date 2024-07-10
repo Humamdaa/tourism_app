@@ -17,49 +17,55 @@ class cancelBookFlightGo
         $tr = new TranslateMessages();
 
         $book = userFlightsGo::where('class_id', $request->class_id)
-            ->where('flightGo_id', $request->flightGo_id)->first();
+            ->where('flightGo_id', $request->flightGo_id)
+            ->where('passenger', $request->passenger)
+            ->first();
 
         $classFlight = classFlightGo::where('class_id', $request->class_id)
             ->where('flightGo_id', $request->flightGo_id)->first();
 
         $flight = FlightGo::where('id', $request->flightGo_id)->first();
+
+        $num_passenger = $request->passenger;
         //return money
         //before 3 days return all the cost,
         // exactly 3 return and take 10/100 from the all cost
         // less than 3 days take 70/100 from all cost
-
-        if ($flight) {
+        if ($book && $flight) {
             $flightDate = Carbon::parse($flight->date);
             $now = Carbon::now();
             if ($flightDate > $now) {
                 $diffInDays = $now->diffInDays($flightDate, false);
 
-                if ($diffInDays > 3) {
-                    $user->money += $classFlight->price;
-                } // Check if the flight is more than 3 days away from now
-                elseif ($diffInDays === 3) {
-                    $user->money += $classFlight->price - ($classFlight * 10 / 100);
-                } elseif ($diffInDays === 2) {
-                    $user->money += $classFlight->price - ($classFlight * 70 / 100);
-                }
-
-                $user->save();
-
-
                 if ($book->delete()) {
-                    $classFlight->capacity += $book->pssenger;
+                    //return money to user
+                    if ($diffInDays > 3) {
+                        $user->money += $classFlight->price * $num_passenger;
+                    } // Check if the flight is more than 3 days away from now
+                    elseif ($diffInDays === 3) {
+                        $user->money += ($classFlight->price * $num_passenger) - ($classFlight * $num_passenger * 10 / 100);
+                    } elseif ($diffInDays === 2) {
+                        $user->money += ($classFlight->price * $num_passenger) - ($classFlight * $num_passenger * 70 / 100);
+                    }
+
+                    $user->save();
+                    //add the passenger after user deletes his flight
+                    $classFlight->capacity += $num_passenger;
+                    $classFlight->save();
                     return response()->json([
                         'message' => $tr->translate('your flight is canceled successfully'),
-                        'status' => 404
-                    ], 404);
+                        'status' => 200
+                    ], 200);
                 }
             }
             return response()->json([
                 'message' => $tr->translate('you can not cancel or update your booking after end of flight date'),
-                'status'=>404
+                'status' => 404
             ]);
 
         }
-        return response()->json(['message' => $tr->translate('not found the flight')]);
+        return response()->json([
+            'message' => $tr->translate('not found the flight or your flight with these specifications'),
+            'status' => 404], 404);
     }
 }

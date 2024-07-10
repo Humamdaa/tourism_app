@@ -8,13 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class FlightGoServicesSeederTable extends Seeder
 {
-    /////////////////////////////////////////////////////////////////////////////////
-    /// the id must be start from id 30 to 37 for flights go
-    ////////////////////////////////////////////////////////////////////////////////
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
-
-
         //services for first flightGo
         DB::table('flights_go_services')->insert([
             'id' => 1,
@@ -131,84 +129,6 @@ class FlightGoServicesSeederTable extends Seeder
             'updated_at' => now()
         ]);
 
-        /////////////////////////////////////////////////////////
-        /// flight from 22 to 25
-        DB::table('flights_go_services')->insert([
-//            'id' => 15,
-            'service_id' => 30,
-            'flightGo_id' => 22,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('flights_go_services')->insert([
-//            'id' => 15,
-            'service_id' => 31,
-            'flightGo_id' => 22,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('flights_go_services')->insert([
-//            'id' => 15,
-            'service_id' => 32,
-            'flightGo_id' => 22,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-
-        DB::table('flights_go_services')->insert([
-//            'id' => 15,
-            'service_id' => 33,
-            'flightGo_id' => 23,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('flights_go_services')->insert([
-//            'id' => 15,
-            'service_id' => 34,
-            'flightGo_id' => 23,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-
-        DB::table('flights_go_services')->insert([
-//            'id' => 15,
-            'service_id' => 35,
-            'flightGo_id' => 24,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('flights_go_services')->insert([
-//            'id' => 15,
-            'service_id' => 36,
-            'flightGo_id' => 24,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-
-        DB::table('flights_go_services')->insert([
-//            'id' => 15,
-            'service_id' => 30,
-            'flightGo_id' => 25,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('flights_go_services')->insert([
-//            'id' => 15,
-            'service_id' => 32,
-            'flightGo_id' => 25,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        DB::table('flights_go_services')->insert([
-//            'id' => 15,
-            'service_id' => 37,
-            'flightGo_id' => 25,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
     }
 
 

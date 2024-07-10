@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Models\Flights\FlightsGo;
+namespace App\Models\Flights\FlightsRound;
 
 use App\Models\city;
 use App\Models\Flights\Classes;
+use App\Models\Flights\FlightsGo\stop;
 use App\Models\Flights\Office;
 use App\Models\Scopes\flightsGo\ClassPriceScope;
 use App\Models\Scopes\flightsGo\FromToCityScope;
@@ -13,23 +14,20 @@ use App\Models\Service;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 
-class FlightGo extends Model
+class FlightRound extends Model
 {
     use HasFactory;
-
-    protected $table = 'flightsgo';
-
-    protected $fillable =
-        [
-            'date', 'takeoff', 'landing', 'duration', 'NumStops',
-            'capacity', 'office_id', 'from_city_id', 'to_city_id'
+    protected $table = 'flightsRound';
+    protected $fillable = [
+        'dateGo','takeoffGo','landingGo','durationGo','dateBack',
+        'takeoffBack','landingBack','durationBack','capacity'
         ];
 
     public function services()
     {
-        return $this->belongsToMany(Service::class, 'flights_go_services', 'flightGo_id', 'service_id');
+        return $this->belongsToMany(Service::class, 'flights_round_services',
+            'flightRound_id', 'service_id');
     }
 
     public function office()
@@ -39,17 +37,16 @@ class FlightGo extends Model
 
     public function classes()
     {
-        return $this->belongsToMany(Classes::class, 'class_flight_go',
-            'flightGo_id', 'class_id')
+        return $this->belongsToMany(Classes::class, 'class_flight_round',
+            'flightRound_id', 'class_id')
             ->withPivot('price', 'capacity');
     }
 
     public function stops()
     {
-        return $this->belongsToMany(stop::class, 'flights_go_stops',
-            'flightGo_id', 'stop_id');
+        return $this->belongsToMany(stop::class, 'flights_round_stops',
+            'flightRound_id', 'stop_id');
     }
-
 
     public function fromCity()
     {
@@ -63,30 +60,31 @@ class FlightGo extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_flights_go',
-            'flightGo_id', 'user_id')
+        return $this->belongsToMany(User::class, 'user_flights_round',
+            'flightRound_id', 'user_id')
             ->withPivot('passenger');
     }
 
-    //scopes :
+
+    //scopes
 
     //scope from to city with one month before and after almost
-    public function scopeWithinDateRangeAndCities($query, $startDate, $fromCity, $toCity)
+    public function scopeWithinDateRangeAndCities($query, $DateGo,$DateBack, $fromCity, $toCity)
     {
-        return FromToCityScope::fromToCity($query, $startDate, $fromCity, $toCity);
+        return FromToCityScope::CityAndDate($query, $DateGo,$DateBack, $fromCity, $toCity);
     }
 
     //scope for class with person number
     public function scopeWithClass($query, $class, $persons)
     {
-        return TypeClassScope::specificClass($query, $class, $persons);
+        return TypeClassScope::specificClassRound($query, $class, $persons);
     }
 
     //for type of class
-    public function scopeWithClassPrice($query, $type)
-    {
-        return ClassPriceScope::ClassPrice($query, $type);
-    }
+//    public function scopeWithClassPrice($query, $type)
+//    {
+//        return ClassPriceScope::ClassPrice($query, $type);
+//    }
 
     //for number of stops
     public function scopeWithNumStops($query, $num)
@@ -98,9 +96,16 @@ class FlightGo extends Model
     public function scopeFlightsPeriod($query,$period){
 //        echo $period;
         if($period == 'early') {
-                return $query->orderBy('takeoff', 'desc');
+            return $query->orderBy('takeoff', 'desc');
         }
         return $query->orderBy('takeoff','asc');
     }
+
+    //scope for range money
+    public function scopeRangeMoney($query, $min_val, $max_val){
+        return $query->whereBetween('price', [$min_val, $max_val]);
+    }
+
+
 
 }
