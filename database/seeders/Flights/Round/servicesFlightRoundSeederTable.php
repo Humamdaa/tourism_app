@@ -31,6 +31,8 @@ class servicesFlightRoundSeederTable extends Seeder
             ['flightRound_id' => 6, 'service_id' => 36],
             ['flightRound_id' => 6, 'service_id' => 37],
             ['flightRound_id' => 6, 'service_id' => 30],
+            ['flightRound_id' => 7, 'service_id' => 35],
+            ['flightRound_id' => 7, 'service_id' => 30],
         ];
 
         DB::table('flights_round_services')->insert($data);

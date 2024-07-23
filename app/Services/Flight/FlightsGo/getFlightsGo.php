@@ -43,7 +43,6 @@ class getFlightsGo
         // Use the defined scope to query the flights
 
         $flights = $query->get();
-
         $temp = new insertCityInFlight();
         $flights = $temp->putInFirstFlight($flights);
 

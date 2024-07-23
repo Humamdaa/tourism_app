@@ -18,11 +18,12 @@ use Illuminate\Database\Eloquent\Model;
 class FlightRound extends Model
 {
     use HasFactory;
+
     protected $table = 'flightsRound';
     protected $fillable = [
-        'dateGo','takeoffGo','landingGo','durationGo','dateBack',
-        'takeoffBack','landingBack','durationBack','capacity'
-        ];
+        'dateGo', 'takeoffGo', 'landingGo', 'durationGo', 'dateBack',
+        'takeoffBack', 'landingBack', 'durationBack', 'capacity'
+    ];
 
     public function services()
     {
@@ -69,9 +70,9 @@ class FlightRound extends Model
     //scopes
 
     //scope from to city with one month before and after almost
-    public function scopeWithinDateRangeAndCities($query, $DateGo,$DateBack, $fromCity, $toCity)
+    public function scopeWithinDateRangeAndCities($query, $DateGo, $DateBack, $fromCity, $toCity)
     {
-        return FromToCityScope::CityAndDate($query, $DateGo,$DateBack, $fromCity, $toCity);
+        return FromToCityScope::CityAndDate($query, $DateGo, $DateBack, $fromCity, $toCity);
     }
 
     //scope for class with person number
@@ -93,19 +94,30 @@ class FlightRound extends Model
     }
 
     //earlier flights late
-    public function scopeFlightsPeriod($query,$period){
+    public function scopeFlightsPeriod($query, $period)
+    {
 //        echo $period;
-        if($period == 'early') {
+        if ($period == 'early') {
             return $query->orderBy('takeoff', 'desc');
         }
-        return $query->orderBy('takeoff','asc');
+        return $query->orderBy('takeoff', 'asc');
     }
 
     //scope for range money
-    public function scopeRangeMoney($query, $min_val, $max_val){
-        return $query->whereBetween('price', [$min_val, $max_val]);
-    }
+    public function scopePriceRange($query, $min, $max, $classId = null)
+    {
+        return $query->whereHas('classes', function ($q) use ($min, $max, $classId) {
+            if ($classId) {
 
+                $q->where('class_id', $classId)
+                    ->whereBetween('class_flight_round.price', [$min, $max]);
+            } else {
+//                echo $min." ".$max;
+                $q->where('class_id', 1) // Economy
+                ->whereBetween('class_flight_round.price', [$min, $max]);
+            }
+        });
+    }
 
 
 }

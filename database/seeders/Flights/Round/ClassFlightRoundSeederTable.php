@@ -38,6 +38,10 @@ class ClassFlightRoundSeederTable extends Seeder
             ['capacity' => 80, 'price' => 150, 'class_id' => 1, 'flightRound_id' => 6],
             ['capacity' => 10, 'price' => 160, 'class_id' => 2, 'flightRound_id' => 6],
             ['capacity' => 10, 'price' => 170, 'class_id' => 3, 'flightRound_id' => 6],
+            // FlightRound 7
+            ['capacity' => 80, 'price' => 80, 'class_id' => 1, 'flightRound_id' => 7],
+            ['capacity' => 10, 'price' => 100, 'class_id' => 2, 'flightRound_id' => 7],
+            ['capacity' => 10, 'price' => 130, 'class_id' => 3, 'flightRound_id' => 7],
         ]);
     }
 }

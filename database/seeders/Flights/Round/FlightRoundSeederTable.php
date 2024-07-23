@@ -104,6 +104,21 @@ class FlightRoundSeederTable extends Seeder
                 'office_id' => 1,
                 'from_city_id' => 4,
                 'to_city_id' => 1,
+            ],
+            [
+                'id' => 7,
+                'dateGo' => '2025-11-11',
+                'takeoffGo' => '10:00:00',
+                'landingGo' => '14:30:00',
+                'durationGo' => '4:30',
+                'dateBack' => '2025-11-16',
+                'takeoffBack' => '9:00:00',
+                'landingBack' => '13:00:00',
+                'durationBack' => '4:00',
+                'capacity' => 100,
+                'office_id' => 1,
+                'from_city_id' => 4,
+                'to_city_id' => 1,
             ]
         ]);
 
