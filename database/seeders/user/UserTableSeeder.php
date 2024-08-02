@@ -45,5 +45,16 @@ class UserTableSeeder extends Seeder
             'password' => Hash::make('!Password1'),
 
         ]);
+
+        DB::table('users')->insert([
+            'id' => 4,
+            'name' => 'Humam',
+            'phone' => '+963947938000',
+            'email' => 'Admindaas2003@gmail.com',
+            'verified_account' => 1,
+            'password' => Hash::make('!Password1'),
+
+        ]);
+
     }
 }

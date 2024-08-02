@@ -19,6 +19,7 @@
         "otherguy/php-currency-api": "^1.7",
         "propaganistas/laravel-disposable-email": "^2.3",
         "propaganistas/laravel-phone": "^5.2",
+        "pusher/pusher-php-server": "^7.2",
         "rackbeat/php-currency-api": "@dev",
         "stevebauman/location": "^7.3",
         "stichoza/google-translate-php": "^5.1",

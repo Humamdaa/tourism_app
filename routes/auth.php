@@ -17,6 +17,7 @@ Route::middleware('throttle:60,1')->group(function () {
     });
 });
 
+
 Route::controller(AuthController::class)->group(function () {
     Route::get('logoutUser', 'logout')->middleware('auth:api')->name('out');
     Route::get('trying', function () {
@@ -42,6 +43,13 @@ Route::get('newPass', function () {
 })->name('password.reset');
 Route::post('newPass', [ResetPass::class, 'resetPa'])->name('password.update');
 
+
+Route::get('try',function (){
+    return response()->json([
+        'message'=>'no word',
+        'status'=>200
+    ]);
+});
 
 //Route::post('newPass', [ResetPass::class, 'reset'])->name('password.update');
 
