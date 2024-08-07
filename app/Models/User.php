@@ -7,6 +7,7 @@ use App\Models\favorite\FavoriteHotels;
 use App\Models\Flights\FlightsRound\FlightRound;
 use App\Models\homes\Feature;
 use App\Models\Flights\FlightsGo\FlightGo;
+
 //use App\Models\hotels\Booking;
 use App\Models\hotels\BookRoomHotel;
 use App\Models\hotels\Hotel;
@@ -14,6 +15,7 @@ use App\Models\homes\Home;
 use App\Models\homes\BookHome;
 use App\Models\hotels\hotel_comment;
 use App\Models\hotels\Room;
+use App\Notifications\Real_time\CommentSent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -82,6 +84,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(BookRoomHotel::class, 'id_user');
     }
+
     public function homeBookings()
     {
         return $this->hasMany(BookHome::class, 'user_id');
@@ -108,14 +111,30 @@ class User extends Authenticatable
         return $this->hasMany(hotel_comment::class);
     }
 
+    //for real time
+    public function sendNewMessageNotification(array $data): void
+    {
+        $this->notify(new CommentSent($data));
+    }
+
+    public function routeNotificationForOneSignal(): array
+    {
+        return ['tags' => [
+            'key' => 'userId',
+            'relation' => '=',
+            'value' => (string)(1)]
+        ];
+    }
+
 
     public function favHomes()
     {
         return $this->belongsToMany(Home::class, 'favorite_homes', 'user_id', 'home_id');
     }
 
-    public function homes(){
-        return $this->hasMany(Home::class,'user_owner_id');
+    public function homes()
+    {
+        return $this->hasMany(Home::class, 'user_owner_id');
     }
 
     public function flightsGo()

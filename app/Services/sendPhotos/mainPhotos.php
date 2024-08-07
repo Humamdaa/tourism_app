@@ -40,7 +40,8 @@ class mainPhotos
         $urls = [];
 
         foreach ($firstPhoto as $fP)
-            $urls[] = url("$ser/$cityName/$fP");
+//            $urls[] = url("$ser/$cityName/$fP");
+            $urls[] = "$ser/$cityName/$fP";
 
         return $urls;
     }

@@ -1,13 +1,16 @@
 <?php
 
 use App\Http\Controllers\UserLocation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Notifications\Real_time\CommentSent;
+
 
 // Include routes
-include __DIR__.'/auth.php';
+include __DIR__ . '/auth.php';
 
-include __DIR__.'/profile.php';
+include __DIR__ . '/profile.php';
 
 include __DIR__ . '/stays/hotels.php';
 
