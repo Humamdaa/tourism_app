@@ -6,6 +6,7 @@ use App\Events\newCommentSent;
 use App\Http\Controllers\Controller;
 use App\Models\hotels\BookRoomHotel;
 use App\Models\hotels\hotel_comment;
+use App\Services\hotels\InsideHotelPage\detecet_language_of_comment;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Http\Request;
 
@@ -15,15 +16,16 @@ class addCommentController extends Controller
     public function comment(Request $request)
     {
         $tr = new TranslateMessages();
-
+        $DLOC = new detecet_language_of_comment();
         $user = $request->user();
         $com = $request->comment;
         $hotel_id = $request->hotel_id;
         $rate = $request->rate;
 
         if ($user) {
+        $lastComm = $DLOC->TranslateCommentToStore($com);
             $comment = hotel_comment::create([
-                'comment' => $com,
+                'comment' => $lastComm,
                 'rate' => $rate,
                 'user_id' => $user->id,
                 'hotel_id' => $hotel_id
