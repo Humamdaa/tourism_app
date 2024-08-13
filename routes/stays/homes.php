@@ -9,7 +9,7 @@ use App\Http\Controllers\stays\Homes\InsideHomePageController;
 use App\Models\favorite\FavoriteHomes;
 use Illuminate\Support\Facades\Route;
 
-Route::get('homes',[HomeController::class,'getHomesByCityName']);
+Route::get('homes',[HomeController::class,'getHomesByCityName'])->middleware('auth:api');
 Route::get('homes/myHomeBookings', [MyHomeBookController::class, 'getMyHomeBooking'])->middleware('auth:api');
 Route::get('addRemoveHomeToFav',[Add_RemoveHomeFavoriteController::class,'changeFav'])->middleware('auth:api');
 Route::get('favoriteHomes',[FavoriteHomesController::class,'getFavHomes'])->middleware('auth:api');

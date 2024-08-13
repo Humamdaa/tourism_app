@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\stays\Homes;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\homes\showHomes\changePriceOfHome;
 use App\Services\homes\orderingHomeAccordingRequest;
+use App\Services\homes\showHomes\CheckIfHomesFavorite;
 use App\Services\homes\showHomes\RemoveBookedHomes;
 use App\Services\sendPhotos\mainPhotos;
 use App\Services\sendPhotos\mergeUrlMainPhoto;
@@ -18,6 +20,8 @@ class HomeController extends Controller
 
     public function getHomesByCityName(Request $request)
     {
+        $user = new User();
+        $user = $request->user();
 
         $tr = new TranslateMessages();
 
@@ -63,6 +67,9 @@ class HomeController extends Controller
         //fix booking
         $remove = new RemoveBookedHomes();
         $result = $remove->fixBooking($homesArray, $request['start'], $end);
+        //check if favorite
+        $check = new CheckIfHomesFavorite();
+        $result = $check->checkFavorite($user, $result);
 
         $homeIds = [];
         foreach ($result['homes'] as $home) {
@@ -72,7 +79,7 @@ class HomeController extends Controller
         $var = new changePriceOfHome();
 
         $photos = new mainPhotos();
-        $phs = $photos->listPhotos($request->cityName, $homeIds, 0,"homes");
+        $phs = $photos->listPhotos($request->cityName, $homeIds, 0, "homes");
 
         if (!empty($result) && isset($result['homes']) && !empty($result['homes'])) {
             //chengePriceCurrency
