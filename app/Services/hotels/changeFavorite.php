@@ -41,11 +41,12 @@ class changeFavorite
             // Check if the user already has this hotel in favorites to prevent duplication
             if (!FavoriteHotels::where('user_id', $userId)->where('hotel_id', $hotelId)->exists()) {
 
+                echo 'here';
                 $add = new addHotelToFavorite();
                 return $add->addHotelToFavorite($hotelId, $userId);
             }
         }
         $remove = new removeHotelFromFavorite();
-        return $remove->addHotelToFavorite($user, $hotelId);
+        return $remove->removeHotelFromeFavorite($user, $hotelId);
     }
 }

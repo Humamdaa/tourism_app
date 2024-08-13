@@ -32,3 +32,8 @@ Route::get('/', 'App\Http\Controllers\StripeController@checkout')->name('checkou
 Route::post('/test', 'App\Http\Controllers\StripeController@test');
 Route::post('/live', 'App\Http\Controllers\StripeController@live');
 Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
+
+
+//admin dashboard
+
+include __DIR__.'/Admin_Web/Web_city.php';

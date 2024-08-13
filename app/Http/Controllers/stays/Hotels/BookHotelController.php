@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\hotels\BookRoomHotel;
 use App\Models\hotels\Hotel;
 use App\Services\hotels\InsideHotelPage\findHotel;
-use App\Services\hotels\RemoveBookedRooms;
+
+//use App\Services\hotels\RemoveBookedRooms;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class BookHotelController extends Controller
 {
@@ -29,9 +31,15 @@ class BookHotelController extends Controller
         $temp = new findHotel();
         $hotel = $temp->Hotel($request);
 
+        $startDate = Carbon::parse($start);
+        $endDate = Carbon::parse($end);
+
+        // Calculate the difference in days
+        $daysDifference = $startDate->diffInDays($endDate);
         //check if his money is enough
-        if (($hotel->price * $person) > $user->money) {
-            $total = $person * $hotel->price;
+        $total = $hotel->price * $person * $daysDifference;
+        if ($total > $user->money) {
+            $total = $person * $hotel->price * $daysDifference;
             $message = "You do not have enough money,";
             $message .= "Your money is $user->money,";
             $message .= "The price of a room in the hotel is $hotel->price for per adult,";
@@ -73,6 +81,8 @@ class BookHotelController extends Controller
 
         // Convert back to array
         $sortedRoomsArray = $sortedRoomsCollection->toArray();
+//        return $sortedRoomsArray;
+//        return $roomsArray;
 
         //        return $roomsArray;
 
@@ -81,19 +91,29 @@ class BookHotelController extends Controller
                 'start' => $start,
                 'end' => $end,
                 'persons' => $person,
+                'id_room' => $sortedRoomsArray[0]['id'],
+                'total'=> $total,
                 'id_room' => $roomsArray[0]['id'],
                 'id_hotel' => $hotelId,
                 'id_user' => $user->id
             ]);
 
             //reduce user money
-            $user->money -= ($person * $hotel->price);
+            $user->money -= ($person * $hotel->price * $daysDifference);
             $user->save();
 
             if ($booked) {
-                return response()->json(['message' => $tr->translate('your booking is added successfully')], 200);
+                return response()->json([
+                    'message' => $tr->translate('your booking is added successfully'),
+                    'status' => 200
+                ], 200);
             }
         }
+        return response()->json([
+            'message' => 'your booking is failed',
+            'money' => $user->money
+        ], 422);
+
         return response()->json(['message' => 'your booking is failed'], 422);
     }
 }

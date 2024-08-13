@@ -5,14 +5,20 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Services\hotels\InsideHotelPage\getHotelComments;
 use Database\Seeders\city\CitiesTableSeeder;
-use Database\Seeders\Flights\Go\ClassesSeederTable;
+use Database\Seeders\Flights\ClassesSeederTable;
 use Database\Seeders\Flights\Go\ClassFlightGoSeederTable;
 use Database\Seeders\Flights\Go\FlightGoServicesSeederTable;
 use Database\Seeders\Flights\Go\flightsGoStopsSeederTable;
 use Database\Seeders\Flights\Go\FlightsGoTableSeeder;
-use Database\Seeders\Flights\Go\ServicesSeederTable;
-use Database\Seeders\Flights\Go\stopsSeederTable;
+
+use Database\Seeders\Flights\ServicesSeederTable;
+use Database\Seeders\Flights\stopsSeederTable;
 use Database\Seeders\Flights\OfficeTableSeeder;
+
+use Database\Seeders\Flights\Round\ClassFlightRoundSeederTable;
+use Database\Seeders\Flights\Round\FlightRoundSeederTable;
+use Database\Seeders\Flights\Round\servicesFlightRoundSeederTable;
+use Database\Seeders\Flights\Round\stopsFlightRoundSeederTable;
 use Database\Seeders\hotels\BookRoomHotelTableSeeder;
 use Database\Seeders\hotels\HotelCommentTableSeeder;
 use Database\Seeders\hotels\HotelPhotosTableSeeder;
@@ -58,6 +64,11 @@ class DatabaseSeeder extends Seeder
         DB::table('flights_go_stops')->delete();
         DB::table('stops')->delete();
 
+        //round flights
+        DB::table('flightsround')->delete();
+        DB::table('flights_round_stops')->delete();
+        DB::table('class_flight_round')->delete();
+        DB::table('flights_round_services')->delete();
 
 //        populate the tables with new data
         $this->call([
@@ -74,16 +85,23 @@ class DatabaseSeeder extends Seeder
             HomeTableSeeder::class,
             BookHomeTableSeeder::class,
 
-////////////seeder flightsGo
+            //for go and round flight
             ClassesSeederTable::class,
             OfficeTableSeeder::class,
+            ServicesSeederTable::class,
+            stopsSeederTable::class,
+
+////////////seeder flightsGo
             FlightsGoTableSeeder::class,
             ClassFlightGoSeederTable::class,
-            ServicesSeederTable::class,
             FlightGoServicesSeederTable::class,
-            stopsSeederTable::class,
             flightsGoStopsSeederTable::class,
-            // Add more seeders here if needed
+
+///////////seeder flightsRound
+            FlightRoundSeederTable::class,
+            ClassFlightRoundSeederTable::class,
+            servicesFlightRoundSeederTable::class,
+            stopsFlightRoundSeederTable::class,
         ]);
     }
 }

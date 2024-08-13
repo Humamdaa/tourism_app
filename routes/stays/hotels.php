@@ -7,6 +7,7 @@ use App\Http\Controllers\stays\Hotels\cancelBookHotelController;
 use App\Http\Controllers\stays\Hotels\FavoriteHotels;
 use App\Http\Controllers\stays\Hotels\HotelController;
 use App\Http\Controllers\stays\Hotels\InsideHotelPage;
+use App\Http\Controllers\stays\Hotels\ModifyBookController;
 use App\Http\Controllers\stays\Hotels\MyHotelBookController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +23,8 @@ Route::post('writeComment',[addCommentController::class,'comment'])->middleware(
 
 Route::post('book',[BookHotelController::class,'bookRoomInHotel'])->middleware('auth:api');
 
-//complete
 Route::delete('cancelBook',[cancelBookHotelController::class,'cancelBookRoom'])->middleware('auth:api');
+
+Route::post('modifyBooking',[ModifyBookController::class,'modifyBooking'])->middleware('auth:api');
 
 Route::get('myHotelBooking',[MyHotelBookController::class,'getMyHotelBooking'])->middleware('auth:api');

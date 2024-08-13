@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Scope;
 class FromToCityScope implements Scope
 {
 
+//    for go flight , there is one date
     public static  function fromToCity(Builder $query, $Date, $fromCity, $toCity)
     {
         //take flights before and after one month the date that user is sent
@@ -32,6 +33,21 @@ class FromToCityScope implements Scope
                 $query->where('name', $toCity);
             });
     }
+
+
+    public static  function CityAndDate(Builder $query, $dateGo,$dateBack, $fromCity, $toCity)
+    {
+        //take flights before and after one month the date that user is sent
+        return $query->whereHas('fromCity', function($q) use ($fromCity) {
+            $q->where('name', $fromCity);
+        })
+            ->whereHas('toCity', function($q) use ($toCity) {
+                $q->where('name', $toCity);
+            })
+            ->where('dateGo', $dateGo)
+            ->where('dateBack', $dateBack);
+    }
+
 
     public function apply(Builder $builder, Model $model): void
     {

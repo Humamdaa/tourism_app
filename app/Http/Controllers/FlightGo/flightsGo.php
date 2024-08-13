@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\FlightGo;
 
 use App\Http\Controllers\Controller;
-use App\Services\FlightsGo\getFlightsGo;
+use App\Services\Flight\FlightsGo\getFlightsGo;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -28,10 +28,12 @@ class flightsGo extends Controller
             'to_city' => 'required|string|max:20',
             'persons' => 'required|integer|min:1|max:8',
             'date' => 'required|date|after_or_equal:today',
+//            for filtering
             'class' => 'string|nullable|in:First class,Business,Economy',
             'sortPrice' => 'in:asc,desc|nullable',
-            'NumStop' => 'nullable|integer|min:0'
-        ],$messages);
+            'NumStop' => 'nullable|integer|min:0|max:3',
+            'period' => 'in:early,late'
+        ], $messages);
         // Handle validation failures
         if ($validator->fails()) {
             return response()->json([
@@ -44,10 +46,12 @@ class flightsGo extends Controller
         $fl = new getFlightsGo();
         $flights = $fl->flightsGo($request);
 
+
         if ($flights->isNotEmpty() && $flights != '[]') {
+//            return $flights;
             return response()->json([
                 'data' => $flights,
-                'count'=>count($flights),
+                'count' => count($flights),
                 'status' => 200
             ], 200);
         }
@@ -57,7 +61,5 @@ class flightsGo extends Controller
         ], 404);
 
 
-//        $flights = new getFlightsGo();
-//        return $flights->flightsGo($request);
     }
 }

@@ -22,7 +22,10 @@ class Photos
         }
         $urls = [];
         foreach ($photosString as $ps)
-            $urls[] = url("hotels/$cityName/$ps->img");
+
+//            $urls[] = url("hotels/$cityName/$ps->img"); //this line add 127.0.0.1
+            //this just from hotels folder/cityName/photo
+            $urls[] = "hotels/$cityName/$ps->img";
 
         return $urls;
     }

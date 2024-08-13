@@ -157,19 +157,14 @@ return [
 
     'providers' => ServiceProvider::defaultProviders()->merge([
         Laravel\Passport\PassportServiceProvider::class,
-       /*
-         * Package Service Providers...
-         */
-
-        /*
-         * Application Service Providers...
-         */
+        Stevebauman\Location\LocationServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-    ])->toArray(),
+
+        ])->toArray(),
 
     /*
     |--------------------------------------------------------------------------
@@ -183,7 +178,8 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+        'Location' => Stevebauman\Location\Facades\Location::class,
+
     ])->toArray(),
 
 ];

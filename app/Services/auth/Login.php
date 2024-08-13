@@ -28,7 +28,7 @@ class Login
         if ($validator->fails()) {
             return response()->json([
                 'message' => $tr->translate($validator->errors()->first()),
-                'status' => 404], 404);//422
+                'status' => 404], 404);//422,400
         }
         $credentials = $request->only('email', 'password');
 
