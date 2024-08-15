@@ -19,7 +19,7 @@ class Home extends Model
     protected $table = 'homes';
 
     protected $fillable = [
-        'space', 'location', 'description', 'monthly_rent', 'person_num', 'rooms', 'baths'
+        'space', 'location', 'description', 'monthly_rent', 'person_num', 'rooms', 'baths','city_id','user_owner_id'
     ];
 
     public function city()
@@ -39,7 +39,7 @@ class Home extends Model
 
     public function owner()
     {
-        return $this->belongsTo(User::class,"id");
+        return $this->belongsTo(User::class,"user_owner_id");
     }
     // public function users()
     // {

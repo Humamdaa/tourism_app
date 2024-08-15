@@ -11,7 +11,7 @@ class HomesBookingStatus_Space_Rooms_Scope implements Scope
     public static function scopeBySpace(Builder $query, $minSpace,$maxSpace)
     {
         return $query->where('space', '>=', $minSpace)
-        ->where('space', '<=', $maxSpace)->with('homeBookings');
+        ->where('space', '<=', $maxSpace)->where('Verification_status',"verified")->with('homeBookings');
     }
     public static function scopeByRoomsNum(Builder $query, $rooms)
     {

@@ -17,7 +17,7 @@ class BookHome extends Model
     protected $fillable = ['start', 'end', 'booking_status', "home_id", "user_id", "total"];
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'id');
     }
 
     public function home()

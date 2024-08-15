@@ -25,6 +25,7 @@ class HomeTableSeeder extends Seeder
                 'baths' => 2,
                 'user_owner_id'=>1,
                 'city_id' => 1,
+                'Verification_status'=>"Verified",
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -39,6 +40,7 @@ class HomeTableSeeder extends Seeder
                 'baths' => 2,
                 'user_owner_id'=>1,
                 'city_id' => 1,
+                'Verification_status'=>"Verified",
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -57,6 +59,7 @@ class HomeTableSeeder extends Seeder
                 'baths' => rand(1, 3),
                 'user_owner_id'=>rand(1,2),
                 'city_id' => rand(1, 4),
+                'Verification_status'=>"Verified",
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];

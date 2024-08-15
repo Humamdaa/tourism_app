@@ -30,7 +30,7 @@ class HomeController extends Controller
             'minSpace' => 'required|integer|min:1|max:999',
             'maxSpace' => 'required|integer|min:1|max:999',
             'rooms' => 'required|integer|min:1|max:20',
-            'start' => 'required|date',
+            'start' => 'required|date|after_or_equal:today',
             'months' => 'required|integer|min:1',
         ]);
 

@@ -21,10 +21,19 @@ class BookHomeController extends Controller
         $homeId = $request->home_id;
 
         $validator = Validator::make($request->all(), [
-            'start' => 'required|date',
+            'start' => ['required', 'date', function ($attribute, $value, $fail) {
+                $startDate = Carbon::createFromFormat('Y-m-d', $value);
+                if ($startDate < Carbon::now()) {
+                    $fail('The start date cannot be in the past.');
+                }
+            }],
             'months' => 'required|integer|min:1',
         ]);
-
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => $validator->errors()->first()
+            ], 422);
+        }
         $start = $request->start;
         $start = Carbon::createFromFormat('Y-m-d', $request->start);
         $months = $request->months;
@@ -63,12 +72,20 @@ class BookHomeController extends Controller
             ]);
         }
 
+
+
+        // التحقق من كون المستخدم هو صاحب البيت
+        $isOwner = $home->user_owner_id === $user->id;
+
+        $bookingStatus = $isOwner ? "accepted" : "pending";
+
+
         // حفظ الحجز الجديد في قاعدة البيانات
         // ...
 
         if ($home) {
             $booking = bookHome::create([
-                'booking_status' => "pending",
+                'booking_status' => $bookingStatus,
                 'start' => $start,
                 'end' => $end,
                 'total' => $total,
@@ -86,6 +103,6 @@ class BookHomeController extends Controller
                 The reservation value will be deducted, exclusively if the property owner agrees.')], 200);
             }
         }
-        return response()->json(['message' => 'your booking is failed , try again later '], 422);
+        return response()->json(['message' => $tr->translate('your booking is failed , try again later ')], 422);
     }
 }
