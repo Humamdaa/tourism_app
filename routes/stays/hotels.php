@@ -28,3 +28,10 @@ Route::delete('cancelBook',[cancelBookHotelController::class,'cancelBookRoom'])-
 Route::post('modifyBooking',[ModifyBookController::class,'modifyBooking'])->middleware('auth:api');
 
 Route::get('myHotelBooking',[MyHotelBookController::class,'getMyHotelBooking'])->middleware('auth:api');
+
+
+//test real time
+//
+Route::get('test_real',function (){
+    return view('real-time.real-time');
+});

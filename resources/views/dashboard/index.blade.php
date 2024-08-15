@@ -8,10 +8,8 @@
         rel="stylesheet"
     />
     <link rel="stylesheet" href="{{ asset('/Admin_dashboard/css/styles.css') }}">
-    <!-- style of card -->
-{{--    <link rel="stylesheet" href="{{asset('/Admin_dashboard/css/container_of_card/container_card.css')}}"/>--}}
-    <!-- style of nav -->
-    {{--    <link rel="stylesheet" href="{{asset('/Admin_dashboard/css/nav_bar/nav.css')}}" />--}}
+    <link rel="stylesheet" href="{{asset('/Admin_dashboard/css/nav_bar/nav.css')}}"/>
+
 
     <title>Dashboard</title>
 </head>

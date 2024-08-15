@@ -36,4 +36,4 @@ Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('s
 
 //admin dashboard
 
-include __DIR__.'/Admin_Web/Web_city.php';
+include __DIR__ . '/dashboard/index.php';

@@ -6,6 +6,7 @@ use App\Events\newCommentSent;
 use App\Http\Controllers\Controller;
 use App\Models\hotels\BookRoomHotel;
 use App\Models\hotels\hotel_comment;
+use App\Models\User;
 use App\Services\hotels\InsideHotelPage\detecet_language_of_comment;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Http\Request;
@@ -17,20 +18,23 @@ class addCommentController extends Controller
     {
         $tr = new TranslateMessages();
         $DLOC = new detecet_language_of_comment();
+
         $user = $request->user();
+
+//        $user = User::where('id',1)->first();
+
         $com = $request->comment;
         $hotel_id = $request->hotel_id;
         $rate = $request->rate;
 
         if ($user) {
-        $lastComm = $DLOC->TranslateCommentToStore($com);
+            $lastComm = $DLOC->TranslateCommentToStore($com);
             $comment = hotel_comment::create([
                 'comment' => $lastComm,
                 'rate' => $rate,
                 'user_id' => $user->id,
                 'hotel_id' => $hotel_id
             ]);
-
 
 
             //todo sned broadcast event to pusher and send notification to on signal services

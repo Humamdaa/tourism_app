@@ -1,0 +1,94 @@
+/* Container styling */
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.error_message {
+    margin: 20px 0;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Heading styling */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label styling */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Input and text area styling */
+input[type="text"], input[type="number"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    resize: vertical; /* Allow vertical resizing of textarea */
+}
+
+/* Text area specific styling */
+textarea {
+    min-height: 100px; /* Minimum height for better usability */
+    line-height: 1.5;
+}
+
+/* Input and text area focus effect */
+input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    outline: none;
+}
+
+/* Submit button styling */
+.submit-btn {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect on submit button */
+.submit-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Active effect on submit button */
+.submit-btn:active {
+    background-color: #1e7e34;
+    transform: scale(1);
+}

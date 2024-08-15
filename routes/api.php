@@ -24,7 +24,6 @@ include __DIR__ . '/languages/language.php';
 
 include __DIR__ . '/currency/currency.php';
 
-include __DIR__ . '/dashboard/index.php';
 
 
 Route::get('/location', [UserLocation::class, 'index']);

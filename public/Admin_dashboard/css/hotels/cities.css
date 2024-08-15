@@ -1,0 +1,223 @@
+
+.search_button {
+    background-color: rgba(178, 238, 227, 0.5); /* 50% transparency */
+    border-radius: 10px; /* Slightly larger border radius for a softer look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow for a more pronounced effect */
+    width: 50%;
+    max-width: 300px;
+    height: 50px; /* Reduced height for a sleeker design */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px; /* Increase font size for better readability */
+    font-weight: bold; /* Make text bold */
+    color: #f2f5f4; /* Complementary color for text */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    text-decoration: none; /* Remove underline */
+
+}
+
+.search_button:hover {
+    background-color: rgba(178, 238, 227, 0.7); /* Slightly darker on hover */
+    transform: scale(1.05); /* Subtle scaling effect */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* More intense shadow on hover */
+}
+
+.search_button:active {
+    transform: scale(0.98); /* Slight reduction in size on click for feedback */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow softens on click */
+}
+
+
+/* Center the search container on the page */
+.search-container {
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    max-width: 600px; /* Set a max width for the container */
+    margin: 0 auto; /* Center container horizontally */
+    padding: 20px; /* Optional: Add padding around the container */
+}
+
+/* Search field styling */
+.search-field {
+    width: 100%; /* Take full width of the container */
+    padding: 10px 40px 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    background-color: transparent;
+    box-shadow: none; /* Remove any shadow if there is one */
+}
+
+/* Icon positioning */
+.search-icon {
+    /*    position: absolute;*/
+    /*    right: 10px;                !* Space between the input and icon *!*/
+    font-size: 18px;
+    /*    color: #333;*/
+}
+
+/* Wrapper around the input and icon */
+.search-wrapper {
+    position: relative; /* Relative positioning for absolute icon */
+    width: 100%; /* Full width for search field */
+    max-width: 500px; /* Maximum width for the input */
+}
+
+
+.search-container:hover .search-field {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    color: #f38686;
+}
+
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.background::before, .background::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+}
+
+.background::before {
+    top: 0;
+    left: 0;
+    background: var(--gradient-top);
+}
+
+.background::after {
+    bottom: 0;
+    background: var(--gradient-bottom);
+}
+
+.grid-slider {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.grid-item {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 1;
+    transition: .5s;
+}
+
+.grid-item.hide {
+    opacity: 0;
+}
+
+
+/*search results */
+
+#search-results {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.city-result {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.city-result:last-child {
+    border-bottom: none;
+}
+
+.city-result:hover {
+    background-color: #f0f0f0;
+}
+
+.city-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Optional: Add some icons or images */
+.city-result::before {
+    content: "🏙️"; /* Example icon */
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+
+/* Container styling */
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+
+/* City grid layout */
+.city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    cursor: pointer;
+}
+
+/* City card styling */
+.city-card {
+    background-color: rgba(178, 238, 227, 0.5); /* 50% transparency */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+
+.city-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(112, 238, 218, 0.5); /* 50% transparency */
+}
+
+/* City name styling */
+.city-card a {
+    color: #fff;
+    font-size: 20px;
+    margin: 0;
+}

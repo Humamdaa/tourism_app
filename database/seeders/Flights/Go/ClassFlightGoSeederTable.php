@@ -280,6 +280,64 @@ class ClassFlightGoSeederTable extends Seeder
         ]);
 
 
+//flight go 10
+        DB::table('class_flight_go')->insert([
+//            'id' => 13,
+            'capacity' => 80,
+            'price' => 130,
+            'class_id' => 1,
+            'flightGo_id' => 10,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('class_flight_go')->insert([
+//            'id' => 14,
+            'capacity' => 10,
+            'price' => 145,
+            'class_id' => 2,
+            'flightGo_id' => 10,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('class_flight_go')->insert([
+//            'id' => 15,
+            'capacity' => 10,
+            'price' => 170,
+            'class_id' => 3,
+            'flightGo_id' => 10,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+
+//flight go 10
+        DB::table('class_flight_go')->insert([
+//            'id' => 13,
+            'capacity' => 80,
+            'price' => 130,
+            'class_id' => 1,
+            'flightGo_id' => 11,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('class_flight_go')->insert([
+//            'id' => 14,
+            'capacity' => 10,
+            'price' => 145,
+            'class_id' => 2,
+            'flightGo_id' => 11,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('class_flight_go')->insert([
+//            'id' => 15,
+            'capacity' => 10,
+            'price' => 170,
+            'class_id' => 3,
+            'flightGo_id' => 11,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
 
     }
 }
