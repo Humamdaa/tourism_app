@@ -23,7 +23,7 @@ class cancelBookHotelController extends Controller
 
         $user = $request->user();
 
-        $hotel = Hotel::wher('id', $hotel_id)->first();
+        $hotel = Hotel::where('id', $hotel_id)->first();
 
         if ($user) {
             $book = BookRoomHotel::where('id_room', $room_id)->where('id_hotel', $hotel_id)
@@ -47,7 +47,8 @@ class cancelBookHotelController extends Controller
                     ]);
                 }
                 return response()->json([
-                    'message' => $tr->translate('you can not cancel your booking after starting it ')
+                    'message' => $tr->translate('you can not cancel your booking after starting it '),
+                    'status' => 404
                 ]);
             }
             return response()->json(['message' => $tr->translate('not found the booking')], 404);

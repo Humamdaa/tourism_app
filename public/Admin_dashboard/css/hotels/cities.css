@@ -137,17 +137,20 @@
 /*search results */
 
 #search-results {
+    background-color: rgba(178, 238, 227, 0.5); /* 50% transparency */
+
     width: 100%;
     max-width: 600px;
     margin: 20px auto;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    /*background-color: #f9f9f9;*/
     padding: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .city-result {
+    background-color: rgba(178, 238, 227, 0.5); /* 50% transparency */
     padding: 12px;
     border-bottom: 1px solid #eee;
     display: flex;
@@ -164,9 +167,11 @@
 }
 
 .city-name {
+    cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    color: #333;
+    color: blue;
+    text-decoration: none;
 }
 
 /* Optional: Add some icons or images */
@@ -207,6 +212,8 @@
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    underline: none;
+
 }
 
 
@@ -220,4 +227,7 @@
     color: #fff;
     font-size: 20px;
     margin: 0;
+}
+a{
+    text-decoration: none;
 }

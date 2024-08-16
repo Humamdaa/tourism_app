@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City List</title>
+    <title>Hotel cities</title>
     <link rel="stylesheet" href="{{asset('Admin_dashboard/css/hotels/cities.css')}}"/>
 
 </head>
@@ -26,15 +26,17 @@
 
 {{--result of search--}}
 @if(session('result'))
+    @php
+        $result = session('result'); // Retrieve the session data and assign it to $result
+    @endphp
     <div id="search-results">
         @foreach($result as $city)
             <div class="city-result">
-                <div class="city-name">{{ $city->name }}</div>
+                <a href="{{route('city.hotels', ['city_name' => $city->name])}}" class="city-name">{{ $city->name }}</a>
             </div>
         @endforeach
     </div>
 @endif
-
 
 <div class="background">
     <img src="{{asset('Admin_dashboard/assets/cities/Paris.jpg')}}" class="background-image" alt="hero-section image">
@@ -55,7 +57,7 @@
     <div class="city-grid">
         @foreach($cities as $ci)
             <div class="city-card">
-                <a>{{$ci->name}}</a>
+                <a href="{{route('city.hotels',['city_name' => $ci->name])}}">{{$ci->name}}</a>
             </div>
         @endforeach
     </div>

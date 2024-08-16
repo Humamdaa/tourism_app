@@ -1,0 +1,68 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header h1 {
+    margin: 0; /* Remove default margin from h1 */
+}
+
+.add_city {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-left: 20px; /* Add some space between the heading and the button */
+}
+
+.add_city:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.add_city:active {
+    background-color: #1e7e34;
+    transform: scale(1);
+}
+
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+.btn-group {
+    display: flex;
+    gap: 10px;
+}
+.card:hover {
+    transform: scale(1.05); /* Slightly scale up the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for a lifted effect */
+}

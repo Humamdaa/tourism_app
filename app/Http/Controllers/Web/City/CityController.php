@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Cookie;
 
 class CityController extends Controller
 {
@@ -16,6 +17,9 @@ class CityController extends Controller
      */
     public function index()
     {
+        $token = Cookie::get('token');
+
+//        return $token;
         $cities = City::all();
 
         return view('dashboard.city.city', compact('cities'));

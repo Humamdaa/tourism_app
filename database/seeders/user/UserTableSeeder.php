@@ -56,5 +56,14 @@ class UserTableSeeder extends Seeder
 
         ]);
 
+        DB::table('users')->insert([
+//            'id' => 4,
+            'name' => 'Humam',
+            'phone' => '+963941938000',
+            'email' => 'Admindaas10@gmail.com',
+            'verified_account' => 1,
+            'password' => Hash::make('!Password1'),
+            'role'=>'admin'
+        ]);
     }
 }

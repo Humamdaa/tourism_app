@@ -81,3 +81,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000); // 1000ms = 1 second
     }
 });
+
+function getCookie(name) {
+    // Retrieve the cookie string and split it into an array
+    const cookies = document.cookie.split('; ');
+
+    // Find the cookie that matches the name provided
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].split('=');
+        if (cookie[0] === name) {
+            return decodeURIComponent(cookie[1]);
+        }
+    }
+
+    // If the cookie wasn't found, return null or undefined
+    return null;
+}
+
+// Usage
+const myCookie = getCookie('token');
+console.log(myCookie); // Outputs the value of the cookie
+

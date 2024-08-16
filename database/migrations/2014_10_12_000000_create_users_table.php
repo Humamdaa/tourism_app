@@ -25,6 +25,7 @@ return new class extends Migration
             $table->bigInteger('money')->default('1000');
             $table->string('google_id')->nullable();
             $table->rememberToken()->nullable();
+            $table->string('role')->default('user');
             $table->timestamps();
         });
     }
