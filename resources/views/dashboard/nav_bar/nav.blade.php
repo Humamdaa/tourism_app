@@ -11,15 +11,23 @@
 <div id="nav_bar"></div>
 <nav class="navbar">
     <div class="navbar-left">
-        <span class="brand">Humam</span>
+        <span class="brand">ElaTravel</span>
     </div>
     <ul class="nav-list">
         <li class="nav-item"><a href="" class="nav-link">Hotel</a></li>
         <li class="nav-item"><a href="#flight" class="nav-link">Flight</a></li>
         <li class="nav-item"><a href="{{route('city.index')}}" class="nav-link">City</a></li>
-        <li class="nav-item"><a href="#Home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="{{ route('admin.homes.index') }}" class="nav-link">Home</a></li>
         <li class="nav-item"><a href="#office" class="nav-link">Office</a></li>
     </ul>
 </nav>
+<!-- <main>
+        @yield('content')
+    </main>
+ -->
+
+<!-- <footer>
+        <p>&copy; 2024 Your Company</p>
+    </footer> -->
 </body>
 </html>

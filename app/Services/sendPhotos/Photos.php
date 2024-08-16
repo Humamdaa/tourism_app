@@ -25,7 +25,7 @@ class Photos
 
 //            $urls[] = url("hotels/$cityName/$ps->img"); //this line add 127.0.0.1
             //this just from hotels folder/cityName/photo
-            $urls[] = "hotels/$cityName/$ps->img";
+            $urls[] = "/hotels/$cityName/$ps->img";
 
         return $urls;
     }

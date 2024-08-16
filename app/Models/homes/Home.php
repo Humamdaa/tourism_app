@@ -19,7 +19,7 @@ class Home extends Model
     protected $table = 'homes';
 
     protected $fillable = [
-        'space', 'location', 'description', 'monthly_rent', 'person_num', 'rooms', 'baths','city_id','user_owner_id'
+        'space', 'location', 'description', 'monthly_rent', 'person_num', 'rooms', 'baths','city_id','user_owner_id','Verification_status'
     ];
 
     public function city()

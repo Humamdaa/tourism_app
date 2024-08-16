@@ -28,6 +28,7 @@ use Database\Seeders\hotels\HotelServicesTableSeeder;
 use Database\Seeders\hotels\ServicesTableSeeder;
 use Database\Seeders\homes\HomeTableSeeder;
 use Database\Seeders\homes\BookHomeTableSeeder;
+use Database\Seeders\homes\HomePhotosTableSeeder;
 use Database\Seeders\user\UserTableSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -62,6 +63,8 @@ class DatabaseSeeder extends Seeder
         DB::table('class_flight_go')->delete();
         DB::table('flights_go_services')->delete();
         DB::table('flights_go_stops')->delete();
+        DB::table('home_photos')->delete();
+
         DB::table('stops')->delete();
 
         //round flights
@@ -84,6 +87,8 @@ class DatabaseSeeder extends Seeder
             // home
             HomeTableSeeder::class,
             BookHomeTableSeeder::class,
+            HomePhotosTableSeeder::class,
+
 
             //for go and round flight
             ClassesSeederTable::class,

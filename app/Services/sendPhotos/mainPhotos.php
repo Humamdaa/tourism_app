@@ -16,7 +16,7 @@ class mainPhotos
     public function listPhotos($cityName, $Ids, $all,$ser)
     {
         $tr = new TranslateMessages();
-        $directoryPath = public_path("hotels/$cityName");
+        // $directoryPath = public_path("hotels/$cityName");
         $directoryPath = public_path("$ser/$cityName");
 
         // Check if the directory exists
@@ -41,7 +41,7 @@ class mainPhotos
 
         foreach ($firstPhoto as $fP)
 //            $urls[] = url("$ser/$cityName/$fP");
-            $urls[] = "$ser/$cityName/$fP";
+            $urls[] = "/$ser/$cityName/$fP";
 
         return $urls;
     }
