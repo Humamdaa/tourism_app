@@ -6,15 +6,15 @@ use Illuminate\Support\Facades\File;
 
 class Photos
 {
-    public function AllPhoto($hotel)
+    public function AllPhoto($serObj,$serName)
     {
-        $cityName = $hotel->city->name;
+        $cityName = $serObj->city->name;
 
         //get photos like string
-        $photosString = $hotel->photos()->get();
+        $photosString = $serObj->photos()->get();
 
         //open folder !
-        $directoryPath = public_path("hotels/$cityName");
+        $directoryPath = public_path("$serName/$cityName");
 
         // Check if the directory exists
         if (!File::exists($directoryPath)) {
@@ -25,7 +25,7 @@ class Photos
 
 //            $urls[] = url("hotels/$cityName/$ps->img"); //this line add 127.0.0.1
             //this just from hotels folder/cityName/photo
-            $urls[] = "/hotels/$cityName/$ps->img";
+            $urls[] = "/$serName/$cityName/$ps->img";
 
         return $urls;
     }

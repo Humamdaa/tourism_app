@@ -3,6 +3,7 @@
 namespace App\Services\homes\insideHomePage;
 
 use App\Services\homes\insideHomePage\findHome;
+use App\Services\sendPhotos\Photos;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,10 @@ class getHomePhotos
         $temp = new findHome();
         $home = $temp->home($request);
 
-        if($home){
-            return $home->photos()->get();
+        if ($home) {
+            $allPhotos = new Photos();
+            $urls = $allPhotos->AllPhoto($home,"homes");
+            return ['photos' => $urls];
         }
 
         return ['message'=>$tr->translate('not found home')];
