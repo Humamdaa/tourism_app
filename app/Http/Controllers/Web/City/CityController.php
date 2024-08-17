@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Services\translate\TranslateMessages;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class CityController extends Controller
 {
@@ -17,12 +18,14 @@ class CityController extends Controller
      */
     public function index()
     {
-        $token = Cookie::get('token');
+//        $token = Cookie::get('token');
+
+        $token = Session::get('token');
 
 //        return $token;
         $cities = City::all();
 
-        return view('dashboard.city.city', compact('cities'));
+        return view('dashboard.city.city', compact('cities','token'));
     }
 
     /**

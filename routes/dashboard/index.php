@@ -17,8 +17,8 @@ Route::post('login', [loginController::class,'login'])->name('login');
 
 
 Route::get('flight', function () {
-    return view('dashboard/index');
-})->name('flight');
+    return view('dashboard/index')->with('token',session('token'));
+})->name('flight');//->middleware('role');
 
 //Route::get('nav_bar',function (){
 //    return view('dashboard/nav_bar/nav');
@@ -30,17 +30,16 @@ Route::get('flight', function () {
 
 Route::resource('city', CityController::class)->names([
     'index' => 'city.index',
-]);//->middleware('role');
+])->middleware('role');
 
 Route::get('/hotels/city',[HotelRecoursesController::class,'show_hotels_in_specific_city'])->name('city.hotels');
 
 Route::get('hotel/search-city', [HotelRecoursesController::class, 'search_city'])
     ->name('hotel.search_city')
-    ;//->middleware('role');
+    ->middleware('role');
 
 Route::resource('hotel', HotelRecoursesController::class)
     ->names([
         'index'=>'hotel.index'
-    ]);
-    //->middleware('role');
+    ])->middleware('role');
 

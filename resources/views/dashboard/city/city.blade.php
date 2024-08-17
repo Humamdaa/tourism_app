@@ -157,6 +157,13 @@
     </div>
 </div>
 
+{{-----------------------------------------------------}}
+@if (session('token'))
+    <p>{{ session('token') }}</p>
+@else
+    <p>No token found</p>
+@endif
+
 <script src="{{asset('Admin_dashboard/js/city/city.js')}}"></script>
 
 {{--for bootstrap--}}

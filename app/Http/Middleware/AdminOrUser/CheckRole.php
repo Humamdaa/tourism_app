@@ -20,7 +20,7 @@ class CheckRole
             return $next($request);
         }
         else if(Auth::check()&& Auth::user()->role == 'user'){
-            return redirect()->route('');
+            return redirect()->route('checkout');
         }
         return redirect()->back()->with('error','you can not visit this site');
 //        return redirect('/login')->with('error','you can not visit this site');

@@ -1,0 +1,151 @@
+/* General Form Styles */
+form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Section Headings */
+form h3 {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+button.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    margin-right: 10px;
+}
+
+button.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+button.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Spacing and Layout */
+#rooms-container .form-group,
+#services-container .form-group {
+    margin-bottom: 15px;
+}
+
+#add-room,
+#add-service {
+    margin-top: 10px;
+}
+
+#rooms-container .form-group:not(:first-child),
+#services-container .form-group:not(:first-child) {
+    margin-top: 20px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+
+.error-message {
+    color: #D8000C; /* Red color for error text */
+    background-color: #FFD2D2; /* Light red background */
+    border: 1px solid #D8000C; /* Red border */
+    padding: 15px 20px; /* Padding for the content */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    display: flex; /* Flexbox for icon and text */
+    align-items: center; /* Center align the content */
+    position: fixed; /* Fixed position relative to viewport */
+    top: 20px; /* Position from the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for horizontal centering */
+    z-index: 1000; /* Ensure it's above other elements */
+    animation: fadeIn 0.5s ease-in-out; /* Animation effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+}
+
+/* Error Icon */
+.error-message::before {
+    content: "⚠️"; /* Warning emoji */
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 20px; /* Size of the icon */
+}
+
+/* Close Button */
+.error-message .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: #D8000C;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Animation for Error Message */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -10px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}

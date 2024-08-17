@@ -27,7 +27,10 @@ class MyHotelBookController extends Controller
                 $all = $all->toArray();
                 $converted = $change->changePriceInBooking($all);
 
-                return response()->json(['data' => $converted], 200);
+                return response()->json([
+                    'data' => $converted,
+                    'message' => 'here are you booking'
+                ], 200);
             }
             return response()->json(['message' => $tr->translate('there are no hotel booking for you')], 404);
         }

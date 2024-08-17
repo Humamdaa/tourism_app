@@ -45,11 +45,12 @@ class loginController extends Controller
                     $token = $user->createToken('MyApp')->accessToken;
 
                     $user->setRememberToken(Str::random(60));
-                    $cookie = cookie('token', $token, 60);
+//                    $cookie = cookie('token', $token, 60);
 
+//                    return $token;
                     Session::put('token', $token);
 
-                    return redirect()->route('city.index')->with('token', $token)->cookie($cookie);
+                    return redirect()->route('city.index')->with('token', $token);//->cookie($cookie);
                 }
                 return redirect()->back()->with('error', 'not found user');
             }

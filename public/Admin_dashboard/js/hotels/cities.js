@@ -38,3 +38,14 @@ const changeSliderImage = () => {
     })
 }
 
+//to appeare the message for 5 seconds
+document.addEventListener('DOMContentLoaded', function() {
+    var notification = document.querySelector('.notification');
+    if (notification) {
+        notification.style.display = 'block'; // إظهار الرسالة
+
+        setTimeout(function() {
+            notification.style.display = 'none'; // إخفاء الرسالة بعد 5 ثوانٍ
+        }, 5000);
+    }
+});

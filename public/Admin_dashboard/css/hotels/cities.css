@@ -212,7 +212,7 @@
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease, background-color 0.3s ease;
-    underline: none;
+    /*underline: none;*/
 
 }
 
@@ -228,6 +228,22 @@
     font-size: 20px;
     margin: 0;
 }
-a{
+
+a {
     text-decoration: none;
+}
+
+/*design message*/
+.notification {
+
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: #f8d7da;
+    color: #e72e3b;
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* تبدأ الرسالة مخفية */
+    font-size: 25px;
 }

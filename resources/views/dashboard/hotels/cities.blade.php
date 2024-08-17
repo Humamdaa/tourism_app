@@ -51,7 +51,7 @@
         <div class="grid-item hide"></div>
     </div>
 
-{{--    cities--}}
+{{--cities--}}
 </div>
 <div class="container">
     <div class="city-grid">
@@ -63,6 +63,20 @@
     </div>
 </div>
 </div>
+
+
+@if(session('message'))
+    <div class="notification">
+        {{ session('message') }}
+    </div>
+@endif
+
+{{----------------------------------------------------------}}
+@if (session('token'))
+    <p>{{ session('token') }}</p>
+@else
+    <p>No token found</p>
+@endif
 
 <script src="{{asset('Admin_dashboard/js/hotels/cities.js')}}"></script>
 

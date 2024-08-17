@@ -9,11 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     use HasFactory;
-protected $table = 'rooms';
+
+    protected $table = 'rooms';
     protected $fillable = [
         'person_num',
         'hotel_id',
-        'isBooking'
+        'isBooking',
+        'number',
     ];
 
     public function hotel()
@@ -24,7 +26,7 @@ protected $table = 'rooms';
     public function users()
     {
         return $this->belongsToMany(User::class, 'book_room_hotel', 'id_room', 'id_user')
-            ->withPivot('start', 'end','id_hotel'); // If you need to access additional pivot columns
+            ->withPivot('start', 'end', 'id_hotel'); // If you need to access additional pivot columns
     }
 
     public function bookings()
