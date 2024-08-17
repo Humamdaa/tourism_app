@@ -15,14 +15,13 @@ class getHotelPhotos
     public function getPhotosInHotel(Request $request)
     {
         $tr = new TranslateMessages();
-
         $temp = new findHotel();
         $hotel = $temp->Hotel($request);
 
 
         if ($hotel) {
             $allPhotos = new Photos();
-            $urls = $allPhotos->AllPhoto($hotel);
+            $urls = $allPhotos->AllPhoto($hotel,"hotels");
             return ['photos' => $urls];
         }
 

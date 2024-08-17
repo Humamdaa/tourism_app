@@ -37,3 +37,4 @@ Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('s
 //admin dashboard
 
 include __DIR__ . '/dashboard/index.php';
+include __DIR__ . '/dashboard/homes.php';
