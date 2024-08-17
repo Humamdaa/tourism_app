@@ -30,7 +30,7 @@ Route::get('flight', function () {
 
 Route::resource('city', CityController::class)->names([
     'index' => 'city.index',
-]);//->middleware('role');
+])->middleware('role');
 
 Route::get('/hotels/city',[HotelRecoursesController::class,'show_hotels_in_specific_city'])->name('city.hotels');
 

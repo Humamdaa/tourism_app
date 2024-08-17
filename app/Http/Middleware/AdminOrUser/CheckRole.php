@@ -16,13 +16,25 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, $role = 'admin'): Response
     {
-        if (Auth::check() && Auth::user()->role == $role) {
-            return $next($request);
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            // Allow access if the user has the role 'admin'
+            if ($user->role == 'admin') {
+                return $next($request);
+            }
+
+            // Allow access if the user has the role 'user' and trying to access allowed routes
+            if ($user->role == 'user') {
+                if ($request->is('userHomes/*')) {
+                    return $next($request);
+                } else {
+                    return redirect()->route('user.homes.addHome')->with('error', 'You cannot visit this site');
+                }
+            }
         }
-        else if(Auth::check()&& Auth::user()->role == 'user'){
-            return redirect()->route('');
-        }
-        return redirect()->back()->with('error','you can not visit this site');
-//        return redirect('/login')->with('error','you can not visit this site');
+
+        // Redirect back if the user is not authenticated or has no permission
+        return redirect()->back()->with('error', 'You cannot visit this site');
     }
 }
