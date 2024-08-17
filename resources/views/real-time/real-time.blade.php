@@ -35,10 +35,25 @@
 </head>
 <body>
 <h1>Real-Time Comments</h1>
-<ul id="comments-list"></ul>
+<ul id="comments-list">
+    @if($com && $com->isNotEmpty())
+        <ul>
+            @foreach($com as $comment)
+                <li>
+                    <strong>Comment:</strong> {{ $comment->comment }} <br>
+                    <strong>Rate:</strong> {{ $comment->rate }} <br>
+                    <strong>Created At:</strong> {{ $comment->created_at }}
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <p>No comments found.</p>
+    @endif
+</ul>
+
 
 <div id="comment-form">
-    <input type="text" id="comment-input" placeholder="Enter your comment" />
+    <input type="text" id="comment-input" placeholder="Enter your comment"/>
     <button onclick="addComment()">Send</button>
 </div>
 
@@ -54,7 +69,7 @@
     var channel = pusher.subscribe('comments');
 
     // الاستماع إلى حدث إرسال التعليق
-    channel.bind('comment.sent', function(data) {
+    channel.bind('comment.sent', function (data) {
         addCommentToUI(data.comment);
     });
 
@@ -67,16 +82,16 @@
     }
 
     // جلب التعليقات عند تحميل الصفحة
-    window.onload = function() {
-        fetch('InsideHotelPage')
-            .then(response => response.json())
-            .then(data => {
-                data.data[1].comment.forEach(comment => {
-                    addCommentToUI(comment);
-                });
-            })
-            .catch(error => console.error('Error fetching comments:', error));
-    };
+    // window.onload = function () {
+    //     fetch('InsideHotelPage')
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             data.data[1].comment.forEach(comment => {
+    //                 addCommentToUI(comment);
+    //             });
+    //         })
+    //         .catch(error => console.error('Error fetching comments:', error));
+    // };
 
     // إرسال التعليق الجديد
     function addComment() {
@@ -89,7 +104,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer YOUR_TOKEN' // ضع توكن المصادقة الخاص بك هنا
+                    'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTg3OTgyZWMxMDEyODQwZDRhNjQ1OWE0NjNhOTlhYjZhNWRhZDNkOWFkNTk4NzU3Yzg3NTI0OGEzYjg3YTQ5NzAyMTRiZjRjMGY5NzUyMzMiLCJpYXQiOjE3MjM4ODUwMjkuMTE2NzMxLCJuYmYiOjE3MjM4ODUwMjkuMTE2NzM2LCJleHAiOjE3NTU0MjEwMjguOTg1MDk5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.u4Cyn7dtJeM6nWnB51BcHzGYBJnGO-FF4mJDWtGmYZBPRHXSrc0xgkqz6y-8SBsNH0Z_u_-c3_9CM20nJdUMeBYvvyPJ6cqxvugCDtlwp0G1hvycTEsv-At7rybvGvbZ29d0-FwLKdBjkr3c7DXMfn7EiMnxSdU1U3aplnV1SP5yNrgOFfBBvMwb1O1h_B6kJhRqzpNDAKUd8zRquo74NBMa3ML4aHc-4IUmZjv0snaT7X3kJ92BvcfieyveNo9RVozFw_fQg7xMXElyANqzXHz6XvkR1EaVeNmv73E8kR2G5Oe4MJMrCTm2Dpzz6yc1DD-i5LrCW4U3KlgrKEFyxvZxxgUvfwsKGbWz6ydX0q6fJpBJl1ygsjbSLI7DL5ci7EChayL70yDXs7ey9IMo18mTLxYxj3R3oXCk0eU5mcMzn2UlZRhDZaFfhk_cofZil1K96aTNAr9wsPTlxfyvVt1TYakOUhlLjiKzGwD93_EKB3zeNGn_wvkxPCXeRhfLqoWfC4WElQoJETdHdmEtARtZRFdteSU-02zt6-HA2X6zF1dhuFKqY7c4t2M4TpJcq503YPsaQD4pHaHcZtxQaYyjhCz8O3YW4NoyPWhfwn1GWxj7AxUWH3pe6bXaTPGAs9thIS02WWqZxn8y8_M8e59hrQRL9wkxXw5ZrplJa58' // ضع توكن المصادقة الخاص بك هنا
                 },
                 body: JSON.stringify({
                     comment: commentText,

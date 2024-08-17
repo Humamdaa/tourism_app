@@ -9,6 +9,9 @@ use App\Http\Controllers\stays\Hotels\HotelController;
 use App\Http\Controllers\stays\Hotels\InsideHotelPage;
 use App\Http\Controllers\stays\Hotels\ModifyBookController;
 use App\Http\Controllers\stays\Hotels\MyHotelBookController;
+use App\Models\hotels\Hotel;
+use App\Services\hotels\InsideHotelPage\findHotel;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,7 +22,7 @@ Route::get('FavoriteHotels',[FavoriteHotels::class,'getFavHotels'])->middleware(
 
 Route::get('InsideHotelPage',[InsideHotelPage::class,'insideHotel'])->middleware('auth:api');//,'session'
 
-Route::post('writeComment',[addCommentController::class,'comment'])->middleware('auth:api');
+Route::post('writeComment',[addCommentController::class,'comment']);//->middleware('auth:api');
 
 Route::post('book',[BookHotelController::class,'bookRoomInHotel'])->middleware('auth:api');
 
@@ -32,6 +35,16 @@ Route::get('myHotelBooking',[MyHotelBookController::class,'getMyHotelBooking'])-
 
 //test real time
 //
-Route::get('test_real',function (){
-    return view('real-time.real-time');
+Route::get('test_real', function () {
+    $request = new Request();
+    $request->merge(['hotel_id' => 1]);
+
+    $hotelService = new findHotel();
+    $hotel = $hotelService->Hotel($request);
+
+    // Retrieve the related comments
+    $comments = $hotel->comments()->get();
+
+    // Pass the comments to the view as 'com'
+    return view('real-time.real-time')->with('com', $comments);
 });

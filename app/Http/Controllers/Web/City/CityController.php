@@ -25,7 +25,7 @@ class CityController extends Controller
 //        return $token;
         $cities = City::all();
 
-        return view('dashboard.city.city', compact('cities','token'));
+        return view('dashboard.city.city', compact('cities'));
     }
 
     /**

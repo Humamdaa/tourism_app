@@ -72,11 +72,11 @@
 @endif
 
 {{----------------------------------------------------------}}
-@if (session('token'))
-    <p>{{ session('token') }}</p>
-@else
-    <p>No token found</p>
-@endif
+{{--@if (session('token'))--}}
+{{--    <p>{{ session('token') }}</p>--}}
+{{--@else--}}
+{{--    <p>No token found</p>--}}
+{{--@endif--}}
 
 <script src="{{asset('Admin_dashboard/js/hotels/cities.js')}}"></script>
 

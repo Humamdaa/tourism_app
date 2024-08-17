@@ -1,4 +1,3 @@
-
 <?php
 
 use App\Http\Controllers\Admin\Homes\AdminHomeController;
@@ -17,11 +16,12 @@ Route::post('/admin/homes/{id}/verify', [AdminHomeController::class, 'verify'])-
 
 //for User
 
-Route::middleware('role')->group(function () {
-    Route::get('userHomes/home', [AddHomeController::class, 'create'])->name('user.homes.addHome');
-    // Route::get('userHomes/home', [AddHomeController::class, 'create'])->name('user.homes.addHome');
-    Route::post('userHome/addHome', [AddHomeController::class, 'store']);
-    Route::get('/UserHome/homes', [ShowUserHomeController::class, 'index'])->name('user.homes.index');
-    Route::get('/UserHome/bookings', [UserHomeBookingsController::class, 'show'])->name('user.home.bookings.show');
-    Route::post('/UserHome/booking/change-status', [ChangeBookingStatusController::class, 'changeStatus']);
-});
+//Route::middleware('role')->group(function () {
+//Route::get('userHomes/home', [AddHomeController::class, 'create'])->name('user.homes.addHome')->middleware('role');
+//// Route::get('userHomes/home', [AddHomeController::class, 'create'])->name('user.homes.addHome');
+//Route::post('userHome/addHome', [AddHomeController::class, 'store'])->name('store.home')->middleware('role');
+//Route::get('/UserHome/homes', [ShowUserHomeController::class, 'index'])->name('user.homes.index')->middleware('role');
+//Route::get('/UserHome/bookings', [UserHomeBookingsController::class, 'show'])->name('user.home.bookings.show')->middleware('role');
+//Route::post('/UserHome/booking/change-status', [ChangeBookingStatusController::class, 'changeStatus'])->middleware('role');
+//});
+

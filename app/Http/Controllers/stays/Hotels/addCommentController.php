@@ -27,6 +27,8 @@ class addCommentController extends Controller
         $hotel_id = $request->hotel_id;
         $rate = $request->rate;
 
+//        return $user;
+
         if ($user) {
             $lastComm = $DLOC->TranslateCommentToStore($com);
             $comment = hotel_comment::create([
@@ -57,12 +59,12 @@ class addCommentController extends Controller
 
         broadcast(new newCommentSent($comment))->toOthers();
 
-        $user = auth()->user();
-        $user->sendNewMessageNotification([
-            'messageData' => [
-                'message' => $comment->comment
-            ]
-        ]);
+//        $user = auth()->user();
+//        $user->sendNewMessageNotification([
+//            'messageData' => [
+//                'message' => $comment->comment
+//            ]
+//        ]);
 //        $userId = $user->id;
 //        where('id',$userId)->
     }

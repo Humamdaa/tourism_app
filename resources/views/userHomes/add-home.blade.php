@@ -21,18 +21,18 @@
         </div>
     @endif
 
-    <!-- Display success message -->
+<!-- Display success message -->
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
 
-    <!-- Add Home Form -->
-    <form action="{{ url('userHome/addHome') }}" method="POST">
-        @csrf
+<!-- Add Home Form -->
+    <form action="{{route('store.home') }}" method="POST">
+    @csrf
 
-        <!-- Input fields for home details -->
+    <!-- Input fields for home details -->
         <div class="form-group">
             <label for="space">Space (sqm)</label>
             <input type="number" class="form-control" id="space" name="space" required value="{{ old('space') }}">
@@ -40,22 +40,26 @@
 
         <div class="form-group">
             <label for="location">Location</label>
-            <input type="text" class="form-control" id="location" name="location" required value="{{ old('location') }}">
+            <input type="text" class="form-control" id="location" name="location" required
+                   value="{{ old('location') }}">
         </div>
 
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
+            <textarea class="form-control" id="description" name="description"
+                      required>{{ old('description') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="monthly_rent">Monthly Rent (USD)</label>
-            <input type="number" class="form-control" id="monthly_rent" name="monthly_rent" required value="{{ old('monthly_rent') }}">
+            <input type="number" class="form-control" id="monthly_rent" name="monthly_rent" required
+                   value="{{ old('monthly_rent') }}">
         </div>
 
         <div class="form-group">
             <label for="person_num">Number of People</label>
-            <input type="number" class="form-control" id="person_num" name="person_num" required value="{{ old('person_num') }}">
+            <input type="number" class="form-control" id="person_num" name="person_num" required
+                   value="{{ old('person_num') }}">
         </div>
 
         <div class="form-group">
@@ -68,9 +72,26 @@
             <input type="number" class="form-control" id="baths" name="baths" required value="{{ old('baths') }}">
         </div>
 
+        <div class="form-group">
+            <label for="city_id">City</label>
+            <select class="form-control" id="city_id" name="city_id" required>
+                <!-- نفترض هنا أن قائمة المدن موجودة في قاعدة البيانات -->
+                <!-- قد تحتاج إلى تمرير المدن من الـ Controller إلى الـ Blade -->
+                <option value="">Select City</option>
+                @foreach ($cities as $city)
+                    <option
+                        value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <!-- Submit button -->
         <button type="submit" class="btn btn-primary">Add Home</button>
     </form>
+
+    @if(session('error'))
+      {{session('error')}}
+        @endif
 </div>
 </body>
 </html>

@@ -19,11 +19,11 @@
 </div>
 
 {{-------------------------------------------------------}}
-@if (session()->has('token'))
-    <p>{{ session('token') }}</p>
-@else
-    <p>No token found</p>
-@endif
+{{--@if (session()->has('token'))--}}
+{{--    <p>{{ session('token') }}</p>--}}
+{{--@else--}}
+{{--    <p>No token found</p>--}}
+{{--@endif--}}
 
 <header class="section__container header__container">
     <!-- <h1 class="section__header">Find And Book<br />A Great Experience</h1> -->

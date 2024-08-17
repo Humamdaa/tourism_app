@@ -19,9 +19,9 @@ Route::get('favoriteHomes',[FavoriteHomesController::class,'getFavHomes'])->midd
 Route::get('InsideHomePage',[InsideHomePageController::class,'insideHome'])->middleware('auth:api');//,'session'
 Route::post('bookHome',[BookHomeController::class,'bookHome'])->middleware('auth:api');
 ///UserHomes
-// Route::post('userHomes/addHome', [AddHomeController::class, 'store'])->middleware('auth:api');
-// Route::get('/UserHomes/homes', [ShowUserHomeController::class, 'index'])->name('user.homes.index')->middleware('auth:api');
-// Route::get('/UserHomes/bookings', [UserHomeBookingsController::class, 'show'])->name('user.home.bookings.show')->middleware('auth:api');
-// Route::post('/UserHomes/booking/change-status', [ChangeBookingStatusController::class, 'changeStatus'])
-//     ->middleware('auth:api');
+ Route::post('userHomes/addHome', [AddHomeController::class, 'store'])->middleware('auth:api');
+ Route::get('/UserHomes/homes', [ShowUserHomeController::class, 'index'])->name('user.homes.index')->middleware('auth:api');
+ Route::get('/UserHomes/bookings', [UserHomeBookingsController::class, 'show'])->name('user.home.bookings.show')->middleware('auth:api');
+ Route::post('/UserHomes/booking/change-status', [ChangeBookingStatusController::class, 'changeStatus'])
+     ->middleware('auth:api');
 ?>
