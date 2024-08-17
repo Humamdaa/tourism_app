@@ -11,8 +11,8 @@ class AdminHomeController extends Controller
     public function index()
     {
         // جلب جميع البيوت مع تقسيمها حسب حالة التحقق
-        $verifiedHomes = Home::where('Verification_status', 'Verified')->get();
-        $unverifiedHomes = Home::where('Verification_status', 'Unverified')->get();
+        $verifiedHomes = Home::where('Verification_status', 'Verified')->with('photos')->get();
+        $unverifiedHomes = Home::where('Verification_status', 'Unverified')->with('photos')->get();
 
         return view('dashboard.homes.index', compact('verifiedHomes', 'unverifiedHomes'));
     }
@@ -20,8 +20,7 @@ class AdminHomeController extends Controller
     public function show($id)
     {
         // جلب معلومات البيت بناءً على المعرف
-        $home = Home::findOrFail($id);
-
+        $home = Home::with('Owner')->findOrFail($id);
         return view('dashboard.homes.show', compact('home'));
     }
 
@@ -31,7 +30,7 @@ class AdminHomeController extends Controller
         $home = Home::findOrFail($id);
         $home->delete();
 
-        return redirect()->route('dashboard.homes.index')->with('success', 'Home deleted successfully.');
+        return redirect()->route('admin.homes.index')->with('success', 'Home deleted successfully.');
     }
 
     public function verify(Request $request, $id)
@@ -41,6 +40,6 @@ class AdminHomeController extends Controller
         $home->Verification_status = $request->input('Verification_status');
         $home->save();
 
-        return redirect()->route('dashboard.homes.show', $id)->with('success', 'Home verification status updated successfully.');
+        return redirect()->route('admin.homes.show', $id)->with('success', 'Home verification status updated successfully.');
     }
 }
